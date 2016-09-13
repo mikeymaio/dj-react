@@ -1,0 +1,50 @@
+{
+  "name": "thinkful-react-starter",
+  "version": "0.0.1",
+  "description": "A React template",
+  "main": "js/index.js",
+  "scripts": {
+    "start": "http-server build",
+    "dev": "run-p watch serve api",
+    "test": "mocha --recursive",
+    "build": "run-s build:*",
+    "clean": "rm -rf build",
+    "serve": "npm start",
+    "api": "json-server --watch db.json",
+    "watch": "run-p watch:*",
+    "mkdir": "mkdir -p build",
+    "clean:html": "rm -f build/index.html",
+    "mkdir:html": "run-s mkdir",
+    "build:html": "run-s clean:html mkdir:html && cp index.html build",
+    "watch:html": "run-s build:html && chokidar index.html -c 'npm run build:html'",
+    "clean:js": "rm -rf build/js",
+    "mkdir:js": "mkdir -p build/js",
+    "build:js": "run-s clean:js mkdir:js && webpack",
+    "watch:js": "run-s build:js && webpack --watch",
+    "clean:css": "rm -rf build/css",
+    "mkdir:css": "mkdir -p build/css",
+    "build:css": "run-s clean:css mkdir:css && cp -r css build",
+    "watch:css": "run-s build:css && chokidar css/**/* -c 'npm run build:css'",
+    "clean:assets": "rm -rf build/assets",
+    "build:assets": "run-s clean:assets mkdir && cp -r assets build",
+    "watch:assets": "run-s build:assets && chokidar assets/**/* -c 'npm run build:assets'"
+  },
+  "author": "Joe Turner <joe@oampo.co.uk>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.13.1",
+    "babel-preset-react": "^6.11.1",
+    "chokidar-cli": "^1.2.0",
+    "http-server": "^0.9.0",
+    "mocha": "^3.0.1",
+    "npm-run-all": "^3.0.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "json-server": "^0.8.20"
+  }
+}
