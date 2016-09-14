@@ -48,10 +48,12 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "json-server": "^0.8.20",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   }
 }
