@@ -45,6 +45,8 @@
     "http-server": "^0.9.0",
     "mocha": "^3.0.1",
     "npm-run-all": "^3.0.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
     "webpack": "^1.13.1"
   },
   "dependencies": {
