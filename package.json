@@ -6,7 +6,7 @@
   "scripts": {
     "start": "http-server build",
     "dev": "run-p watch serve api",
-    "test": "mocha --recursive",
+    "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rm -rf build",
     "serve": "npm start",
