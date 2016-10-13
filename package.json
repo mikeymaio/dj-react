@@ -5,12 +5,11 @@
   "main": "js/index.js",
   "scripts": {
     "start": "http-server build",
-    "dev": "run-p watch serve api",
+    "dev": "run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
     "build": "run-s build:*",
     "clean": "rimraf build",
     "serve": "npm start",
-    "api": "json-server --watch db.json",
     "watch": "run-p watch:*",
     "mkdir": "mkdirp build",
     "clean:html": "rimraf build/index.html",
@@ -63,7 +62,6 @@
   },
   "dependencies": {
     "isomorphic-fetch": "^2.2.1",
-    "json-server": "^0.8.20",
     "react": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-redux": "^4.4.5",
