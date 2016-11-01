@@ -15,7 +15,7 @@
     "clean:html": "rimraf build/index.html",
     "mkdir:html": "run-s mkdir",
     "build:html": "run-s clean:html mkdir:html _build:html",
-    "_build:html": "cp index.html build",
+    "_build:html": "cpr index.html build/index.html",
     "watch:html": "run-s build:html _watch:html",
     "_watch:html": "chokidar index.html -c \"npm run build:html\"",
     "clean:js": "rimraf build/js",
