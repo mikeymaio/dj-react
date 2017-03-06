@@ -1,11 +1,17 @@
-require('babel-polyfill');
-
 import React from 'react';
-import ReactDOM  from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 
-import Hello from './components/hello-world';
+import App from './components/app.component';
+import store from './store';
 
-document.addEventListener('DOMContentLoaded', () =>
-    ReactDOM.render(<Hello greeting="Hello World" />, document.getElementById('app'))
-);
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
+injectTapEventPlugin();
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.getElementById('app'));
