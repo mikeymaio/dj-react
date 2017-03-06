@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+        background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpoper.com%2Fimages%2F00%2F43%2F63%2F77%2Fgray-floor-texture_00436377.jpg&f=1');
+        font-family: 'Roboto', sans-serif;
+    }
+.header {
+    text-align: center;
+}
