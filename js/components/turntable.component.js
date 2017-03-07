@@ -8,6 +8,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import ReactPlayer from 'react-player';
 
+// import Deck from './deck.container';
+import Fader from './fader.component';
+import { startStopSong } from '../actions/index.action';
+import { handlePlaybackSpeed } from '../actions/index.action';
 
 
 
@@ -127,6 +131,10 @@ class Turntable extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+        inputValue: 1
+    }
+
 
 }
 
@@ -135,22 +143,55 @@ class Turntable extends React.Component {
 
         let startStopClass = classnames('fa', {'fa-pause': this.play}, {'fa-play': !this.play});
 
-        return (
-            <div className="turntable-container col-lg-4 col-md-4 col-sm-8 col-xs-8" style={styleTurntableContainer}>
+        if (!this.props.song) {
+            return <div className="turntable-container col-lg-4 col-md-4 col-sm-8 col-xs-8" style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter player-container" style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url='https://www.youtube.com/watch?v=ysz5S6PUM-U' playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h2 className="artist-name">Artist: Artist Name</h2>
-                </div>
-
-                <div className="song-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h3 className="artist-song-name">Song: Song</h3>
-                </div></div>} /> </div>} />
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter" style={stylePlatter1} zDepth={4} circle={true} children={<div className="player-container col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"><h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
                     <div className="player-options col-lg-6 col-md-6 col-sm-6">
-                    <div className="player-buttons player-controls" >
-                        <button style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
+                    <div className="player-buttons player-controls"  >
+                        <button onTouchTap={() => this.props.startStopSong()} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
                             <i className={startStopClass} />
                         </button>
                         </div>
+                        <div className="speedFader col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-12 col-xs-1 col-xs-offset-8" style={style.speedControl}>
+                            <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
+                            <Fader className="deckSpeed" defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value)} />
+                    </div>
+
+                </div></div>}>
+          </div>
+        </MuiThemeProvider>
+            </div>;
+        }
+
+
+
+
+
+        return (
+            <div className="turntable-container col-lg-4 col-md-4 col-sm-8 col-xs-8" style={styleTurntableContainer}>
+                <MuiThemeProvider>
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter player-container" style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <h2 className="artist-name">Artist: {this.props.song.artist.name}</h2>
+                </div>
+
+                <div className={"player-cover col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}>
+                    <img src={this.props.song.cover} style={styleImg}/>
+                </div>
+
+                <div className="song-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <h3 className="artist-song-name">Song: {this.props.song.artist.song}</h3>
+                </div></div>} /> </div>} />
+                    <div className="player-options col-lg-6 col-md-6 col-sm-6">
+                    <div className="player-buttons player-controls" >
+                        <button onTouchTap={() => this.props.startStopSong()} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
+                            <i className={startStopClass} />
+                        </button>
+                        </div>
+                        <div className="speedFader col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-12 col-xs-1 col-xs-offset-8" style={style.speedControl}>
+                            <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
+                            <Fader className="deckSpeed" style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value)} value={this.props.speed/2} defaultValue={this.props.speed/2}/>
+                    </div>
 
                 </div></div>}>
           </div>
@@ -161,5 +202,22 @@ class Turntable extends React.Component {
     }
 }
 
-export default Turntable;
+function mapStateToProps(state) {
+    return {
+        song: state.reducer.deck1.activeSong,
+        play: state.reducer.deck1.play,
+        speed: state.reducer.deck1.speed,
+        volume: state.reducer.deck1.volume
+    };
+}
+
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({startStopSong: startStopSong}, dispatch);
+// }
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({handlePlaybackSpeed: handlePlaybackSpeed, startStopSong: startStopSong}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Turntable);
 
