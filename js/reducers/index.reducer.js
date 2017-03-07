@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 // import PlaylistReducer from './playlist.reducer';
 
-const initialState = {
+const playlistState = {
     playlist:
     [
         {
@@ -46,95 +46,201 @@ const initialState = {
         }
 
     ],
-    deck1: {
-        activeSong: null,
-        play: true,
-        progress: 0,
-        volume: 0.8,
-        speed: 1,
-        treble: 0,
-        mid: 0,
-        bass: 0,
-        filter: 0,
-        reverb: 0,
-        delay: 0,
-        distortion: 0,
-    },
-    deck1: {
-        activeSong: null,
-        play: true,
-        progress: 0,
-        volume: 0.8,
-        speed: 1,
-        treble: 0,
-        mid: 0,
-        bass: 0,
-        filter: 0,
-        reverb: 0,
-        delay: 0,
-        distortion: 0,
-    },
+    // decks: {
+    //     deck1: {
+    //         activeSong: null,
+    //         play: true,
+    //         progress: 0,
+    //         volume: 0.8,
+    //         speed: 1,
+    //         treble: 0,
+    //         mid: 0,
+    //         bass: 0,
+    //         filter: 0,
+    //         reverb: 0,
+    //         delay: 0,
+    //         distortion: 0,
+    //     },
+    //     deck2: {
+    //         activeSong: null,
+    //         play: true,
+    //         progress: 0,
+    //         volume: 0.8,
+    //         speed: 1,
+    //         treble: 0,
+    //         mid: 0,
+    //         bass: 0,
+    //         filter: 0,
+    //         reverb: 0,
+    //         delay: 0,
+    //         distortion: 0,
+    //     },
+    // }
 }
+
+const deckState = {
+        deck1: {
+            activeSong: null,
+            play: true,
+            progress: 0,
+            volume: 0.8,
+            speed: 1,
+            treble: 0,
+            mid: 0,
+            bass: 0,
+            filter: 0,
+            reverb: 0,
+            delay: 0,
+            distortion: 0,
+        },
+        deck2: {
+            activeSong: null,
+            play: true,
+            progress: 0,
+            volume: 0.8,
+            speed: 1,
+            treble: 0,
+            mid: 0,
+            bass: 0,
+            filter: 0,
+            reverb: 0,
+            delay: 0,
+            distortion: 0,
+        },
+    }
 
 
 //////////////////////////// TEST //////////////////////////////////////
-const reducer = (state=initialState, action) => {
+
+const playlistReducer = (state=playlistState, action) => {
+    return state;
+}
+
+
+const decksReducer = (state=deckState, action) => {
     switch(action.type) {
-        case 'SONG_SELECTED':
+        case 'SONG_SELECTED_DECK1':
             return {
                 ...state,
-                deck1: {activeSong: action.payload}
+                deck1: {...state.deck1, activeSong: action.payload}
             }
-            case 'UPDATE_FILTER':
+            case 'UPDATE_FILTER_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, filter: action.payload}
+            }
+        case 'UPDATE_REVERB_DECK1':
         return {
-            ...state,
-            deck1: {filter: action.payload}
-        }
-        case 'UPDATE_REVERB':
+                ...state,
+                deck1: {...state.deck1, reverb: action.payload}
+            }
+        case 'UPDATE_DELAY_DECK1':
         return {
-            ...state,
-            deck1: {reverb: action.payload}
-        }
-        case 'UPDATE_DELAY':
+                ...state,
+                deck1: {...state.deck1, delay: action.payload}
+            }
+        case 'UPDATE_DISTORTION_DECK1':
         return {
-            ...state,
-        deck1: {delay: action.payload}
-        }
-        case 'UPDATE_DISTORTION':
+                ...state,
+                deck1: {...state.deck1, distortion: action.payload}
+            }
+        case 'UPDATE_VOLUME_DECK1':
         return {
-            ...state,
-            deck1: {distortion: action.payload}
-        }
-        case 'UPDATE_VOLUME':
-            return {
                 ...state,
-                deck1: {volume: action.payload}
+                deck1: {...state.deck1, volume: action.payload}
             }
-        case 'UPDATE_TREBLE_CONTROL':
-            return {
+        case 'UPDATE_TREBLE_CONTROL_DECK1':
+        return {
                 ...state,
-                deck1: {treble: action.payload}
+                deck1: {...state.deck1, treble: action.payload}
             }
-        case 'UPDATE_MID_CONTROL':
-            return {
+        case 'UPDATE_MID_CONTROL_DECK1':
+        return {
                 ...state,
-                deck1: {mid: action.payload}
+                deck1: {...state.deck1, mid: action.payload}
             }
-        case 'UPDATE_BASS_CONTROL':
-            return {
+        case 'UPDATE_BASS_CONTROL_DECK1':
+        return {
                 ...state,
-                deck1: {bass: action.payload}
+                deck1: {...state.deck1, bass: action.payload}
             }
-            case 'START_STOP_SONG':
+            case 'START_STOP_SONG_DECK1':
         // state.play = !state.play;
-            return Object.assign({}, state, {
-                deck1: {play: !state.play}
-            });
-        case 'UPDATE_PLAYBACK_SPEED':
+        return {
+                ...state,
+                deck1: {...state.deck1, play: !state.deck1.play}
+            }
+            // return Object.assign({}, state, {
+            //     deck1: {play: !state.play}
+            // });
+        case 'UPDATE_PLAYBACK_SPEED_DECK1':
+        return {
+                ...state,
+                deck1: {...state.deck1, speed: action.payload * 2}
+            }
+            
+//////////////////////////// DECK 2 //////////////////////////////////////
+
+        case 'SONG_SELECTED_DECK2':
             return {
                 ...state,
-                deck1: {speed: action.payload * 2}
+                deck2: {...state.deck2, activeSong: action.payload}
             }
+        case 'UPDATE_FILTER_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, filter: action.payload}
+            }
+        case 'UPDATE_REVERB_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, reverb: action.payload}
+            }
+        case 'UPDATE_DELAY_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, delay: action.payload}
+            }
+        case 'UPDATE_DISTORTION_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, distortion: action.payload}
+            }
+        case 'UPDATE_VOLUME_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, volume: action.payload}
+            }
+        case 'UPDATE_TREBLE_CONTROL_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, treble: action.payload}
+            }
+        case 'UPDATE_MID_CONTROL_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, mid: action.payload}
+            }
+        case 'UPDATE_BASS_CONTROL_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, bass: action.payload}
+            }
+            case 'START_STOP_SONG_DECK2':
+        // state.play = !state.play;
+        return {
+                ...state,
+                deck2: {...state.deck2, play: !state.deck2.play}
+            }
+            // return Object.assign({}, state, {
+            //     deck2: {play: !state.play}
+            // });
+        case 'UPDATE_PLAYBACK_SPEED_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, speed: action.payload * 2}
+            }
+
     }
     console.log('state', state);
     return state;
@@ -147,7 +253,9 @@ const reducer = (state=initialState, action) => {
 const rootReducer = combineReducers({
     // deck1: reducer,
     // deck2: reducer
-    reducer
+    // reducer
+    decksReducer,
+    playlistReducer
 });
 
 export default rootReducer;
