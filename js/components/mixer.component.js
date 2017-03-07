@@ -1,16 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import {bindActionCreators} from 'redux';
+// import { connect } from 'react-redux';
+// import {bindActionCreators} from 'redux';
 
 import Fader from './fader.component';
 import Pot from './knob.component';
 import Meter from './meter.component';
 import Deck from './deck.container';
 
-import { handleVolumeChange } from '../actions/index.action';
-import { handleTrebleControl } from '../actions/index.action';
-import { handleMidControl } from '../actions/index.action';
-import { handleBassControl } from '../actions/index.action';
+// import { handleVolumeChange } from '../actions/index.action';
+// import { handleTrebleControl } from '../actions/index.action';
+// import { handleMidControl } from '../actions/index.action';
+// import { handleBassControl } from '../actions/index.action';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
@@ -34,7 +34,7 @@ const style = {
     display: 'inline-block',
     position: 'relative',
     height: 414,
-    width: '25%',
+    width: '30%',
     background: 'black',
     marginTop: 20
     },
@@ -136,23 +136,23 @@ class Mixer extends React.Component {
             audioContext: 'player'
         }
         return (
-        <div id="mixer" className={this.props.className} style={style.mixer}>
+        <div name={this.props.name} className={this.props.className} style={style.mixer}>
             <div className="row">
             <div className="eq col-lg-6 col-md-6 col-sm-6" style={style.eq}>
                 {/*<Knob name="High"/>
                 <Knob name="Mid"/>
                 <Knob name="Low"/>*/}
-                <Pot title="Treble" value={this.props.treble} onChange={handleTrebleControl} />
-                <Pot title="Mid" value={this.props.mid} onChange={handleMidControl} />
-                <Pot title="Bass" value={this.props.bass} onChange={handleBassControl} />
+                <Pot title="Treble" value={this.props.treble + 50} onChange={this.props.handleTrebleControl(this.props.deckNum)} />
+                <Pot title="Mid" value={this.props.mid + 50} onChange={this.props.handleMidControl(this.props.deckNum)} />
+                <Pot title="Bass" value={this.props.bass + 50} onChange={this.props.handleBassControl(this.props.deckNum)} />
             </div>
             <div className="meter col-lg-6 col-md-6 col-sm-6" style={style.meterDiv}>
                 <Meter title="Meter" audioContext={TEST} style={style.meter} command='start' src={<Deck />} width={200} height={1} />
             </div>
             </div>
-            <div className="volumeFader col-lg-1 col-md-1 col-sm-6" style={style.volumeFader}>
+            <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={style.volumeFader}>
                 <label htmlFor="channelFader col-lg-1 col-md-1 col-sm-6" style={style.label} className="volumeLabel">Volume</label>
-                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleVolumeChange(value)} defaultValue={this.props.volume} value={this.props.volume} style={style.root}/>
+                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={style.root}/>
             </div>
             {/*<Meter />*/}
       </div>
@@ -160,21 +160,23 @@ class Mixer extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        volume: state.reducer.deck1.volume,
-        treble: state.reducer.deck1.treble,
-        mid: state.reducer.deck1.mid,
-        bass: state.reducer.deck1.bass,
-    };
-}
+// function mapStateToProps(state) {
+//     return {
+//         volume: state.decksReducer.deck1.volume,
+//         treble: state.decksReducer.deck1.treble,
+//         mid: state.decksReducer.deck1.mid,
+//         bass: state.decksReducer.deck1.bass,
+//     };
+// }
 
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({handleVolumeChange: handleVolumeChange, handleTrebleControl: handleTrebleControl, handleMidControl: handleMidControl, handleBassControl: handleBassControl}, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({handleVolumeChange: handleVolumeChange, handleTrebleControl: handleTrebleControl, handleMidControl: handleMidControl, handleBassControl: handleBassControl}, dispatch);
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Mixer);
+// export default connect(mapStateToProps, mapDispatchToProps)(Mixer);
+
+export default Mixer;
 
 // export default Mixer;
 

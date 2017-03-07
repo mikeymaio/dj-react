@@ -30,8 +30,11 @@ class Playlist extends React.Component {
                 <li
                     key={song.artist.song}
                     className="list-group-item"
-                    onTouchTap={() => this.props.selectSong(song)}>
+                    //onTouchTap={() => this.props.selectSong(song, '_DECK1')}
+                    >
                     {song.artist.song}
+                    <button onTouchTap={() => this.props.selectSong(song, '_DECK1')}>LOAD TO DECK 1</button>
+                    <button onTouchTap={() => this.props.selectSong(song, '_DECK2')}>LOAD TO DECK 2</button>
                 </li>
             );
         });
@@ -42,7 +45,7 @@ class Playlist extends React.Component {
         <RaisedButton
           style={styles.button}
           label="Playlist"
-          className="col-lg-3 col-lg-offset-6"
+          className="col-lg-3 col-lg-offset-5"
           onTouchTap={() => this.setState({open: !this.state.open})}
         />
         <Drawer open={this.state.open}
@@ -56,7 +59,7 @@ class Playlist extends React.Component {
 
 function mapStateToProps(state){
     return {
-        playlist: state.reducer.playlist,
+        playlist: state.playlistReducer.playlist,
     };
 }
 
