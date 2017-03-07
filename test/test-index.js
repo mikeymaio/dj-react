@@ -4,7 +4,7 @@ import chai from 'chai';
 
 const should = chai.should();
 
-import Hello from '../js/components/hello-world';
+import Hello from '../js/components/hello-world.component';
 
 describe('Hello component', function() {
     it('Renders a greeting',  function() {
