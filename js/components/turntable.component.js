@@ -130,19 +130,26 @@ class Turntable extends React.Component {
         this.state = {
         inputValue: 1
     }
-
-
+    
+function onStart() {
+    //this.props.startStopSong(this.props.deckNum)
+    let decks = document.getElementsByClassName('platter')
+    decks.classList.add('spin-platter');
+    }
 }
+
 
 
     render() {
 
         let startStopClass = classnames('fa', {'fa-pause': this.play}, {'fa-play': !this.play});
+        let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
 
         if (!this.props.song) {
-            return <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
+            return (
+            <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter" style={stylePlatter1} zDepth={4} circle={true} children={<div className="player-container col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"><h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div className="player-container col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"><h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
                     <div className="player-options col-lg-6 col-md-6 col-sm-6">
                     <div className="player-buttons player-controls"  >
                         <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
@@ -157,7 +164,8 @@ class Turntable extends React.Component {
                 </div></div>}>
           </div>
         </MuiThemeProvider>
-            </div>;
+            </div>
+            )
         }
 
 
@@ -165,9 +173,11 @@ class Turntable extends React.Component {
 
 
         return (
+
+            
             <div className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter player-container" style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                     <h2 className="artist-name">Artist: {this.props.song.artist.name}</h2>
                 </div>
 
