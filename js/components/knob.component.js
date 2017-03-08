@@ -6,18 +6,11 @@ const style = {
     p: {
         color: '#009ab2',
         marginBottom: 0.5
-    }
+    },
 }
 
 class Pot extends React.Component {
-  constructor(props) {
-    super(props);
-  //   this.state = {value: 50};
 
-  // this.handleChange = (newValue) => {
-  //   this.setState({value: newValue});
-  // }
-  }
   render() {
     return (
         <div>
@@ -25,18 +18,19 @@ class Pot extends React.Component {
       <Knob
         value={this.props.value}
         onChange={this.props.onChange}
-        //disableTextInput={true}
+        min={this.props.min}
+        max={this.props.max}
+        angleOffset={this.props.angleOffset}
+        angleArc={this.props.angleArc}
+        disableTextInput={true}
         fgColor="#00bcd4"
         width={40}
-        height={40} />
+        height={40}
+        style={this.props.style}
+        />
         </div>
     );
   }
 }
-
-// function mapStateToProps(state) {
-//     return {
-//     };
-// }
 
 export default Pot;

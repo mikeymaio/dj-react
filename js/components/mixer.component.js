@@ -16,7 +16,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 
-const style = {
+const styles = {
     root: {
     display: 'flex',
     flexDirection: 'row',
@@ -98,8 +98,8 @@ class Mixer extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-        }
+        // this.state = {
+        // }
 
         this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -136,23 +136,29 @@ class Mixer extends React.Component {
             audioContext: 'player'
         }
         return (
-        <div name={this.props.name} className={this.props.className} style={style.mixer}>
+        <div name={this.props.name} className={this.props.className} style={styles.mixer}>
             <div className="row">
-            <div className="eq col-lg-6 col-md-6 col-sm-6" style={style.eq}>
+            <div className="eq col-lg-6 col-md-6 col-sm-6" style={styles.eq}>
                 {/*<Knob name="High"/>
                 <Knob name="Mid"/>
                 <Knob name="Low"/>*/}
-                <Pot title="Treble" value={this.props.treble + 50} onChange={this.props.handleTrebleControl(this.props.deckNum)} />
-                <Pot title="Mid" value={this.props.mid + 50} onChange={this.props.handleMidControl(this.props.deckNum)} />
-                <Pot title="Bass" value={this.props.bass + 50} onChange={this.props.handleBassControl(this.props.deckNum)} />
+                <Pot title="Treble" value={this.props.treble} onChange={(value) => this.props.handleTrebleControl(value, this.props.deckNum)} min={-12} max={12} angleOffset={180}
+                angleArc={270}
+                />
+                <Pot title="Mid" value={this.props.mid} onChange={(value) => this.props.handleMidControl(value, this.props.deckNum)} min={-12} max={12} angleOffset={180}
+                angleArc={270}
+                />
+                <Pot title="Bass" value={this.props.bass} onChange={(value) => this.props.handleBassControl(value, this.props.deckNum)} min={-12} max={12} angleOffset={180}
+                angleArc={270}
+                />
             </div>
-            <div className="meter col-lg-6 col-md-6 col-sm-6" style={style.meterDiv}>
-                <Meter title="Meter" audioContext={TEST} style={style.meter} command='start' src={<Deck />} width={200} height={1} />
+            <div className="meter col-lg-6 col-md-6 col-sm-6" style={styles.meterDiv}>
+                <Meter title="Meter" audioContext={TEST} style={styles.meter} command='start' src={<Deck />} width={200} height={1} />
             </div>
             </div>
-            <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={style.volumeFader}>
-                <label htmlFor="channelFader col-lg-1 col-md-1 col-sm-6" style={style.label} className="volumeLabel">Volume</label>
-                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={style.root}/>
+            <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={styles.volumeFader}>
+                <label htmlFor="channelFader col-lg-1 col-md-1 col-sm-6" style={styles.label} className="volumeLabel">Volume</label>
+                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={styles.root}/>
             </div>
             {/*<Meter />*/}
       </div>
