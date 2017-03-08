@@ -65,6 +65,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
+    "bitcrusher": "^0.3.0",
     "classnames": "^2.2.5",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.17.0",

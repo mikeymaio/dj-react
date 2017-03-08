@@ -32,49 +32,49 @@ class Deck extends Component {
     //     playerElement.removeEventListener('error', this.next);
     // }
 
-    this.setProgress = (e) => {
-        let target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
-        let width = target.clientWidth;
-        let rect = target.getBoundingClientRect();
-        let offsetX = e.clientX - rect.left;
-        let duration = this.refs.player.duration;
-        let currentTime = (duration * offsetX) / width;
-        let progress = (currentTime * 100) / duration;
+    // this.setProgress = (e) => {
+    //     let target = e.target.nodeName === 'SPAN' ? e.target.parentNode : e.target;
+    //     let width = target.clientWidth;
+    //     let rect = target.getBoundingClientRect();
+    //     let offsetX = e.clientX - rect.left;
+    //     let duration = this.refs.player.duration;
+    //     let currentTime = (duration * offsetX) / width;
+    //     let progress = (currentTime * 100) / duration;
 
-        this.refs.player.currentTime = currentTime;
-        this.setState({ progress: progress });
-        this.play();
-    }
+    //     this.refs.player.currentTime = currentTime;
+    //     this.setState({ progress: progress });
+    //     this.play();
+    // }
 
-    this.updateProgress = () => {
-        let duration = this.refs.player.duration;
-        let currentTime = this.refs.player.currentTime;
-        let progress = (currentTime * 100) / duration;
+    // this.updateProgress = () => {
+    //     let duration = this.refs.player.duration;
+    //     let currentTime = this.refs.player.currentTime;
+    //     let progress = (currentTime * 100) / duration;
 
-        this.setState({ progress: progress });
-    }
+    //     this.setState({ progress: progress });
+    // }
 
     // this.play = () => {
     //     this.setState({ play: true });
     //     this.refs.player.play();
     // }
 
-    this.play = () => {
-        //this.props.play = true;
-        this.refs.player.play();
-    }
+    // this.play = () => {
+    //     //this.props.play = true;
+    //     this.refs.player.play();
+    // }
 
 
-    this.pause = () => {
-        //this.props.play = false;
-        this.refs.player.pause();
-    }
+    // this.pause = () => {
+    //     //this.props.play = false;
+    //     this.refs.player.pause();
+    // }
 
-    this.toggle = () => this.props.play ? this.pause() : this.play();
+    // this.toggle = () => this.props.play ? this.pause() : this.play();
 
-    this.end = () => {
-        this.props.play = false;
-    }
+    // this.end = () => {
+    //     this.props.play = false;
+    // }
 
     }
     render() {

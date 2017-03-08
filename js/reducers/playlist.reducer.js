@@ -224,6 +224,7 @@ const PlaylistReducer = (state=initialState, action) => {
                 ...state,
                 activeSong: action.payload
             }
+            
     }
     console.log('state', state);
     return state;
