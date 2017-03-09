@@ -418,9 +418,9 @@ canvas {
 }
 /* :not(:required) hides this rule from IE9 and below */
 .spinPlatter:not(:required) {
-  -moz-animation: spinPlatter 1500ms infinite linear;
-  -webkit-animation: spinPlatter 1500ms infinite linear;
-  animation: spinPlatter 1500ms infinite linear;
+  -moz-animation: spinPlatter 1980ms infinite linear;
+  -webkit-animation: spinPlatter 1980ms infinite linear;
+  animation: spinPlatter 1980ms infinite linear;
   -moz-border-radius: 0.5em;
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -433,5 +433,14 @@ canvas {
   height: 1em;
   margin: 1.5em;
   overflow: hidden;
-  text-indent: 100%;
+  /*text-indent: 100%;*/
+}
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }

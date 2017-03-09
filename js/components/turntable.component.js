@@ -149,14 +149,19 @@ function onStart() {
             return (
             <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div className="player-container col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"><h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0}
+                    rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true}
+                    children={<div className="player-container col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                        <h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
                     <div className="player-options col-lg-6 col-md-6 col-sm-6">
                     <div className="player-buttons player-controls"  >
-                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
+                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls}
+                            className="player-btn big" title="Start/Stop">Start/Stop
                             <i className={startStopClass} />
                         </button>
                         </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-6 col-md-1 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-1 col-xs-offset-6" style={style.speedControl}>
+                        <div className="speedFader col-lg-1 col-lg-offset-6 col-md-1 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-1 col-xs-offset-6"
+                        style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
                             <Fader className="deckSpeed" defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
                     </div>
@@ -173,11 +178,12 @@ function onStart() {
 
 
         return (
-
-            
             <div className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false}
+                    children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer
+                    className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play}
+                    hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
                     <h2 className="artist-name">Artist: {this.props.song.artist.name}</h2>
                 </div>
 
@@ -190,13 +196,16 @@ function onStart() {
                 </div></div>} /> </div>} />
                     <div className="player-options col-lg-6 col-md-6 col-sm-6">
                     <div className="player-buttons player-controls" >
-                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
+                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big"
+                            title="Start/Stop">Start/Stop
                             <i className={startStopClass} />
                         </button>
                         </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-12 col-xs-1 col-xs-offset-8" style={style.speedControl}>
+                        <div className="speedFader col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-12 col-xs-1 col-xs-offset-8"
+                        style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} value={this.props.speed/2} defaultValue={this.props.speed/2}/>
+                            <Fader className="deckSpeed" style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)}
+                                value={this.props.speed/2} defaultValue={this.props.speed/2}/>
                     </div>
 
                 </div></div>}>
