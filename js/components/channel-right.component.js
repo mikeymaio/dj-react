@@ -37,8 +37,13 @@ class ChannelRight extends React.Component {
         {/*<div className="row">*/}
         <div className="container-fluid tt-mixer-container" style={styles.tt_mixer}>
             <MuiThemeProvider>
-            <Mixer deckNum="_DECK2" className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2" volume={this.props.volume} treble={this.props.treble} mid={this.props.mid} bass={this.props.bass}
-            handleVolumeChange={this.props.handleVolumeChange} handleTrebleControl={this.props.handleTrebleControl} handleMidControl={this.props.handleMidControl} handleBassControl={this.props.handleBassControl} handleFilterChange={this.props.handleFilterChange} handleReverbChange={this.props.handleReverbChange} handleDelayChange={this.props.handleDelayChange} handleDistortionChange={this.props.handleDistortionChange} />
+            <Mixer deckNum="_DECK2" className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2" volume={this.props.volume}
+            treble={this.props.treble} mid={this.props.mid} bass={this.props.bass} orientation={this.props.orientation}
+            handleVolumeChange={this.props.handleVolumeChange} handleTrebleControl={this.props.handleTrebleControl}
+            handleMidControl={this.props.handleMidControl} handleBassControl={this.props.handleBassControl}
+            handleFilterChange={this.props.handleFilterChange} handleReverbChange={this.props.handleReverbChange}
+            handleDelayChange={this.props.handleDelayChange} handleDistortionChange={this.props.handleDistortionChange}
+            />
           </MuiThemeProvider>
           <Turntable deckNum="_DECK2" song={this.props.song} play={this.props.play} speed={this.props.speed} volume={this.props.volume} handlePlaybackSpeed={this.props.handlePlaybackSpeed} startStopSong={this.props.startStopSong} className="col-lg-4 col-md-4 col-sm-4 col-xs-4"/>
         {/*</div>*/}

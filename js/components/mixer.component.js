@@ -1,6 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 // import {bindActionCreators} from 'redux';
+import classnames from 'classnames';
 
 import Fader from './fader.component';
 import Pot from './knob.component';
@@ -132,13 +133,15 @@ class Mixer extends React.Component {
 
     render() {
 
+        let eqClassNames = classnames("eq col-lg-6 col-md-6 col-sm-6", this.props.orientation)
+
         const TEST = {
             audioContext: 'player'
         }
         return (
         <div name={this.props.name} className={this.props.className} style={styles.mixer}>
             <div className="row">
-            <div className="eq col-lg-6 col-md-6 col-sm-6" style={styles.eq}>
+            <div className={eqClassNames} style={styles.eq}>
                 {/*<Knob name="High"/>
                 <Knob name="Mid"/>
                 <Knob name="Low"/>*/}

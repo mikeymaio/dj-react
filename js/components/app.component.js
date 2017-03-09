@@ -13,8 +13,8 @@ export default class App extends Component {
   render() {
     return (
       <div className="container col-lg-11 col-lg-offset-1">
-        <ChannelLeft name="deck1" />
-        <ChannelRight name="deck2" />
+        <ChannelLeft name="deck1" orientation="left"/>
+        <ChannelRight name="deck2" orientation="right"/>
         <div className="container col-lg-8 col-lg-offset-1 col-md-2 col-md-offset-5 col-sm-2 col-sm-offset-4 col-xs-2 col-xs-offset-4">
           <MuiThemeProvider>
             <Playlist />

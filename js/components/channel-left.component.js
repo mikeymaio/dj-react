@@ -38,7 +38,7 @@ class ChannelLeft extends React.Component {
         <div className="container-fluid tt-mixer-container" style={styles.tt_mixer}>
           <Turntable deckNum="_DECK1" song={this.props.song} play={this.props.play} speed={this.props.speed} volume={this.props.volume} handlePlaybackSpeed={this.props.handlePlaybackSpeed} startStopSong={this.props.startStopSong} className="col-lg-4 col-md-4 col-sm-4 col-xs-4"/>
             <MuiThemeProvider>
-            <Mixer deckNum="_DECK1" className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2" volume={this.props.volume} treble={this.props.treble} mid={this.props.mid} bass={this.props.bass}
+            <Mixer deckNum="_DECK1" className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2" orientation={this.props.orientation} volume={this.props.volume} treble={this.props.treble} mid={this.props.mid} bass={this.props.bass}
             handleVolumeChange={this.props.handleVolumeChange} handleTrebleControl={this.props.handleTrebleControl} handleMidControl={this.props.handleMidControl} handleBassControl={this.props.handleBassControl} />
           </MuiThemeProvider>
         {/*</div>*/}
