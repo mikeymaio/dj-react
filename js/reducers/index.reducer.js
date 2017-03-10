@@ -13,6 +13,14 @@ const playlistState = {
             }
         },
         {
+            url: 'https://soundcloud.com/mikemaio/the-caves' ,
+            cover: 'https://soundcloud.com/mikemaio',
+            artist: {
+                name: 'Mike Maio',
+                song: 'I\'ve Seen The Caves'
+            }
+        },
+        {
             url: 'http://a.tumblr.com/tumblr_lpoc6cHNDP1r0jthjo1.mp3',
             cover: 'http://www.thailandballoonfestival.com/tibf2013/images/HugoSlider1.jpg',
             artist: {
@@ -88,9 +96,17 @@ const deckState = {
             treble: 0,
             mid: 0,
             bass: 0,
-            filter: 0.5,
-            reverb: 0,
-            delay: 0,
+            lpFilterCutoff: 16000,
+            lpFilterRes: 0,
+            hpFilterCutoff: 20,
+            hpFilterRes: 0,
+            reverb: 1,
+            delayMix: 0,
+            delayTime: 500,
+            bitCrusherBypass: 0,
+            bits: 16,
+            normFreq: 0.2,
+            bufferSize: 4096,
             distortion: 0,
         },
         deck2: {
@@ -124,25 +140,65 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck1: {...state.deck1, activeSong: action.payload}
             }
-            case 'UPDATE_FILTER_DECK1':
+        case 'UPDATE_LP_FILTER_CUTOFF_DECK1':
             return {
                 ...state,
-                deck1: {...state.deck1, filter: action.payload}
+                deck1: {...state.deck1, lpFilterCutoff: action.payload}
+            }
+        case 'UPDATE_LP_FILTER_RES_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, lpFilterRes: action.payload}
+            }
+            case 'UPDATE_HP_FILTER_CUTOFF_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, hpFilterCutoff: action.payload}
+            }
+        case 'UPDATE_HP_FILTER_RES_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, hpFilterRes: action.payload}
             }
         case 'UPDATE_REVERB_DECK1':
         return {
                 ...state,
                 deck1: {...state.deck1, reverb: action.payload}
             }
-        case 'UPDATE_DELAY_DECK1':
+        case 'UPDATE_DELAY_TIME_DECK1':
         return {
                 ...state,
-                deck1: {...state.deck1, delay: action.payload}
+                deck1: {...state.deck1, delayTime: action.payload}
+            }
+            case 'UPDATE_DELAY_MIX_DECK1':
+        return {
+                ...state,
+                deck1: {...state.deck1, delayMix: action.payload}
             }
         case 'UPDATE_DISTORTION_DECK1':
         return {
                 ...state,
                 deck1: {...state.deck1, distortion: action.payload}
+            }
+        case 'UPDATE_BITCRUSHER_BYPASS':
+        return {
+                ...state,
+                deck1: {...state.deck1, bitCrusherBypass: action.payload}
+            }
+        case 'UPDATE_BITS_DECK1':
+        return {
+                ...state,
+                deck1: {...state.deck1, bits: action.payload}
+            }
+        case 'UPDATE_BUFFER_SIZE_DECK1':
+        return {
+                ...state,
+                deck1: {...state.deck1, bufferSize: action.payload}
+            }
+        case 'UPDATE_NORM_FREQ_DECK1':
+        return {
+                ...state,
+                deck1: {...state.deck1, normFreq: action.payload}
             }
         case 'UPDATE_VOLUME_DECK1':
         return {

@@ -58,10 +58,34 @@ export function handleBassControl(value, deckNum) {
     }
 }
 
-export function handleFilterChange(value, deckNum) {
-    console.log('filter cutoff value changed');
+export function handleLpFilterCutoffChange(value, deckNum) {
+    console.log('filter lp cutoff value changed');
     return {
-        type: 'UPDATE_FILTER' + deckNum,
+        type: 'UPDATE_LP_FILTER_CUTOFF' + deckNum,
+        payload: value
+    }
+}
+
+export function handleLpFilterResChange(value, deckNum) {
+    console.log('filter lp resonance value changed');
+    return {
+        type: 'UPDATE_LP_FILTER_RES' + deckNum,
+        payload: value
+    }
+}
+
+export function handleHpFilterCutoffChange(value, deckNum) {
+    console.log('filter hp cutoff value changed');
+    return {
+        type: 'UPDATE_HP_FILTER_CUTOFF' + deckNum,
+        payload: value
+    }
+}
+
+export function handleHpFilterResChange(value, deckNum) {
+    console.log('filter hp resonance value changed');
+    return {
+        type: 'UPDATE_HP_FILTER_RES' + deckNum,
         payload: value
     }
 }
@@ -74,10 +98,18 @@ export function handleReverbChange(value, deckNum) {
     }
 }
 
-export function handleDelayChange(value, deckNum) {
+export function handleDelayTimeChange(value, deckNum) {
+    console.log('delay time value changed');
+    return {
+        type: 'UPDATE_DELAY_TIME' + deckNum,
+        payload: value
+    }
+}
+
+export function handleDelayMixChange(value, deckNum) {
     console.log('delay mix value changed');
     return {
-        type: 'UPDATE_DELAY' + deckNum,
+        type: 'UPDATE_DELAY_MIX' + deckNum,
         payload: value
     }
 }
@@ -86,6 +118,39 @@ export function handleDistortionChange(value, deckNum) {
     console.log('distortion value changed');
     return {
         type: 'UPDATE_DISTORTION' + deckNum,
+        payload: value
+    }
+}
+
+export function handleBitCrusherBypassChange(value, deckNum) {
+    console.log('bitcrusher bypass value changed');
+    //state[deckNum].bitCrusherBypass == 0 ? value == 1 : value == 0
+    return {
+        type: 'UPDATE_BITCRUSHER_BYPASS' + deckNum,
+        payload: value
+    }
+}
+
+export function handleBitChange(value, deckNum) {
+    console.log('bit value changed');
+    return {
+        type: 'UPDATE_BITS' + deckNum,
+        payload: value
+    }
+}
+
+export function handleNormFreqChange(value, deckNum) {
+    console.log('normFreq value changed');
+    return {
+        type: 'UPDATE_NORM_FREQ' + deckNum,
+        payload: value
+    }
+}
+
+export function handleBufferSizeChange(value, deckNum) {
+    console.log('buffer size value changed');
+    return {
+        type: 'UPDATE_BUFFER_SIZE' + deckNum,
         payload: value
     }
 }
