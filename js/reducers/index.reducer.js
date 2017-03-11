@@ -5,29 +5,61 @@ const playlistState = {
     playlist:
     [
         {
-            url: 'https://www.youtube.com/watch?v=ysz5S6PUM-U' ,
-            cover: null,
-            artist: {
-                name: 'Various Artists',
-                song: 'Chilled Serenity #5 Mix'
-            }
-        },
-        {
-            url: 'https://soundcloud.com/mikemaio/the-caves' ,
-            cover: 'https://soundcloud.com/mikemaio',
-            artist: {
-                name: 'Mike Maio',
-                song: 'I\'ve Seen The Caves'
-            }
-        },
-        {
-            url: 'http://a.tumblr.com/tumblr_lpoc6cHNDP1r0jthjo1.mp3',
+            url: '/assets/test_playlist/Hugo-99_Problems_163BPM.mp3' ,
             cover: 'http://www.thailandballoonfestival.com/tibf2013/images/HugoSlider1.jpg',
             artist: {
                 name: 'Hugo',
                 song: '99 Problems'
             }
         },
+        {
+            url: '/assets/test_playlist/Creedence_Clearwater_Revival-Suzie_Q.mp3' ,
+            cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-Y6gSuNZrGy8%2FT2s-cIQwS_I%2FAAAAAAAABwY%2FHAgkHzR2k_M%2Fs1600%2F114125684.jpg&f=1',
+            artist: {
+                name: 'Creedence Clearwater Revival',
+                song: 'Suzie Q'
+            }
+        },
+        {
+            url: '/assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3',
+            cover: null,
+            artist: {
+                name: 'James Brown Vs Led Zeppelin',
+                song: 'Whole Lotta Sex Machine'
+            }
+        },
+        {
+            url: '/assets/test_playlist/Marvin_Gaye-Sexual_Healing_(Kygo_Remix)101BPM.mp3' ,
+            cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.themusicninja.com%2Fwp-content%2Fuploads%2F2013%2F11%2F26.jpg&f=1',
+            artist: {
+                name: 'Marvin Gaye',
+                song: 'Sexual Healing (Kygo Remix)'
+            }
+        },
+        {
+            url: '/assets/test_playlist/I_Took_A_Pill_In_Ibiza_(SeeB Remix)102BPM.mp3' ,
+            cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fnothinbuthits.com%2Fwp-content%2Fuploads%2F2016%2F04%2FI-Took-A-Pill-In-Ibiza.png&f=1',
+            artist: {
+                name: 'Mike Posner',
+                song: 'I Took A Pill In Ibiza'
+            }
+        },
+        {
+            url: '/assets/test_playlist/Fifth_Harmony-Worth_It_Ft_Kid_Ink_100BPM.mp3' ,
+            cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fradiomelodia.gr%2Fwp-content%2Fuploads%2F2015%2F03%2Ffifth-harmony_worth-it.jpg&f=1',
+            artist: {
+                name: 'Fifth Harmony',
+                song: 'Worth It Ft. Kid Ink'
+            }
+        },
+        // {
+        //     url: 'http://a.tumblr.com/tumblr_lpoc6cHNDP1r0jthjo1.mp3',
+        //     cover: 'http://www.thailandballoonfestival.com/tibf2013/images/HugoSlider1.jpg',
+        //     artist: {
+        //         name: 'Hugo',
+        //         song: '99 Problems'
+        //     }
+        // },
         {
             url: 'http://a.tumblr.com/tumblr_mlyactVSyX1qejx3lo1.mp3',
             cover: 'http://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2015/06/daft-punk.jpg',
@@ -88,7 +120,7 @@ const playlistState = {
 
 const deckState = {
         deck1: {
-            activeSong: null,
+            activeSong: playlistState.playlist[1],
             play: false,
             progress: 0,
             volume: 0.8,
@@ -100,17 +132,17 @@ const deckState = {
             lpFilterRes: 0,
             hpFilterCutoff: 20,
             hpFilterRes: 0,
-            reverb: 1,
+            reverbMix: 0,
             delayMix: 0,
             delayTime: 500,
-            bitCrusherBypass: 0,
+            bitCrusherBypass: true,
             bits: 16,
             normFreq: 0.2,
             bufferSize: 4096,
             distortion: 0,
         },
         deck2: {
-            activeSong: null,
+            activeSong: playlistState.playlist[0],
             play: false,
             progress: 0,
             volume: 0.8,
@@ -118,9 +150,17 @@ const deckState = {
             treble: 0,
             mid: 0,
             bass: 0,
-            filter: 0.5,
-            reverb: 0,
-            delay: 0,
+            lpFilterCutoff: 16000,
+            lpFilterRes: 0,
+            hpFilterCutoff: 20,
+            hpFilterRes: 0,
+            reverbMix: 0,
+            delayMix: 0,
+            delayTime: 500,
+            bitCrusherBypass: true,
+            bits: 16,
+            normFreq: 0.2,
+            bufferSize: 4096,
             distortion: 0,
         },
     }
@@ -160,10 +200,10 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck1: {...state.deck1, hpFilterRes: action.payload}
             }
-        case 'UPDATE_REVERB_DECK1':
+        case 'UPDATE_REVERB_MIX_DECK1':
         return {
                 ...state,
-                deck1: {...state.deck1, reverb: action.payload}
+                deck1: {...state.deck1, reverbMix: action.payload}
             }
         case 'UPDATE_DELAY_TIME_DECK1':
         return {
@@ -180,10 +220,10 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck1: {...state.deck1, distortion: action.payload}
             }
-        case 'UPDATE_BITCRUSHER_BYPASS':
+        case 'UPDATE_BITCRUSHER_BYPASS_DECK1':
         return {
                 ...state,
-                deck1: {...state.deck1, bitCrusherBypass: action.payload}
+                deck1: {...state.deck1, bitCrusherBypass: !state.deck1.bitCrusherBypass}
             }
         case 'UPDATE_BITS_DECK1':
         return {
@@ -242,25 +282,65 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck2: {...state.deck2, activeSong: action.payload}
             }
-        case 'UPDATE_FILTER_DECK2':
+        case 'UPDATE_LP_FILTER_CUTOFF_DECK2':
             return {
                 ...state,
-                deck2: {...state.deck2, filter: action.payload}
+                deck2: {...state.deck2, lpFilterCutoff: action.payload}
             }
-        case 'UPDATE_REVERB_DECK2':
+        case 'UPDATE_LP_FILTER_RES_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, lpFilterRes: action.payload}
+            }
+            case 'UPDATE_HP_FILTER_CUTOFF_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, hpFilterCutoff: action.payload}
+            }
+        case 'UPDATE_HP_FILTER_RES_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, hpFilterRes: action.payload}
+            }
+        case 'UPDATE_REVERB_MIX_DECK2':
         return {
                 ...state,
-                deck2: {...state.deck2, reverb: action.payload}
+                deck2: {...state.deck2, reverbMix: action.payload}
             }
-        case 'UPDATE_DELAY_DECK2':
+        case 'UPDATE_DELAY_TIME_DECK2':
         return {
                 ...state,
-                deck2: {...state.deck2, delay: action.payload}
+                deck2: {...state.deck2, delayTime: action.payload}
+            }
+            case 'UPDATE_DELAY_MIX_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, delayMix: action.payload}
             }
         case 'UPDATE_DISTORTION_DECK2':
         return {
                 ...state,
                 deck2: {...state.deck2, distortion: action.payload}
+            }
+        case 'UPDATE_BITCRUSHER_BYPASS_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, bitCrusherBypass: !state.deck2.bitCrusherBypass}
+            }
+        case 'UPDATE_BITS_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, bits: action.payload}
+            }
+        case 'UPDATE_BUFFER_SIZE_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, bufferSize: action.payload}
+            }
+        case 'UPDATE_NORM_FREQ_DECK2':
+        return {
+                ...state,
+                deck2: {...state.deck2, normFreq: action.payload}
             }
         case 'UPDATE_VOLUME_DECK2':
         return {

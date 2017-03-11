@@ -418,9 +418,9 @@ canvas {
 }
 /* :not(:required) hides this rule from IE9 and below */
 .spinPlatter:not(:required) {
-  -moz-animation: spinPlatter 1980ms infinite linear;
-  -webkit-animation: spinPlatter 1980ms infinite linear;
-  animation: spinPlatter 1980ms infinite linear;
+  -moz-animation: spinPlatter 1818.19ms infinite linear;
+  -webkit-animation: spinPlatter 1818.19ms infinite linear;
+  animation: spinPlatter 1818.19ms infinite linear;
   -moz-border-radius: 0.5em;
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -436,6 +436,16 @@ canvas {
   /*text-indent: 100%;*/
 }
 
+.power-button {
+    border: 1px solid gray;
+    background-color: #E3DEDB;
+
+}
+
+.active {
+    border: 1px solid gray;
+    background-color: #009ab2;
+}
 
 .left {
   float: left;

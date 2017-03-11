@@ -2,6 +2,7 @@ import React from 'react';
 // import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import classnames from 'classnames';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
@@ -17,6 +18,7 @@ import Turntable from './turntable.component';
 import Mixer from './mixer.component';
 import FxContainer from './fx-container.component';
 import Header from './header.component';
+import Fader from './fader.component';
 
 import Pot from './knob.component';
 
@@ -26,23 +28,30 @@ const styles = {
     }
 }
 
+
 export default class FxSection extends React.Component {
     constructor(props) {
         super(props)
-
+setTimeout(() => {
+   // const update = () => {
+        //if (this.props.activeSong !==null) {
         var audioContext = new AudioContext();
+        // var audioContext = this.props.audioContext;
 
         var tuna = new Tuna(audioContext);
 
-        var audio = new Audio();
-        audio.src = './audio/RiptideRemix.wav';
-        audio.controls = true;
-        audio.autoplay = true;
-        document.body.appendChild(audio);
+        // var audio = new Audio();
+        // audio.src = '../../audio/RiptideRemix.wav';
+        // audio.controls = true;
+        // audio.autoplay = true;
+        // document.body.appendChild(audio);
+        var deck = document.querySelector(':scope .' + this.props.deckNum + ' audio');
 
-        // var myMediaElement = document.querySelector('audio');
+        // var deck2 = document.querySelector(':scope .' + this.props.deckNum + ' audio');
 
-        this.source = audioContext.createMediaElementSource(audio);
+        // var myMediaElement = div.querySelectorAll('audio');
+//debugger;
+        this.source = audioContext.createMediaElementSource(deck);
 
         this.delay = new tuna.Delay({
             feedback: 0.5,    //0 to 1+
@@ -57,17 +66,44 @@ export default class FxSection extends React.Component {
             bits: this.props.bits,          //1 to 16
             normFreq: this.props.normFreq / 100,    //0 to 1
             bufferSize: this.props.bufferSize,  //256 to 16384
-            bypass: this.props.bitCrusherBypass
+            bypass: this.props.bitCrusherBypass || true
         });
 
-        this.convolver = new tuna.Convolver({
+        this.reverb = new tuna.Convolver({
             highCut: 22050,                         //20 to 22050
-            lowCut: 20,                             //20 to 22050
+            lowCut: 50,                             //20 to 22050
             dryLevel: 1,                            //0 to 1+
-            wetLevel: this.props.reverb,                            //0 to 1+
+            wetLevel: 0, //this.props.reverbMix,                            //0 to 1+
             level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-            impulse: "./impulses/Large Long Echo Hall.wav",    //the path to your impulse response
-            bypass: this.props.reverbBypass
+            impulse: "/assets/impulses/LargeLongEchoHall.wav",    //the path to your impulse response
+            bypass: false //this.props.reverbBypass
+        });
+
+        // this.tremolo = new tuna.Tremolo({
+        //     intensity: 1,    //0 to 1
+        //     rate: 4,         //0.001 to 8
+        //     stereoPhase: 0,    //0 to 180
+        //     bypass: false
+        // });
+
+        // this.phaser = new tuna.Phaser({
+        //     rate: 0.2,                     //0.01 to 8 is a decent range, but higher values are possible
+        //     depth: 0.8,                    //0 to 1
+        //     feedback: 0.8,                 //0 to 1+
+        //     stereoPhase: 90,               //0 to 180
+        //     baseModulationFrequency: 500,  //500 to 1500
+        //     bypass: 0
+        // });
+
+        this.compressor = new tuna.Compressor({
+            threshold: -0.3,    //-100 to 0
+            makeupGain: 0.2,     //0 and up (in decibels)
+            attack: 1,         //0 to 1000
+            release: 0,        //0 to 3000
+            ratio: 20,          //1 to 20
+            knee: 5,           //0 to 40
+            automakeup: true,  //true/false
+            bypass: 0
         });
 
 
@@ -114,8 +150,18 @@ export default class FxSection extends React.Component {
         this.highPassFilter.gain.value = 0;
         this.highPassFilter.Q.value = 10;
 
-        // this.source.connect(this.gain)
-        this.oscillator.connect(this.gain)
+        // Analyser
+
+        // this.analyser.fftSize = 2048;
+        // var bufferLength = this.analyser.fftSize;
+        // var dataArray = new Uint8Array(bufferLength);
+        // this.analyser.getByteTimeDomainData(dataArray);
+
+
+        // Connect Nodes
+
+        this.source.connect(this.gain)
+        // this.oscillator.connect(this.gain)
         this.gain.connect(this.bass)
         this.bass.connect(this.mid)
         this.mid.connect(this.treble)
@@ -123,13 +169,21 @@ export default class FxSection extends React.Component {
         this.bitcrusher.connect(this.highPassFilter)
         this.highPassFilter.connect(this.lowPassFilter)
         this.lowPassFilter.connect(this.delay)
-        this.delay.connect(this.convolver)
-        this.convolver.connect(this.analyser)
+        // this.lowPassFilter.connect(this.phaser)
+        // this.phaser.connect(this.delay)
+        this.delay.connect(this.reverb)
+        this.reverb.connect(this.compressor)
+        // this.reverb.connect(this.tremolo)
+        // this.tremolo.connect(this.analyser)
+        this.compressor.connect(this.analyser)
         this.analyser.connect(audioContext.destination)
 
-
+}, 1000);
+        //}}
     }
     render() {
+
+        let bitCrusherBtnClassNames = classnames('power-button', {'active': !this.props.bitCrusherBypass})
 
 
         const handleStart = () => {
@@ -172,7 +226,8 @@ export default class FxSection extends React.Component {
         }
 
         const bitBypassChange = () => {
-          this.bitcrusher.bypass = this.props.bitCrusherBypass;
+          this.bitcrusher.bypass = !this.bitcrusher.bypass;
+        //   this.bitcrusher.bypass = this.props.bitCrusherBypass;
         }
 
         const normFreqChange = () => {
@@ -187,6 +242,10 @@ export default class FxSection extends React.Component {
           this.bitcrusher.bufferSize = this.props.bufferSize;
         }
 
+        const reverbMixChange = () => {
+          this.reverb.wetLevel = this.props.reverbMix/100;
+        }
+
         const delayTimeChange = () => {
           this.delay.delayTime = this.props.delayTime;
         }
@@ -197,10 +256,10 @@ export default class FxSection extends React.Component {
 
 
         return(
-             <div name={this.props.name} className="fx-container container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                 <div>
+             <div name={this.props.name} className="fx-container container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                 {/*<div>*/}
             <div style={styles.knob}>
-
+{/*
             <h4>Osc Controls</h4>
             <div>
             <button onClick={handleStart} > Start </button>
@@ -209,26 +268,48 @@ export default class FxSection extends React.Component {
             <button onClick={() => {this.oscillator.type = 'sine'}} > Sine </button>
             <button onClick={() => {this.oscillator.type = 'sawtooth'}} > Saw </button>
             <button onClick={() => {this.oscillator.type = 'square'}} > Square </button>
-            <button onClick={() => {this.oscillator.type = 'triangle'}} > Tri </button>
+            <button onClick={() => {this.oscillator.type = 'triangle'}} > Tri </button>*/}
 
-<div>
+        {/*<div>*/}
     <div className="eq-section">
-        <Pot title="Treble" value={this.props.treble} onChange={(value) => {this.props.handleTrebleControl(value, this.props.deckNum), trebleChange()}} min={-12} max={12} angleOffset={180}
-                angleArc={270}
-                />
-                <Pot title="Mid" value={this.props.mid} onChange={(value) => {this.props.handleMidControl(value, this.props.deckNum), midChange()}} min={-12} max={12} angleOffset={180}
-                angleArc={270}
-                />
-                <Pot title="Bass" value={this.props.bass} onChange={(value) => {this.props.handleBassControl(value, this.props.deckNum), bassChange()}} min={-12} max={12} angleOffset={180}
-                angleArc={270}
-                />
+        <Pot
+            title="High"
+            value={this.props.treble}
+            onChange={(value) => {this.props.handleTrebleControl(value, this.props.deckNum), trebleChange()}}
+            min={-9}
+            max={9}
+            angleOffset={180}
+            angleArc={270}
+        />
+         <Pot
+            title="Mid"
+            value={this.props.mid}
+            onChange={(value) => {this.props.handleMidControl(value, this.props.deckNum), midChange()}}
+            min={-9}
+            max={9}
+            angleOffset={180}
+            angleArc={270}
+        />
+        <Pot
+            title="Low"
+            value={this.props.bass}
+            onChange={(value) => {this.props.handleBassControl(value, this.props.deckNum), bassChange()}}
+            min={-9}
+            max={9}
+            angleOffset={180}
+            angleArc={270}
+        />
 
     </div>
-
-              <div className="filter-section">
-                <h4> Filter Section </h4>
+        <div className="row">
+              {/*<div
+              className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
+              style={{"display": "inline-block"}}>*/}
+                <h4> Filters</h4>
+                <div className="lpFilter col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                   <h4>LP</h4>
                 <Pot
-                title="LP Cutoff"
+                title="Cutoff"
                 defaultValue={this.props.lpCutoff}
                 value={this.props.lpCutoff}
                 onChange={(value) => {this.props.onLpFilterCutoffChange(value, this.props.deckNum), lpFilterCutoffChange()}}
@@ -237,7 +318,8 @@ export default class FxSection extends React.Component {
                 angleOffset={180}
                 angleArc={270}
                 />
-                <Pot
+                <p>LP</p>
+                {/*<Pot
                 title="LP Res"
                 defaultValue={this.props.lpRes}
                 value={this.props.lpRes}
@@ -246,13 +328,17 @@ export default class FxSection extends React.Component {
                 max={100}
                 angleOffset={180}
                 angleArc={270}
-                />
-                <Pot title="HP Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
+                />*/}
+                </div>
+                <div className="hpFilter col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                    <h4>HP</h4>
+                <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
                 onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum), hpFilterCutoffChange()}}
                 min={20} max={7000} angleOffset={180}
                 angleArc={270}
                 />
-                <Pot
+                <p>HP</p>
+                {/*<Pot
                 title="HP Res"
                 defaultValue={this.props.hpRes}
                 value={this.props.hpRes}
@@ -261,42 +347,55 @@ export default class FxSection extends React.Component {
                 max={100}
                 angleOffset={180}
                 angleArc={270}
-                />
+                />*/}
+                {/*</div>*/}
                 </div>
-                <div className="distortion-section" style={styles.knob}>
-                  <h4>Distortion Section</h4>
-                <button name='bitCrusherBypass' value={this.props.bitCrusherBypass} onTouchTap={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}>Power</button>
+                <div className="distortion-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                  <h4>Crush</h4>
 
-                <Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
+                {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
                 onChange={(value) => {this.props.onNormFreqChange(value, this.props.deckNum), normFreqChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={100} angleOffset={180}
                 angleArc={270}
-                />
+                />*/}
 
-                <Pot title="CrushBits" defaultValue={this.props.bits} value={this.props.bits}
+                <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
                 onChange={(value) => {this.props.onBitChange(value, this.props.deckNum), bitsChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={16} angleOffset={180}
                 angleArc={270}
                 />
 
-                <Pot title="CrushBuffer" defaultValue={this.props.bufferSize} value={this.props.bufferSize}
+                {/*<Pot title="CrushBuffer" defaultValue={this.props.bufferSize} value={this.props.bufferSize}
                 onChange={(value) => {this.props.onBufferSizeChange(value, this.props.deckNum), bufferChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={256} max={16384} angleOffset={180}
                 angleArc={270}
+                />*/}
+
+                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}>Power</button>
+                </div>
+
+                <div className="reverb-section col-lg-3 col-md-3 col-sm-3 col-xs-3" style={{"display": "inline-block"}}>
+                  <h4>Reverb</h4>
+                  <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
+                onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum), reverbMixChange()}}
+                //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                min={0} max={100} angleOffset={180}
+                angleArc={270}
                 />
                 </div>
-                <div className="delay-section">
-                  <h4>Delay Section</h4>
-                  <Pot title="DelayTime" defaultValue={this.props.delayTime} value={this.props.delayTime}
+
+                <div className="delay-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                  <h4>Delay</h4>
+                  <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
                 onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum), delayTimeChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={1000} angleOffset={180}
                 angleArc={270}
                 />
-                <Pot title="DelayMix" defaultValue={this.props.delayMix} value={this.props.delayMix}
+                <Pot title="Mix" defaultValue={this.props.delayMix} value={this.props.delayMix}
                 onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum), delayMixChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={100} angleOffset={180}
@@ -306,7 +405,7 @@ export default class FxSection extends React.Component {
             </div>
             </div>
             </div>
-            </div>
+            //</div>
         )
     }
 }

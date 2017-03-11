@@ -1,16 +1,23 @@
-// var bitcrusher = require('bitcrusher');
-import bitcrusher from 'bitcrusher';
-import ReactPlayer from 'react-player';
+// import {PianoActions} from "../actions/PianoActions";
+import React from "react";
+import Fader from './fader.component';
 
-var audioContext = window.createAudioContext();
+class Distortion extends React.Component {
+	render() {
+		return (
+             <div className="distortion-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={styles.fader}>
+                        <label htmlFor="distortion">Distortion</label >
+                        <Fader 
+                        className="distortion"
+                        value={this.props.distortion}
+                        onChange={(event, value) => this.props.handleDistortionChange(value, this.props.deckNum)}
+                        ref="distortion"
+                        style={styles.root}/>
+                    </div>
 
 
-var bitcrushNode = bitcrush(audioContext, {
-    bitDepth: 6,
-    frequency: 0.5
-});
+		);
+	}
+}
 
-var mySource = <ReactPlayer className="player-cover" url='http://a.tumblr.com/tumblr_lpoc6cHNDP1r0jthjo1.mp3' playbackRate={this.props.speed} volume={this.props.volume} playing={true} hidden={false} width="50%" height="50%" />// ... create audio source
-
-mySource.connect(bitcrushNode);
-bitcrushNode.connect(audioContext.destination);
+export default Distortion;

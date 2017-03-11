@@ -90,10 +90,10 @@ export function handleHpFilterResChange(value, deckNum) {
     }
 }
 
-export function handleReverbChange(value, deckNum) {
+export function handleReverbMixChange(value, deckNum) {
     console.log('reverb mix value changed');
     return {
-        type: 'UPDATE_REVERB' + deckNum,
+        type: 'UPDATE_REVERB_MIX' + deckNum,
         payload: value
     }
 }
@@ -127,7 +127,7 @@ export function handleBitCrusherBypassChange(value, deckNum) {
     //state[deckNum].bitCrusherBypass == 0 ? value == 1 : value == 0
     return {
         type: 'UPDATE_BITCRUSHER_BYPASS' + deckNum,
-        payload: value
+        //payload: value
     }
 }
 

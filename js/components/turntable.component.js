@@ -180,20 +180,55 @@ function onStart() {
         return (
             <div className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false}
-                    children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer
-                    className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play}
-                    hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h2 className="artist-name">Artist: {this.props.song.artist.name}</h2>
-                </div>
+                    <div className="turntable"
+                        style={styleTurntable}
+                        children={<div>
+                                    <Paper
+                                        className={this.props.deckNum}
+                                        style={styleDeck1}
+                                        zDepth={0}
+                                        rounded={false}
+                                        children={<div>
+                                            <Paper
+                                                className={platterClassNames}
+                                                style={stylePlatter1}
+                                                zDepth={4}
+                                                circle={true}
+                                                children={<div>
+                                                    <ReactPlayer
+                                                        ref="player"
+                                                        className="player-cover"
+                                                        //url="https://soundcloud.com/mikemaio/the-caves"
+                                                        playing={true}
+                                                        url={this.props.song.url}
+                                                        playbackRate={this.props.speed}
+                                                        volume={this.props.volume}
+                                                        playing={this.props.play}
+                                                        hidden={false}
+                                                        width="50%"
+                                                        height="50%"
+                                                        style={style.player}
+                                                        crossorigin='anonymous' />
+                                                        <div
+                                                            className="artist-info col-lg-8 col-lg-offset-2 col-md-8                                                                          col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                                            <h2 className="artist-name">Artist:
+                                                                {this.props.song.artist.name}
+                                                            </h2>
+                                                        </div>
 
-                <div className={"player-cover col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}>
-                    <img src={this.props.song.cover} style={styleImg}/>
-                </div>
+                                                        <div className={"player-cover col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}>
+                                                            <img src={this.props.song.cover} style={styleImg}/>
+                                                        </div>
 
-                <div className="song-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h3 className="artist-song-name">Song: {this.props.song.artist.song}</h3>
-                </div></div>} /> </div>} />
+                                                        <div className="song-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+                                                            <h3 className="artist-song-name">Song:
+                                                                {this.props.song.artist.song}
+                                                            </h3>
+                                                        </div>
+                                                    </div>}
+                                                />
+                                            </div>}
+                                        />
                     <div className="player-options col-lg-6 col-md-6 col-sm-6">
                     <div className="player-buttons player-controls" >
                         <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big"

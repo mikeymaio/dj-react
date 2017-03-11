@@ -48,9 +48,19 @@ class FxContainer extends React.Component {
             <div name={this.props.name} className="fx-container container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" style={styles.faderGroup} >
                 <div className="row">
                     {/*<div className="container-fluid col-lg-6 col-md-6 col-sm-6 col-xs-12">*/}
-                    <div className="filter-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={styles.fader}>
-                        <label className={styles.label} htmlFor="filter">Filter</label >
-                        <Fader className="filter" value={this.props.filter} onChange={(event, value) => this.props.handleFilterChange(value, this.props.deckNum)} style={styles.root}/>
+                    <div 
+                        className="filter-section col-lg-2 col-md-2 col-sm-2 col-xs-2"
+                        style={styles.fader}>
+                        <label
+                            className={styles.label}
+                            htmlFor="filter">Filter
+                        </label >
+                        <Fader
+                            className="filter"
+                            value={this.props.filter}
+                            onChange={(event, value) => this.props.handleFilterChange(value, this.props.deckNum)}
+                            style={styles.root}
+                        />
                     </div>
                     <div className="reverb-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={styles.fader}>
                         <label htmlFor="reverb">Reverb</label >
@@ -62,7 +72,10 @@ class FxContainer extends React.Component {
                     </div>
                     <div className="distortion-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={styles.fader}>
                         <label htmlFor="distortion">Distortion</label >
-                        <Fader className="distortion" value={this.props.distortion} onChange={(event, value) => this.props.handleDistortionChange(value, this.props.deckNum)} style={styles.root}/>
+                        <Fader 
+                            className="distortion"
+                            value={this.props.distortion}
+                            onChange={(event, value) => this.props.handleDistortionChange(value, this.props.deckNum)} style={styles.root}/>
                     </div>
                     {/*</div>*/}
                  </div>

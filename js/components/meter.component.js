@@ -89,11 +89,11 @@ const Meter = React.createClass({
       <canvas
       title={<h5>{this.props.title}</h5>}
         ref='canvas'
-        name={this.props.name} 
+        name={this.props.name}
         width={width}
         height={height}
         style={style}
-        audioContext={window.audioContext}
+        //audioContext={this.props.audioContext}
       />
     );
   },
