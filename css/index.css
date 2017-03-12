@@ -39,7 +39,9 @@ html, body {
 }*/
 
 .player-cover {
-    height: 33%;
+    height: 50%;
+    width: 50%;
+    margin-left: 25%;
     /*background-position: top center;*/
     background-color: gray;
     background-size: cover;
@@ -60,9 +62,17 @@ html, body {
 
 }*/
 
-.artist-name {
-    margin-bottom: 5px;
+.artist-info {
+    margin: auto;
+    height: 50px;
+    width: 50px;
+    display: block;
+}
 
+.artist-name {
+
+    margin: auto;
+    margin-top: 33%;
     font-size: 1em;
     font-weight: 400;
 }
@@ -70,6 +80,14 @@ html, body {
 .artist-song-name {
     font-size: 1em;
     font-weight: 400;
+}
+
+.song-info {
+    margin: auto;
+    font-size: 1em;
+    font-weight: 400;
+    width: 75%;
+    /*margin-bottom: 5px;*/
 }
 
 .player-progress-container {
@@ -360,7 +378,12 @@ canvas {
     }
 
     .turntable {
-        border: 1px solid #E3DEDB;
+        /*border: 1px solid #E3DEDB;*/
+        /*box-shadow: 0px 3px 0px 0px rgb(34,34,34),
+    			0px 7px 10px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
+    			inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
+        box-shadow: 0 8px 6px -6px black;*/
     }
 
     
@@ -442,10 +465,286 @@ canvas {
 
 }
 
-.active {
+
+
+
+
+.visualizer__canvas {
+    transform: rotate(0deg);
+}
+
+.effect {
+    margin: 5px;
+}
+/*
+.power-btn-img {
+    
+
+    width: 100%;
+    border-radius: 50%;
+}*/
+/*
+.power-btn {
+
+    
+    height: 40px;
+    width:40px;
+    background-color: black;
+    border: 1px solid gray;
+
+}*/
+
+
+
+
+/*.active {
     border: 1px solid gray;
     background-color: #009ab2;
+}*/
+
+/* Power Button */
+
+/*body {
+	background: url('http://subtlepatterns.com/patterns/micro_carbon.png');
 }
+section {
+	margin: 150px auto 0;
+	width: 75px;
+	height: 95px;
+	position: relative;
+	text-align: center;
+}*/
+:active, :focus {
+	outline: 0;
+}
+/** Font-Face **/
+/*@font-face {
+  font-family: "FontAwesome";
+  src: url("fonts/fontawesome-webfont.eot");
+  src: url("fonts/fontawesome-webfont.eot?#iefix") format('eot'), 
+  	   url("fonts/fontawesome-webfont.woff") format('woff'), 
+  	   url("fonts/fontawesome-webfont.ttf") format('truetype'), 
+  	   url("fonts/fontawesome-webfont.svg#FontAwesome") format('svg');
+  font-weight: normal;
+  font-style: normal;
+}*/
+/** Styling the Button **/
+.power-btn {
+	font-family: "FontAwesome";
+	text-shadow: 0px 1px 1px rgba(250,250,250,0.1);
+	font-size: 32pt;
+	display: block;
+	position: relative;
+	text-decoration: none;
+    box-shadow: 0px 3px 0px 0px rgb(34,34,34),
+    			0px 7px 10px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
+    			inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
+	width: 30px;
+	height: 30px;
+	border: 0;
+	color: rgb(37,37,37);
+	border-radius: 35px;
+	text-align: center;
+	line-height: 79px;
+	background-color: rgb(83,87,93);
+    background-image: url('http://findicons.com/files/icons/770/token_dark/128/power.png');
+    background-size: 100%;
+	transition: color 350ms ease, text-shadow 350ms;
+		-o-transition: color 350ms ease, text-shadow 350ms;
+		-moz-transition: color 350ms ease, text-shadow 350ms;
+		-webkit-transition: color 350ms ease, text-shadow 350ms;
+}
+.power-btn:before {
+	content: "";
+	width: 40px;
+	height: 40px;
+	display: block;
+	z-index: -2;
+	position: absolute;
+	background-color: rgb(26,27,29);
+	left: -5px;
+	top: -2px;
+	border-radius: 40px;
+	box-shadow: 0px 1px 0px 0px rgba(250,250,250,0.1), 
+			 	inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.power-btn:active {
+    box-shadow: 0px 0px 0px 0px rgb(34,34,34),
+    			0px 3px 7px 0px rgb(17,17,17),
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
+    			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
+    background-color: rgb(83,87,93);
+  	top: 3px;
+}
+.power-btn.active {
+    box-shadow: 0px 0px 0px 0px rgb(34,34,34),
+    			0px 3px 7px 0px rgb(17,17,17), 
+    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
+    			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
+    background-color: rgb(83,87,93);
+  	top: 3px;
+ 	color: #fff;
+  	text-shadow: 0px 0px 3px rgb(250,250,250);
+}
+.power-btn:active:before, .power-btn.on:before {
+	top: -5px;
+	background-color: rgb(26,27,29);
+	box-shadow: 0px 1px 0px 0px rgba(250,250,250,0.1), 
+			 	inset 0px 1px 2px rgba(0, 0, 0, 0.5);
+}
+/* Styling the Indicator light */
+.power-btn + span {
+	display: block;
+	width: 8px;
+	height: 8px;
+	/*background-color: rgb(226,0,0);*/
+    background-color: gray;
+	/*box-shadow: inset 0px 1px 0px 0px rgba(250,250,250,0.5),
+				0px 0px 3px 2px rgba(226,0,0,0.5);*/
+ 	border-radius: 4px;
+ 	clear: both;
+ 	position: absolute;
+ 	/*bottom: 0;*/
+     top: 150px;
+ 	left: 35%;
+ 	transition: background-color 350ms, box-shadow 700ms;
+	-o-transition: background-color 350ms, box-shadow 700ms;
+	-moz-transition: background-color 350ms, box-shadow 700ms;
+	-webkit-transition: background-color 350ms, box-shadow 700ms;
+}
+.power-btn.active + span {
+	box-shadow: inset 0px 1px 0px 0px rgba(250,250,250,0.5),
+				0px 0px 3px 2px rgba(135,187,83,0.5);
+	background-color: #009ab2;
+}
+
+
+
+
+
+    /*START STOP BUTTON*/
+
+.container_button {
+    background-color: #252525;
+    width: 100px;
+    height: 100px;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    -webkit-box-shadow: inset 0px 2px 0px #585858, 1px 1px 0px #000, 2px 2px 5px #000;
+    -moz-box-shadow: inset 0px 2px 0px #585858, 1px 1px 0px #000, 2px 2px 5px #000;
+    box-shadow: inset 0px 2px 0px #585858, 1px 1px 0px #000, 2px 2px 5px #000;
+}
+.hole {
+    background-color: #151515;
+    width: 78px;
+    height: 78px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 9px;
+    position: relative;
+    -webkit-border-radius: 78px;
+    -moz-border-radius: 78px;
+    border-radius: 78px;
+    -webkit-box-shadow: 1px 1px 0px #5d5d5d;
+    -moz-box-shadow: 1px 1px 0px #5d5d5d;
+    box-shadow: 1px 1px 0px #5d5d5d;
+}
+.startStopButton {
+    width: 75px;
+    height: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: auto;
+    cursor: pointer;
+    top: -5px;
+    position: relative;
+    background-image: linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%);
+    background-image: -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%);
+    background-image: -moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%);
+    background-image: -webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%);
+    background-image: -ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%);
+    -webkit-border-radius: 75px;
+    -moz-border-radius: 75px;
+    border-radius: 75px;
+    -webkit-box-shadow: inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000;
+    -moz-box-shadow: inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000;
+    box-shadow: inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    transition: all .2s;
+}
+.startStopButton:active {
+    top: 2px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: inset 0px 2px 0px #a8a8a8;
+}
+.triangle {
+    width: 0px;
+    height: 0px;
+    margin-left: 40%;
+    margin-top: 25%;
+    left: -5px;
+    top: -9px;
+    position: relative;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid #009ab2;
+    z-index: 2;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+.startStopButton:hover .triangle { border-left: 40px solid #45bde9 }
+.startStopButton:active .triangle { border-left: 40px solid #e94545 }
+.lighter_triangle {
+    width: 0px;
+    height: 0px;
+    margin-left: 40%;
+    margin-top: 25%;
+    left: -5px;
+    top: -9px;
+    position: absolute;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid #43c0ee;
+    z-index: 1;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+.startStopButton:hover .lighter_triangle { border-left: 40px solid #8bdaf7 }
+.startStopButton:active .lighter_triangle { border-left: 40px solid #f78b8b }
+.darker_triangle {
+    width: 0px;
+    height: 0px;
+    margin-left: 40%;
+    margin-top: 25%;
+    left: -5px;
+    top: -9px;
+    position: absolute;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 40px solid #0a7da7;
+    z-index: 1;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+.startStopButton:hover .darker_triangle { border-left: 40px solid #1d98c5 }
+.startStopButton:active .darker_triangle { border-left: 40px solid #c51d1d }
+
+
+
+
+
 
 .left {
   float: left;
@@ -454,3 +753,5 @@ canvas {
 .right {
   float: right;
 }
+        /*KNOBS*/
+        

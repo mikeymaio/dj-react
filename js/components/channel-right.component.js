@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import Tuna from 'tunajs';
+import classnames from 'classnames';
 
 // import { startStopSong } from '../actions/index.action';
 // import { handlePlaybackSpeed } from '../actions/index.action';
@@ -19,6 +20,9 @@ import FxContainer from './fx-container.component';
 import Header from './header.component';
 import FxSection from './fx-section';
 import Meter from './meter.component';
+
+import Visualizer from './visualizer.component';
+import AudioMeter from './volMeter.component';
 
 import Pot from './knob.component';
 
@@ -37,7 +41,7 @@ const styles = {
   },
 }
 
-class ChannelRight extends React.Component {
+class ChannelLeft extends React.Component {
 
   render() {
     // const filterChange = (value) => {
@@ -45,7 +49,12 @@ class ChannelRight extends React.Component {
     //     }
 
     // const handleLPCutoff = (value) => {handleFilterCutoffChange(value, this.props.deckNum), filterChange()}
-    
+// const model = {
+//   path: this.props.song.url,
+//   author: this.props.song.artist.name,
+//   title: this.props.song.artist.song
+// }
+let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
       <div className="container-fluid col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" name={this.props.name}>
 
@@ -61,10 +70,10 @@ class ChannelRight extends React.Component {
             volume={this.props.volume}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
             startStopSong={this.props.startStopSong}
-            className="col-lg-4 col-md-4 col-sm-4 col-xs-4"/>
+            className={turntableClass} />
           <MuiThemeProvider>
             <Mixer deckNum="_DECK2"
-            className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
+            className={"mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"}
             orientation={this.props.orientation}
             volume={this.props.volume}
             treble={this.props.treble}
@@ -75,41 +84,47 @@ class ChannelRight extends React.Component {
             handleMidControl={this.props.handleMidControl}
             handleBassControl={this.props.handleBassControl}
             />
-            
           </MuiThemeProvider>
         {/*</div>*/}
         </div>
-         <div className="container-fluid">
+         <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
          <MuiThemeProvider>
         <FxSection
+                audioContext={this.props.audioContext}
+                song={this.props.song}
                 deckNum="_DECK2"
                 //type='square'
-                //audioContext={this.props.audioContext}
                 oscFreq={50}
                 treble={this.props.treble}
                 mid={this.props.mid}
                 bass={this.props.bass}
-                handleVolumeChange={this.props.handleVolumeChange}
+                //handleVolumeChange={this.props.handleVolumeChange}
                 handleTrebleControl={this.props.handleTrebleControl}
                 handleMidControl={this.props.handleMidControl}
                 handleBassControl={this.props.handleBassControl}
+                lpFilterBypass={this.props.lpFilterBypass}
                 lpCutoff={this.props.lpFilterCutoff}
                 lpRes={this.props.lpFilterRes}
+                hpFilterBypass={this.props.hpFilterBypass}
                 hpCutoff={this.props.hpFilterCutoff}
                 hpRes={this.props.hpFilterRes}
                 hpCutoff={this.props.hpFilterCutoff}
                 context={this.audioContext}
                 onPressNote={this.onPressNote}
                 onReleaseNote={this.onReleaseNote}
+                onLpFilterBypassChange={this.props.handleLpFilterBypassChange}
                 onLpFilterCutoffChange={this.props.handleLpFilterCutoffChange}
                 onLpFilterResChange={this.props.handleLpFilterResChange}
+                onHpFilterBypassChange={this.props.handleHpFilterBypassChange}
                 onHpFilterCutoffChange={this.props.handleHpFilterCutoffChange}
                 onHpFilterResChange={this.props.handleHpFilterResChange}
                 onBitCrusherBypassChange={this.props.handleBitCrusherBypassChange}
                 onBitChange={this.props.handleBitChange}
                 onNormFreqChange={this.props.handleNormFreqChange}
                 onBufferSizeChange={this.props.handleBufferSizeChange}
+                onReverbBypassChange={this.props.handleReverbBypassChange}
                 onReverbMixChange={this.props.handleReverbMixChange}
+                onDelayBypassChange={this.props.handleDelayBypassChange}
                 onDelayTimeChange={this.props.handleDelayTimeChange}
                 onDelayMixChange={this.props.handleDelayMixChange}
                 bits={this.props.bits}
@@ -130,7 +145,7 @@ class ChannelRight extends React.Component {
                  </div>
         {/*<div className="container-fluid">
           <MuiThemeProvider>
-            <FxContainer deckNum="_DECK2"
+            <FxContainer deckNum="_DECK1"
             filter={this.props.filter}
             reverb={this.props.reverb}
             delay={this.props.delay}
@@ -141,6 +156,7 @@ class ChannelRight extends React.Component {
             handleDistortionChange={this.props.handleDistortionChange}/>
           </MuiThemeProvider>
         </div>*/}
+        {/*<AudioMeter deckNum="_DECK1"/>*/}
       </div>
     );
   }
@@ -155,10 +171,13 @@ function mapStateToProps(state) {
         treble: state.decksReducer.deck2.treble,
         mid: state.decksReducer.deck2.mid,
         bass: state.decksReducer.deck2.bass,
+        //lpFilterBypass: state.decksReducer.deck2.lpFilterBypass,
         lpFilterCutoff: state.decksReducer.deck2.lpFilterCutoff,
         lpFilterRes: state.decksReducer.deck2.lpFilterRes,
+        //hpFilterBypass: state.decksReducer.deck2.hpFilterBypass,
         hpFilterCutoff: state.decksReducer.deck2.hpFilterCutoff,
         hpFilterRes: state.decksReducer.deck2.hpFilterRes,
+        //reverbBypass: state.decksReducer.deck2.reverbBypass,
         reverbMix: state.decksReducer.deck2.reverbMix,
         delay: state.decksReducer.deck2.delay,
         distortion: state.decksReducer.deck2.distortion,
@@ -166,14 +185,36 @@ function mapStateToProps(state) {
         bits: state.decksReducer.deck2.bits,
         normFreq: state.decksReducer.deck2.normFreq,
         bufferSize: state.decksReducer.deck2.bufferSize,
+        //delayBypass: state.decksReducer.deck2.delayBypass,
         delayTime: state.decksReducer.deck2.delayTime,
         delayMix: state.decksReducer.deck2.delayMix,
     };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({handlePlaybackSpeed: actions.handlePlaybackSpeed, startStopSong: actions.startStopSong, handleVolumeChange: actions.handleVolumeChange, handleTrebleControl: actions.handleTrebleControl, handleMidControl: actions.handleMidControl, handleBassControl: actions.handleBassControl, handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange, handleLpFilterResChange: actions.handleLpFilterResChange, handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange, handleHpFilterResChange: actions.handleHpFilterResChange, handleReverbMixChange: actions.handleReverbMixChange, handleDelayChange: actions.handleDelayChange, handleDistortionChange: actions.handleDistortionChange, handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange, handleBitChange: actions.handleBitChange, handleNormFreqChange: actions.handleNormFreqChange, handleBufferSizeChange: actions.handleBufferSizeChange, handleDelayTimeChange: actions.handleDelayTimeChange, handleDelayMixChange: actions.handleDelayMixChange}, dispatch);
+    return bindActionCreators({
+        handlePlaybackSpeed: actions.handlePlaybackSpeed,
+        startStopSong: actions.startStopSong,
+        handleVolumeChange: actions.handleVolumeChange,
+        handleTrebleControl: actions.handleTrebleControl,
+        handleMidControl: actions.handleMidControl,
+        handleBassControl: actions.handleBassControl,
+        handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
+        handleLpFilterResChange: actions.handleLpFilterResChange,
+        handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
+        handleHpFilterResChange: actions.handleHpFilterResChange,
+        handleReverbMixChange: actions.handleReverbMixChange,
+        handleDelayChange: actions.handleDelayChange,
+        handleDistortionChange: actions.handleDistortionChange,
+        handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
+        handleBitChange: actions.handleBitChange,
+        handleNormFreqChange: actions.handleNormFreqChange,
+        handleBufferSizeChange: actions.handleBufferSizeChange,
+        handleDelayTimeChange: actions.handleDelayTimeChange,
+        handleDelayMixChange: actions.handleDelayMixChange,
+        },
+        dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelRight);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelLeft);
 

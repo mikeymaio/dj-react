@@ -22,35 +22,45 @@ import Fader from './fader.component';
 
 import Pot from './knob.component';
 
+import Visualizer from './visualizer.component';
+
 const styles = {
+    fxsection: {
+    backgroundColor: "black",
+    backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    webKitBorderRadius: 10,
+    MozBorderRadius: 10,
+    borderRadius: 10,
+    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    },
     knob: {
-        display: 'inline-block'
+        display: 'inline-block',
     }
 }
 
 
-export default class FxSection extends React.Component {
+//export default 
+class FxSection extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            lpCutoff: this.props.lpCutoff
+        }
 setTimeout(() => {
-   // const update = () => {
-        //if (this.props.activeSong !==null) {
+
         var audioContext = new AudioContext();
-        // var audioContext = this.props.audioContext;
 
         var tuna = new Tuna(audioContext);
 
-        // var audio = new Audio();
-        // audio.src = '../../audio/RiptideRemix.wav';
-        // audio.controls = true;
-        // audio.autoplay = true;
-        // document.body.appendChild(audio);
         var deck = document.querySelector(':scope .' + this.props.deckNum + ' audio');
 
-        // var deck2 = document.querySelector(':scope .' + this.props.deckNum + ' audio');
-
-        // var myMediaElement = div.querySelectorAll('audio');
-//debugger;
         this.source = audioContext.createMediaElementSource(deck);
 
         this.delay = new tuna.Delay({
@@ -62,12 +72,20 @@ setTimeout(() => {
             bypass: this.props.delayBypass
         });
 
-        this.bitcrusher = new tuna.Bitcrusher({
-            bits: this.props.bits,          //1 to 16
-            normFreq: this.props.normFreq / 100,    //0 to 1
-            bufferSize: this.props.bufferSize,  //256 to 16384
-            bypass: this.props.bitCrusherBypass || true
-        });
+        // this.bitcrusher = new tuna.Bitcrusher({
+        //     bits: this.props.bits,          //1 to 16
+        //     normFreq: this.props.normFreq / 100,    //0 to 1
+        //     bufferSize: this.props.bufferSize,  //256 to 16384
+        //     bypass: this.props.bitCrusherBypass || true
+        // });
+
+        this.bitcrusher = new tuna.Overdrive({
+    outputGain: 0,         //0 to 1+
+    drive: 1,              //0 to 1
+    curveAmount: this.props.bits,          //0 to 1
+    algorithmIndex: 5,       //0 to 5, selects one of our drive algorithms
+    bypass: 1
+});
 
         this.reverb = new tuna.Convolver({
             highCut: 22050,                         //20 to 22050
@@ -78,22 +96,6 @@ setTimeout(() => {
             impulse: "/assets/impulses/LargeLongEchoHall.wav",    //the path to your impulse response
             bypass: false //this.props.reverbBypass
         });
-
-        // this.tremolo = new tuna.Tremolo({
-        //     intensity: 1,    //0 to 1
-        //     rate: 4,         //0.001 to 8
-        //     stereoPhase: 0,    //0 to 180
-        //     bypass: false
-        // });
-
-        // this.phaser = new tuna.Phaser({
-        //     rate: 0.2,                     //0.01 to 8 is a decent range, but higher values are possible
-        //     depth: 0.8,                    //0 to 1
-        //     feedback: 0.8,                 //0 to 1+
-        //     stereoPhase: 90,               //0 to 180
-        //     baseModulationFrequency: 500,  //500 to 1500
-        //     bypass: 0
-        // });
 
         this.compressor = new tuna.Compressor({
             threshold: -0.3,    //-100 to 0
@@ -152,11 +154,17 @@ setTimeout(() => {
 
         // Analyser
 
-        // this.analyser.fftSize = 2048;
-        // var bufferLength = this.analyser.fftSize;
-        // var dataArray = new Uint8Array(bufferLength);
-        // this.analyser.getByteTimeDomainData(dataArray);
+   
 
+         /* Create a script processor node with a `bufferSize` of 1024. */
+    //this.processor = audioContext.createScriptProcessor(1024),
+    /* Create an analyser node */
+    //this.analyser = audioContext.createAnalyser();
+
+
+
+/* Define a Uint8Array to receive the analysers data. */
+//var data = new Uint8Array(this.analyser.frequencyBinCount);
 
         // Connect Nodes
 
@@ -177,21 +185,17 @@ setTimeout(() => {
         // this.tremolo.connect(this.analyser)
         this.compressor.connect(this.analyser)
         this.analyser.connect(audioContext.destination)
+        // this.analyser.connect(this.processor);
+        // this.processor.connect(audioContext.destination)
+
 
 }, 1000);
         //}}
     }
+
     render() {
 
-        let bitCrusherBtnClassNames = classnames('power-button', {'active': !this.props.bitCrusherBypass})
-
-
-        const handleStart = () => {
-            this.oscillator.start()
-        }
-        const handleStop = () => {
-            this.oscillator.stop()
-        }
+        let bitCrusherBtnClassNames = classnames('power-btn', {'active': !this.props.bitCrusherBypass})
 
         const trebleChange = () => {
             this.treble.gain.value = this.props.treble;
@@ -235,7 +239,7 @@ setTimeout(() => {
         }
 
         const bitsChange = () => {
-          this.bitcrusher.bits = this.props.bits;
+          this.bitcrusher.curveAmount = this.props.bits/100;
         }
 
         const bufferChange = () => {
@@ -254,9 +258,20 @@ setTimeout(() => {
           this.delay.wetLevel = this.props.delayMix/100;
         }
 
+        const model = {
+  path: this.props.song.url,
+  author: this.props.song.artist.name,
+  title: this.props.song.artist.song,
+  playing: this.props.play
+}
+
+
 
         return(
-             <div name={this.props.name} className="fx-container container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <div
+                name={this.props.name}
+                className="fx-container container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                style={styles.fxsection}>
                  {/*<div>*/}
             <div style={styles.knob}>
 {/*
@@ -271,7 +286,7 @@ setTimeout(() => {
             <button onClick={() => {this.oscillator.type = 'triangle'}} > Tri </button>*/}
 
         {/*<div>*/}
-    <div className="eq-section">
+    {/*<div className="eq-section">
         <Pot
             title="High"
             value={this.props.treble}
@@ -299,14 +314,17 @@ setTimeout(() => {
             angleOffset={180}
             angleArc={270}
         />
+        </div>*/}
+        {/*<Visualizer model={ model } width={300} height={300} play={this.props.play} />*/}
 
-    </div>
+    
         <div className="row">
+            <div className="container">
               {/*<div
               className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
               style={{"display": "inline-block"}}>*/}
-                <h4> Filters</h4>
-                <div className="lpFilter col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                {/*<h4> Filters</h4>*/}
+                <div className="lpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                    <h4>LP</h4>
                 <Pot
                 title="Cutoff"
@@ -330,7 +348,7 @@ setTimeout(() => {
                 angleArc={270}
                 />*/}
                 </div>
-                <div className="hpFilter col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                     <h4>HP</h4>
                 <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
                 onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum), hpFilterCutoffChange()}}
@@ -350,7 +368,7 @@ setTimeout(() => {
                 />*/}
                 {/*</div>*/}
                 </div>
-                <div className="distortion-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                <div className="distortion-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                   <h4>Crush</h4>
 
                 {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
@@ -359,13 +377,16 @@ setTimeout(() => {
                 min={0} max={100} angleOffset={180}
                 angleArc={270}
                 />*/}
+                
 
                 <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
                 onChange={(value) => {this.props.onBitChange(value, this.props.deckNum), bitsChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={16} angleOffset={180}
+                min={0} max={100} angleOffset={180}
                 angleArc={270}
                 />
+
+                
 
                 {/*<Pot title="CrushBuffer" defaultValue={this.props.bufferSize} value={this.props.bufferSize}
                 onChange={(value) => {this.props.onBufferSizeChange(value, this.props.deckNum), bufferChange()}}
@@ -373,11 +394,17 @@ setTimeout(() => {
                 min={256} max={16384} angleOffset={180}
                 angleArc={270}
                 />*/}
-
-                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}>Power</button>
+                {/*<section>
+		<a href="#" id="button">&#x23FB;</a>
+		<span></span>
+	</section>*/}
+                {/*<div>*/}
+                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}></button>
+                <span></span>
+                {/*</div>*/}
                 </div>
 
-                <div className="reverb-section col-lg-3 col-md-3 col-sm-3 col-xs-3" style={{"display": "inline-block"}}>
+                <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                   <h4>Reverb</h4>
                   <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
                 onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum), reverbMixChange()}}
@@ -387,7 +414,7 @@ setTimeout(() => {
                 />
                 </div>
 
-                <div className="delay-section col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                   <h4>Delay</h4>
                   <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
                 onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum), delayTimeChange()}}
@@ -405,7 +432,25 @@ setTimeout(() => {
             </div>
             </div>
             </div>
-            //</div>
+            </div>
         )
     }
 }
+
+// function mapStateToProps(state) {
+//     return {
+//         treble: state.decksReducer.deck1.treble,
+//         mid: state.decksReducer.deck1.mid,
+//         bass: state.decksReducer.deck1.bass,
+//     };
+// }
+
+
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({handleTrebleControl: actions.handleTrebleControl, handleMidControl: actions.handleMidControl, handleBassControl: actions.handleBassControl}, dispatch);
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(FxSection);
+
+export default FxSection;
+
