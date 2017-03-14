@@ -12,25 +12,29 @@ import Fader from './fader.component';
 
 
 const styleDeck1 = {
-  height: 265,
-  width: 265,
+  height: 266,
+  width: 266,
   //margin: 20,
   marginTop: 40,
   // float: 'left',
   backgroundColor: '#1f1f1f',
   textAlign: 'center',
   display: 'inline-block',
-  backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     webKitBorderRadius: 265,
     MozBorderRadius: 265,
     borderRadius: 265,
+    backgroundColor: '#1a1a1a',
+    backgroundColor: '#0a7da7',
     webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: 'iinset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    // backgroundImage: 'url(\'assets/images/turntable_top.jpg\')',
+    // backgroundSize: 'cover',
 };
 
 const styleImg = {
@@ -39,8 +43,9 @@ const styleImg = {
   //margin: 20,
 //   marginBottom: 30,
   // float: 'left',
-  backgroundColor: '#1f1f1f',
+//   backgroundColor: '#1f1f1f',
   textAlign: 'center',
+  borderRadius: '100%',
   //marginLeft: '25%',
   //display: 'inline-block',
   //margin: 'auto',
@@ -52,19 +57,24 @@ const stylePlatter1 = {
   margin: 'auto',
 //   marginTop: 40,
   backgroundColor: 'white',
+//   backgroundImage: 'url(\'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerframeworks.com%2Fseries%2FSG%2F022%2Fsg022_0400_1.gif&f=1\')',
+//   backgroundSize: 'cover',
   textAlign: 'center',
   display: 'block',
-  backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     webKitBorderRadius: 250,
     MozBorderRadius: 250,
     borderRadius: 250,
-    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
-    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
-    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
+    marginTop: 8,
+    // webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
+    // MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
+    // boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: '1px 1px 1px 1px #1f1f1f , -1px 1px 1px 1px #1f1f1f , 1px -1px 1px 1px #1f1f1f , -1px -1px 1px 1px #1f1f1f , 3px 3px 3px 3px #3a3a3a, -3px 3px 3px 3px #3a3a3a, 3px -3px 3px 3px #3a3a3a, -3px -3px 3px 3px #3a3a3a',
+    // display: 'none'
 };
 
 const styleTurntableContainer = {
@@ -94,7 +104,6 @@ const styleTurntable = {
   backgroundColor: '#1f1f1f',
   paddingBottom: 410,
 
-  
     // borderBottom:'10px solid #0c0c0c',
     // borderRight:'2px solid #090909',
     // borderRadius:'1px',
@@ -167,14 +176,14 @@ const style = {
     left: '75%'
   },
   player: {
-        borderRadius: '50%',
-        height: 250,
-  width: 250,
-  margin: 'auto',
-  marginTop: '25%',
-  backgroundColor: 'white',
-  textAlign: 'center',
-  display: 'block',
+    borderRadius: '50%',
+    height: 250,
+    width: 250,
+    margin: 'auto',
+    marginTop: '25%',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    display: 'block',
     }
 };
 
@@ -198,7 +207,8 @@ function onStart() {
 
     render() {
 
-        let startStopClass = classnames('fa', {'fa-pause': this.play}, {'fa-play': !this.play});
+        let startStopClass = classnames('startStopButton2', {'active': this.props.play});
+        let deckClassNames = classnames(this.props.deckNum)
         let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
 
         if (!this.props.song) {
@@ -210,11 +220,23 @@ function onStart() {
                     children={<div className="player-container">
                         <h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
                     <div className="player-options" style={styleTurntableControls}>
-                    <div className="player-buttons player-controls"  >
-                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleStartStopBtn}
-                            className="player-btn big" title="Start/Stop">Start/Stop
-                            <i className={startStopClass} />
-                        </button>
+                    <div className="player-buttons player-controls">
+                                <div className="container_button2">
+                            <div className="hole2">
+                                <div className="startStopButton2" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    <img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />
+                                </div>
+                            </div>
+                        </div>
+                       {/*<div className="container_button">
+                            <div className="hole">
+                                <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    <div className="triangle" ></div>
+                                    <div className="lighter_triangle"></div>
+                                    <div className="darker_triangle"></div>
+                                </div>
+                            </div>
+                        </div>*/}
                         </div>
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>
@@ -241,15 +263,15 @@ function onStart() {
                         style={styleTurntable}
                         children={<div>
                                     <Paper
-                                        className={this.props.deckNum}
+                                        className={deckClassNames}
                                         style={styleDeck1}
-                                        zDepth={0}
+                                        zDepth={1}
                                         rounded={false}
                                         children={<div>
                                             <Paper
                                                 className={platterClassNames}
                                                 style={stylePlatter1}
-                                                zDepth={4}
+                                                zDepth={2}
                                                 circle={true}
                                                 children={<div>
                                                     <ReactPlayer
@@ -288,7 +310,15 @@ function onStart() {
                                         />
                     <div className="player-options" style={styleTurntableControls}>
                     <div className="player-buttons player-controls">
-                        <div className="container_button">
+                    <div className="container_button2">
+                            <div className="hole2">
+                                <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    {/*<img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />*/}
+                                    &#xf04b; &#xf04c;
+                                </div>
+                            </div>
+                        </div>
+                        {/*<div className="container_button">
                             <div className="hole">
                                 <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
                                     <div className="triangle" ></div>
@@ -296,11 +326,7 @@ function onStart() {
                                     <div className="darker_triangle"></div>
                                 </div>
                             </div>
-                        </div>
-                        {/*<button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleStartStopBtn}
-                            className="player-btn big" title="Start/Stop">Start/Stop
-                            <i className={startStopClass} />
-                        </button>*/}
+                        </div>*/}
                         </div>
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>

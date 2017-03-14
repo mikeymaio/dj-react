@@ -22,6 +22,7 @@ import Fader from './fader.component';
 
 import Pot from './knob.component';
 
+
 import Visualizer from './visualizer.component';
 
 const styles = {
@@ -325,7 +326,7 @@ setTimeout(() => {
               style={{"display": "inline-block"}}>*/}
                 {/*<h4> Filters</h4>*/}
                 <div className="lpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                   <h4>LP</h4>
+                   <h5>LP</h5>
                 <Pot
                 title="Cutoff"
                 defaultValue={this.props.lpCutoff}
@@ -336,7 +337,7 @@ setTimeout(() => {
                 angleOffset={180}
                 angleArc={270}
                 />
-                <p>LP</p>
+                {/*<p>LP</p>*/}
                 {/*<Pot
                 title="LP Res"
                 defaultValue={this.props.lpRes}
@@ -349,13 +350,13 @@ setTimeout(() => {
                 />*/}
                 </div>
                 <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                    <h4>HP</h4>
+                    <h5>HP</h5>
                 <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
                 onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum), hpFilterCutoffChange()}}
                 min={20} max={7000} angleOffset={180}
                 angleArc={270}
                 />
-                <p>HP</p>
+                {/*<p>HP</p>*/}
                 {/*<Pot
                 title="HP Res"
                 defaultValue={this.props.hpRes}
@@ -369,7 +370,7 @@ setTimeout(() => {
                 {/*</div>*/}
                 </div>
                 <div className="distortion-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h4>Crush</h4>
+                  <h5>Crush</h5>
 
                 {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
                 onChange={(value) => {this.props.onNormFreqChange(value, this.props.deckNum), normFreqChange()}}
@@ -377,7 +378,7 @@ setTimeout(() => {
                 min={0} max={100} angleOffset={180}
                 angleArc={270}
                 />*/}
-                
+
 
                 <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
                 onChange={(value) => {this.props.onBitChange(value, this.props.deckNum), bitsChange()}}
@@ -386,7 +387,7 @@ setTimeout(() => {
                 angleArc={270}
                 />
 
-                
+
 
                 {/*<Pot title="CrushBuffer" defaultValue={this.props.bufferSize} value={this.props.bufferSize}
                 onChange={(value) => {this.props.onBufferSizeChange(value, this.props.deckNum), bufferChange()}}
@@ -399,13 +400,13 @@ setTimeout(() => {
 		<span></span>
 	</section>*/}
                 {/*<div>*/}
-                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}></button>
+                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}>&#xF011;</button>
                 <span></span>
                 {/*</div>*/}
                 </div>
 
                 <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h4>Reverb</h4>
+                  <h5>Reverb</h5>
                   <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
                 onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum), reverbMixChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
@@ -415,7 +416,7 @@ setTimeout(() => {
                 </div>
 
                 <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h4>Delay</h4>
+                  <h5>Delay</h5>
                   <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
                 onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum), delayTimeChange()}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
