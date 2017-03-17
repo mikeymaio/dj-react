@@ -34,7 +34,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
     class AudioMeter extends React.Component {
         constructor(props) {
             super(props)
-        
+
 
     // getInitialState: function() {
     //     return {
@@ -44,10 +44,8 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
     // },
 
     setTimeout(
-                
-            
+
             function () {
-        
                 var audioCtx = new AudioContext();
 
                 var deck = document.querySelector(':scope ._DECK1 audio');
@@ -67,7 +65,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
             }, 1000);
         };
-        
+
     componentDidMount() { //: function () {
 
         // Processing.
@@ -116,7 +114,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
     render() {
         return (
             <div>
-                <canvas ref="canvas" width="30" height="78"></canvas>
+                <canvas ref="canvas" id="canvas" width="30" height="78"></canvas>
                 <p></p>
                 {/*<button onClick={this.toggleDebug}>Debug</button>
                 { this.state.debug  ? <p>Volume: {this.state.volume} </p>: null}*/}

@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import App from './components/app.component';
+
 import Header from './components/header.component';
 import store from './store';
 

@@ -109,11 +109,18 @@ meterDiv: {
     // flexDirection: 'column',
     justifyContent: 'space-around',
       transform: 'rotate(-90deg)',
-      marginTop: 95,
+      marginTop: 90,
       marginLeft: 10,
       height: 30,
   }
 };
+
+const test = new Audio();
+
+test.src = '/assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3';
+test.autoplay = false;
+test.crossOrigin = 'anonymous';
+test.controls = true;
 
 class Mixer extends React.Component {
     constructor(props) {
@@ -176,7 +183,7 @@ class Mixer extends React.Component {
                 />
             </div>
             <div className="meter col-lg-6 col-md-6 col-sm-6" style={styles.meterDiv}>
-                <Meter title="Meter" audioContext={TEST} style={styles.meter} command='start' src={<Turntable />} width={200} height={1} />
+                <Meter title="Meter" audioContext={this.props.audioContext} style={styles.meter} command='start' src={test} width={200} height={1} />
             </div>
             </div>
             <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={styles.volumeFader}>

@@ -23,6 +23,8 @@ const draw = (width, height, canvasCtx, prevVolume, volume, maxVolume) => {
   }
 }
 
+
+
 const Meter = React.createClass({
   getVolume () {
     this.analyser.getByteFrequencyData(this.array)

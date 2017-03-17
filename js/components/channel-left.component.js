@@ -74,6 +74,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
           <MuiThemeProvider>
             <Mixer deckNum="_DECK1"
             className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
+            audioContext={this.props.audioContext}
             orientation={this.props.orientation}
             volume={this.props.volume}
             treble={this.props.treble}
@@ -145,19 +146,6 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 />
                  </MuiThemeProvider>
                  </div>
-        {/*<div className="container-fluid">
-          <MuiThemeProvider>
-            <FxContainer deckNum="_DECK1"
-            filter={this.props.filter}
-            reverb={this.props.reverb}
-            delay={this.props.delay}
-            distortion={this.props.distortion}
-            handleFilterChange={this.props.handleFilterChange}
-            handleReverbChange={this.props.handleReverbChange}
-            handleDelayChange={this.props.handleDelayChange}
-            handleDistortionChange={this.props.handleDistortionChange}/>
-          </MuiThemeProvider>
-        </div>*/}
         {/*<AudioMeter deckNum="_DECK1"/>*/}
       </div>
     );

@@ -96,7 +96,7 @@ onDrop(acceptedFiles, rejectedFiles) {
           <RaisedButton
                     style={styles.button}
                     label="Playlist"
-                    className='col-lg-4 col-lg-offset-4 slider playlistBtn'
+                    className='col-lg-5 col-lg-offset-2 slider playlistBtn'
                     id="bot"
                     onTouchTap={() => this.setState({open: !this.state.open, clicked: true})}
                 />

@@ -18,7 +18,7 @@ const playlistState = {
         },
         {
             url: '/assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3',
-            cover: null,
+            cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fi.ytimg.com%2Fvi%2FJOD-M7WZkZQ%2Fhqdefault.jpg&f=1',
 
                 name: 'James Brown Vs Led Zeppelin',
                 song: 'Whole Lotta Sex Machine'

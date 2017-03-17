@@ -74,6 +74,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
           <MuiThemeProvider>
             <Mixer deckNum="_DECK2"
             className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
+            audioContext={this.props.audioContext}
             orientation={this.props.orientation}
             volume={this.props.volume}
             treble={this.props.treble}
@@ -145,7 +146,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 />
                  </MuiThemeProvider>
                  </div>
-        {/*<AudioMeter deckNum="_deck2"/>*/}
+        {/*<AudioMeter deckNum="_DECK2"/>*/}
       </div>
     );
   }

@@ -25,6 +25,10 @@ import Pot from './knob.component';
 
 import Visualizer from './visualizer.component';
 
+import VolumeMeter from './volume-meter';
+
+
+
 const styles = {
     root: {
     display: 'flex',
@@ -55,10 +59,19 @@ const styles = {
     },
     knob: {
         display: 'inline-block',
-    }
+    },
+    meter: {
+      display: 'flex',
+    // flexDirection: 'column',
+    justifyContent: 'space-around',
+      transform: 'rotate(-90deg)',
+      marginTop: 95,
+      marginLeft: 10,
+      height: 30,
+  }
 }
 
-
+//const source;
 //export default 
 class FxSection extends React.Component {
     constructor(props) {
@@ -75,15 +88,19 @@ class FxSection extends React.Component {
         setTimeout(() => {
             console.log('componentDidMount');
 
-        var audioContext = new AudioContext();
+        //var audioContext = new AudioContext();
 
-        var tuna = new Tuna(audioContext);
+        var audioContext = this.props.audioContext;
 
         var deck = document.querySelector(':scope .' + this.props.deckNum + ' audio');
 
         this.source = audioContext.createMediaElementSource(deck);
 
-       
+
+
+        var tuna = new Tuna(audioContext);
+
+
         this.delay = new tuna.Delay({
             feedback: 0.5,    //0 to 1+
             delayTime: this.props.delayTime,    //1 to 10000 milliseconds
@@ -155,6 +172,7 @@ class FxSection extends React.Component {
 //          }
 
 
+
         this.gainNode.gain.value = 1;
         this.xFade.gain.value = this.props.xFade; //crossfade(this.props.xFade, deckNum);
 
@@ -187,8 +205,31 @@ class FxSection extends React.Component {
         this.highPassFilter.Q.value = 10;
 
         // Analyser
+//const analyser = this.analyser;
+   // Establish analyser variables
+//    var canvas, ctx, source, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
+//    canvas = document.getElementById('analyser_render');
+//    ctx = canvas.getContext('2d');
+   //frameLooper(audioContext, analyser);
 
-   
+
+// frameLooper animates graphics based on audio frequency
+//    function frameLooper() {
+//        window.webkitRequestAnimationFrame(frameLooper);
+//        fbc_array = new Uint8Array(analyser.frequencyBinCount);
+//        this.analyser.getByteFrequencyData(fbc_array);
+//        ctx.clearRect(0, 0, canvas.width, canvas.height);
+//        ctx.fillStyle = '#00CCFF';
+//        bars = 100;
+//        for (var i=0; i< bars; i++) {
+//            bar_x = i*3;
+//            bar_width = 2;
+//            bar_height = -(fbc_array[i] / 2);
+//            // fillRect(x, y, width, height)
+//            ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+//        }
+
+//    }
 
          /* Create a script processor node with a `bufferSize` of 1024. */
     //this.processor = audioContext.createScriptProcessor(1024),
@@ -260,81 +301,42 @@ class FxSection extends React.Component {
         this.xFade.gain.value = crossfade(this.props.xFade, deckNum);
 
         console.log(this.props.xFade);
+
+           function frameLooper() {
+       window.requestAnimationFrame(frameLooper);
+       fbc_array = new Uint8Array(this.analyser.frequencyBinCount);
+       this.analyser.getByteFrequencyData(fbc_array);
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+       ctx.fillStyle = '#00CCFF';
+       bars = 100;
+       for (var i=0; i< bars; i++) {
+           bar_x = i*3;
+           bar_width = 2;
+           bar_height = -(fbc_array[i] / 2);
+           // fillRect(x, y, width, height)
+           ctx.fillRect(bar_x, canvas.height, bar_width, bar_height);
+       }
+
+   }
+
+
+        // frameLooper();
     }
 
     render() {
 
+     
 
         let bitCrusherBtnClassNames = classnames('power-btn', {'active': !this.props.bitCrusherBypass})
 
-        // const trebleChange = () => {
-        //     this.treble.gain.value = this.props.treble;
-        // }
 
-        // const midChange = () => {
-        //     this.mid.gain.value = this.props.mid;
-        // }
-
-        // const bassChange = () => {
-        //     this.bass.gain.value = this.props.bass;
-        // }
-
-        // const lpFilterCutoffChange = () => {
-        //   this.lowPassFilter.frequency.value = this.props.lpCutoff;
-        //   // this.moog.cutoff = this.props.lpCutoff;
-        // }
-
-        // const lpFilterResChange = () => {
-        //   this.lowPassFilter.Q.value = this.props.lpRes/10;
-        //   // this.moog.resonance = this.props.lpRes/25;
-        // }
-
-        // const hpFilterCutoffChange = () => {
-        //   this.highPassFilter.frequency.value = this.props.hpCutoff;
-        //   // this.moog.cutoff = this.props.hpCutoff;
-        // }
-
-        // const hpFilterResChange = () => {
-        //   this.highPassFilter.Q.value = this.props.hpRes/10;
-        //   // this.moog.resonance = this.props.lpRes/25;
-        // }
-
-        // const bitBypassChange = () => {
-        //   this.bitcrusher.bypass = !this.bitcrusher.bypass;
-        // //   this.bitcrusher.bypass = this.props.bitCrusherBypass;
-        // }
-
-        // const normFreqChange = () => {
-        //   this.bitcrusher.normFreq = this.props.normFreq;
-        // }
-
-        // const bitsChange = () => {
-        //   this.bitcrusher.curveAmount = this.props.bits/100;
-        // }
-
-        // const bufferChange = () => {
-        //   this.bitcrusher.bufferSize = this.props.bufferSize;
-        // }
-
-        // const reverbMixChange = () => {
-        //   this.reverb.wetLevel = this.props.reverbMix/100;
-        // }
-
-        // const delayTimeChange = () => {
-        //   this.delay.delayTime = this.props.delayTime;
-        // }
-
-        // const delayMixChange = () => {
-        //   this.delay.wetLevel = this.props.delayMix/100;
-        // }
-
-//         const model = {
-//   path: this.props.song.url,
-//   author: this.props.song.artist.name,
-//   title: this.props.song.artist.song,
-//   playing: this.props.play
-// }
-
+        const model = {
+  path: this.props.song.url,
+  author: this.props.song.name,
+  title: this.props.song.name,
+  playing: this.props.play,
+  //source: this.source
+}
 
 
         return(
@@ -385,11 +387,13 @@ class FxSection extends React.Component {
             angleArc={270}
         />
         </div>*/}
-        {/*<Visualizer model={ model } width={300} height={300} play={this.props.play} />*/}
+        {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}
 
-    
+
+        {/*<VolumeMeter audioContext={this.props.audioContext} width={300} height={200} command='start' style={styles.meter} />*/}
         <div className="row">
             <div className="container">
+                {/*<canvas id="analyser_render" style={{width: 500, height: 10}} />*/}
               {/*<div
               className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
               style={{"display": "inline-block"}}>*/}
