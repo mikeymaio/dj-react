@@ -7,7 +7,6 @@ import Fader from './fader.component';
 import Pot from './knob.component';
 import Meter from './meter.component';
 import Deck from './deck.container';
-
 // import { handleVolumeChange } from '../actions/index.action';
 // import { handleTrebleControl } from '../actions/index.action';
 // import { handleMidControl } from '../actions/index.action';
@@ -18,18 +17,51 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 
 const styles = {
+    faderSection: {
+        backgroundColor: 'black',
+        marginLeft: 0,
+        width: '100%',
+    },
     root: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: 'black',
-    height: 130,
-    paddingBottom: 15,
+    height: 100,
+    paddingBottom: 0,
+    paddingTop: 10,
     marginTop: 0,
-    marginLeft: -10,
-        // marginLeft: '0%',
+    marginBottom: 0,
+        margin: 'auto',
+    width: '50%',
+  },
+  label: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    color: '#009ab2',
+    marginBottom: 0,
+    backgroundColor: 'black',
     width: 55,
     // width: '100%',
+    // width: '470%',
+    marginLeft: -7,
+    // marginLeft: '0%',
+    marginTop: 3,
+    marginBottom: 5,
+    // padding: 5,
+  },
+  volumeFader: {
+    // marginLeft: 1,
+    position: 'absolute',
+    bottom: 35,
+    backgroundColor: 'black',
+    border: '5px solid silver',
+    paddingBottom: 50,
+    width: '60%',
+    height: 150,
+    left:'5%'
+    // width: '40%'
+
   },
     mixer: {
     display: 'inline-block',
@@ -51,30 +83,6 @@ const styles = {
     MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     },
-  label: {
-    display: 'flex',
-    justifyContent: 'space-around',
-    color: '#009ab2',
-    marginBottom: 0,
-    backgroundColor: 'black',
-    width: 55,
-    // width: '100%',
-    // width: '470%',
-    marginLeft: -10,
-    // marginLeft: '0%',
-    marginTop: 1,
-    // padding: 5,
-  },
-  volumeFader: {
-    // marginLeft: 1,
-    position: 'absolute',
-    bottom: 10,
-    backgroundColor: 'silver',
-    paddingBottom: 1,
-    width: 66,
-    // width: '40%'
-
-  },
   eq: {
     display: 'flex',
     flexDirection: 'column',
@@ -173,7 +181,9 @@ class Mixer extends React.Component {
             </div>
             <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={styles.volumeFader}>
                 <label htmlFor="channelFader col-lg-1 col-md-1 col-sm-6" style={styles.label} className="volumeLabel">Volume</label>
-                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={styles.root}/>
+                <div style={styles.faderSection}>
+                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" axis="y" min={0} max={1} onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={styles.root}/>
+                </div>
             </div>
             {/*<Meter />*/}
       </div>

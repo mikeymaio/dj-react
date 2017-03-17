@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {selectSong} from '../actions/index.action';
+import {handleSongUpload} from '../actions/index.action';
 import {bindActionCreators} from 'redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+// import Dropzone from 'react-dropzone';
+import DropzoneDemo from './dropzone.component';
 
 import classnames from 'classnames';
+
+
+import Drawer from 'material-ui/Drawer';
+import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+
 
 const styles = {
     playlist: {
@@ -21,64 +30,6 @@ const styles = {
     }
 }
 
-import Drawer from 'material-ui/Drawer';
-import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
-
-/*class Playlist extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {open: false};
-  }
-    renderList() {
-        return this.props.playlist.map((song) => {
-            return (
-                <li
-                    key={song.artist.song}
-                    className="list-group-item"
-                    //onTouchTap={() => this.props.selectSong(song, '_DECK1')}
-                    >
-                    {song.artist.song}
-                    <button onTouchTap={() => this.props.selectSong(song, '_DECK1')}>LOAD TO DECK 1</button>
-                    <button onTouchTap={() => this.props.selectSong(song, '_DECK2')}>LOAD TO DECK 2</button>
-                </li>
-            );
-        });
-}
-  render() {
-    return (
-      <div>
-        <RaisedButton
-          style={styles.button}
-          label="Playlist"
-          className="col-lg-4 col-lg-offset-4"
-          onTouchTap={() => this.setState({open: !this.state.open})}
-        />
-        <Drawer open={this.state.open}
-            width={200}
-            children={this.renderList()}>
-        </Drawer>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(state){
-    return {
-        playlist: state.playlistReducer.playlist,
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({selectSong: selectSong}, dispatch)
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
-
-*/
 
 class Playlist extends React.Component {
 
@@ -86,24 +37,48 @@ class Playlist extends React.Component {
     super(props);
     this.state = {
         open: false,
-        clicked: false
+        clicked: false,
+        files: []
     };
   }
+
     renderList() {
-        return this.props.playlist.map((song) => {
+        return this.state.files.map((song) => {
             return (
                 <li
-                    key={song.artist.song}
+                    key={song.name}
                     className="list-group-item"
                     //onTouchTap={() => this.props.selectSong(song, '_DECK1')}
                     >
-                    {song.artist.song}
-                    <button style={styles.load} onTouchTap={() => this.props.selectSong(song, '_DECK1')}>LOAD TO DECK 1</button>
-                    <button style={styles.load} onTouchTap={() => this.props.selectSong(song, '_DECK2')}>LOAD TO DECK 2</button>
+                    {song.name}
+                    <button onTouchTap={() => this.props.selectSong(song, '_DECK1')}>LOAD TO DECK 1</button>
+                    <button onTouchTap={() => this.props.selectSong(song, '_DECK2')}>LOAD TO DECK 2</button>
                 </li>
             );
         });
 }
+
+
+onDrop(acceptedFiles, rejectedFiles) {
+    //   console.log('Accepted files: ', acceptedFiles);
+    //   console.log('Rejected files: ', rejectedFiles);
+
+      let upload = {
+          url: acceptedFiles[0].preview,
+          name: acceptedFiles[0].name,
+          cover: acceptedFiles[0].cover || null,
+          format: acceptedFiles[0].type,
+          size: acceptedFiles[0].size,
+      }
+      console.log('upload = ', upload);
+      console.log('state = ', this.state);
+      this.setState({
+        files: upload
+      });
+    //handleSongUpload(acceptedFiles[0]);
+    }
+
+
   render() {
 
       let playlistContainer = classnames({
@@ -128,9 +103,18 @@ class Playlist extends React.Component {
 
         <div id="playlist" className={playlistContainer}>
            <div id="nav" className={playlistClass}>
-                <ul className="list-group">
-                    {this.renderList()}
-                </ul>
+                <DropzoneDemo>
+                </DropzoneDemo>
+                {/*<Dropzone
+                    className="list-group"
+                    onDrop={this.onDrop}
+                    disableClick={true}
+                    >
+                    <ul className="list-group">
+                        {this.renderList()}
+                    </ul>
+              <div>Drop files here to create a playlist</div>
+            </Dropzone>*/}
             </div>
         </div>
       </div>
@@ -145,7 +129,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({selectSong: selectSong}, dispatch)
+    return bindActionCreators({selectSong: selectSong, handleSongUpload: handleSongUpload}, dispatch)
 }
 
 

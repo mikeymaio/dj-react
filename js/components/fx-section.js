@@ -26,6 +26,19 @@ import Pot from './knob.component';
 import Visualizer from './visualizer.component';
 
 const styles = {
+    root: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: 'black',
+    height: 105,
+    paddingBottom: 15,
+    marginTop: 0,
+    marginLeft: -10,
+        // marginLeft: '0%',
+    width: 55,
+    // width: '100%',
+  },
     fxsection: {
     backgroundColor: "black",
     backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
@@ -51,10 +64,16 @@ class FxSection extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            lpCutoff: this.props.lpCutoff
-        }
-setTimeout(() => {
+        // this.state = {
+        //     lpCutoff: this.props.lpCutoff
+        // }
+
+        //}}
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            console.log('componentDidMount');
 
         var audioContext = new AudioContext();
 
@@ -64,6 +83,7 @@ setTimeout(() => {
 
         this.source = audioContext.createMediaElementSource(deck);
 
+       
         this.delay = new tuna.Delay({
             feedback: 0.5,    //0 to 1+
             delayTime: this.props.delayTime,    //1 to 10000 milliseconds
@@ -81,11 +101,11 @@ setTimeout(() => {
         // });
 
         this.bitcrusher = new tuna.Overdrive({
-    outputGain: 0,         //0 to 1+
-    drive: 1,              //0 to 1
-    curveAmount: this.props.bits,          //0 to 1
-    algorithmIndex: 5,       //0 to 5, selects one of our drive algorithms
-    bypass: 1
+            outputGain: 0,         //0 to 1+
+            drive: 1,              //0 to 1
+            curveAmount: this.props.bits,          //0 to 1
+            algorithmIndex: 5,       //0 to 5, selects one of our drive algorithms
+            bypass: this.props.bitCrusherBypass
 });
 
         this.reverb = new tuna.Convolver({
@@ -100,13 +120,13 @@ setTimeout(() => {
 
         this.compressor = new tuna.Compressor({
             threshold: -0.3,    //-100 to 0
-            makeupGain: 0.2,     //0 and up (in decibels)
+            makeupGain: 0,     //0 and up (in decibels)
             attack: 1,         //0 to 1000
             release: 0,        //0 to 3000
             ratio: 20,          //1 to 20
             knee: 5,           //0 to 40
             automakeup: true,  //true/false
-            bypass: 0
+            bypass: false
         });
 
 
@@ -114,7 +134,8 @@ setTimeout(() => {
         this.oscillator.type = 'square'
         this.oscillator.frequency.value = this.props.oscFreq;
 
-        this.gain = audioContext.createGain()
+        this.gainNode = audioContext.createGain()
+        this.xFade = audioContext.createGain()
         this.analyser = audioContext.createAnalyser();
         this.distortion = audioContext.createWaveShaper();
         this.treble = audioContext.createBiquadFilter();
@@ -123,7 +144,19 @@ setTimeout(() => {
         this.lowPassFilter = audioContext.createBiquadFilter();
         this.highPassFilter = audioContext.createBiquadFilter();
 
-        this.gain.value = 0
+        // const deckNum = this.props.deckNum
+//          function crossfade(value, deckNum) {
+//   // equal-power crossfade
+//             if (deckNum === '_DECK1') {
+//                 return Math.cos(value * 0.5*Math.PI);
+//             } else {
+//                 return Math.cos((1.0-value) * 0.5*Math.PI);
+//             }
+//          }
+
+
+        this.gainNode.gain.value = 1;
+        this.xFade.gain.value = this.props.xFade; //crossfade(this.props.xFade, deckNum);
 
         // EQ
 
@@ -169,9 +202,9 @@ setTimeout(() => {
 
         // Connect Nodes
 
-        this.source.connect(this.gain)
+        this.source.connect(this.gainNode)
         // this.oscillator.connect(this.gain)
-        this.gain.connect(this.bass)
+        this.gainNode.connect(this.bass)
         this.bass.connect(this.mid)
         this.mid.connect(this.treble)
         this.treble.connect(this.bitcrusher)
@@ -185,86 +218,122 @@ setTimeout(() => {
         // this.reverb.connect(this.tremolo)
         // this.tremolo.connect(this.analyser)
         this.compressor.connect(this.analyser)
-        this.analyser.connect(audioContext.destination)
+        this.analyser.connect(this.xFade)
+        this.xFade.connect(audioContext.destination)
         // this.analyser.connect(this.processor);
         // this.processor.connect(audioContext.destination)
 
 
 }, 1000);
-        //}}
+    }
+
+
+    componentDidUpdate() {
+
+        this.treble.gain.value = this.props.treble;
+        this.mid.gain.value = this.props.mid;
+        this.bass.gain.value = this.props.bass;
+        this.lowPassFilter.frequency.value = this.props.lpCutoff;
+        this.lowPassFilter.Q.value = this.props.lpRes/10;
+        this.highPassFilter.frequency.value = this.props.hpCutoff;
+        this.highPassFilter.Q.value = this.props.hpRes/10;
+        this.bitcrusher.bypass = this.props.bitCrusherBypass;
+        // this.bitcrusher.normFreq = this.props.normFreq;
+        this.bitcrusher.curveAmount = this.props.bits/100;
+        // this.bitcrusher.bufferSize = this.props.bufferSize;
+        this.reverb.wetLevel = this.props.reverbMix/100;
+        this.delay.delayTime = this.props.delayTime;
+        this.delay.wetLevel = this.props.delayMix/100;
+
+        const deckNum = this.props.deckNum;
+
+        function crossfade(value, deckNum) {
+     // equal-power crossfade
+            if (deckNum === '_DECK1') {
+
+                return Math.cos(value * 0.5*Math.PI);
+            } else {
+                return Math.cos((1.0-value) * 0.5*Math.PI);
+             }
+         }
+
+        this.xFade.gain.value = crossfade(this.props.xFade, deckNum);
+
+        console.log(this.props.xFade);
     }
 
     render() {
 
+
         let bitCrusherBtnClassNames = classnames('power-btn', {'active': !this.props.bitCrusherBypass})
 
-        const trebleChange = () => {
-            this.treble.gain.value = this.props.treble;
-        }
+        // const trebleChange = () => {
+        //     this.treble.gain.value = this.props.treble;
+        // }
 
-        const midChange = () => {
-            this.mid.gain.value = this.props.mid;
-        }
+        // const midChange = () => {
+        //     this.mid.gain.value = this.props.mid;
+        // }
 
-        const bassChange = () => {
-            this.bass.gain.value = this.props.bass;
-        }
+        // const bassChange = () => {
+        //     this.bass.gain.value = this.props.bass;
+        // }
 
-        const lpFilterCutoffChange = () => {
-          this.lowPassFilter.frequency.value = this.props.lpCutoff;
-          // this.moog.cutoff = this.props.lpCutoff;
-        }
+        // const lpFilterCutoffChange = () => {
+        //   this.lowPassFilter.frequency.value = this.props.lpCutoff;
+        //   // this.moog.cutoff = this.props.lpCutoff;
+        // }
 
-        const lpFilterResChange = () => {
-          this.lowPassFilter.Q.value = this.props.lpRes/10;
-          // this.moog.resonance = this.props.lpRes/25;
-        }
+        // const lpFilterResChange = () => {
+        //   this.lowPassFilter.Q.value = this.props.lpRes/10;
+        //   // this.moog.resonance = this.props.lpRes/25;
+        // }
 
-        const hpFilterCutoffChange = () => {
-          this.highPassFilter.frequency.value = this.props.hpCutoff;
-          // this.moog.cutoff = this.props.hpCutoff;
-        }
+        // const hpFilterCutoffChange = () => {
+        //   this.highPassFilter.frequency.value = this.props.hpCutoff;
+        //   // this.moog.cutoff = this.props.hpCutoff;
+        // }
 
-        const hpFilterResChange = () => {
-          this.highPassFilter.Q.value = this.props.hpRes/10;
-          // this.moog.resonance = this.props.lpRes/25;
-        }
+        // const hpFilterResChange = () => {
+        //   this.highPassFilter.Q.value = this.props.hpRes/10;
+        //   // this.moog.resonance = this.props.lpRes/25;
+        // }
 
-        const bitBypassChange = () => {
-          this.bitcrusher.bypass = !this.bitcrusher.bypass;
-        //   this.bitcrusher.bypass = this.props.bitCrusherBypass;
-        }
+        // const bitBypassChange = () => {
+        //   this.bitcrusher.bypass = !this.bitcrusher.bypass;
+        // //   this.bitcrusher.bypass = this.props.bitCrusherBypass;
+        // }
 
-        const normFreqChange = () => {
-          this.bitcrusher.normFreq = this.props.normFreq;
-        }
+        // const normFreqChange = () => {
+        //   this.bitcrusher.normFreq = this.props.normFreq;
+        // }
 
-        const bitsChange = () => {
-          this.bitcrusher.curveAmount = this.props.bits/100;
-        }
+        // const bitsChange = () => {
+        //   this.bitcrusher.curveAmount = this.props.bits/100;
+        // }
 
-        const bufferChange = () => {
-          this.bitcrusher.bufferSize = this.props.bufferSize;
-        }
+        // const bufferChange = () => {
+        //   this.bitcrusher.bufferSize = this.props.bufferSize;
+        // }
 
-        const reverbMixChange = () => {
-          this.reverb.wetLevel = this.props.reverbMix/100;
-        }
+        // const reverbMixChange = () => {
+        //   this.reverb.wetLevel = this.props.reverbMix/100;
+        // }
 
-        const delayTimeChange = () => {
-          this.delay.delayTime = this.props.delayTime;
-        }
+        // const delayTimeChange = () => {
+        //   this.delay.delayTime = this.props.delayTime;
+        // }
 
-        const delayMixChange = () => {
-          this.delay.wetLevel = this.props.delayMix/100;
-        }
+        // const delayMixChange = () => {
+        //   this.delay.wetLevel = this.props.delayMix/100;
+        // }
 
-        const model = {
-  path: this.props.song.url,
-  author: this.props.song.artist.name,
-  title: this.props.song.artist.song,
-  playing: this.props.play
-}
+//         const model = {
+//   path: this.props.song.url,
+//   author: this.props.song.artist.name,
+//   title: this.props.song.artist.song,
+//   playing: this.props.play
+// }
 
 
 
@@ -331,7 +400,7 @@ setTimeout(() => {
                 title="Cutoff"
                 defaultValue={this.props.lpCutoff}
                 value={this.props.lpCutoff}
-                onChange={(value) => {this.props.onLpFilterCutoffChange(value, this.props.deckNum), lpFilterCutoffChange()}}
+                onChange={(value) => {this.props.onLpFilterCutoffChange(value, this.props.deckNum)}}
                 min={0}
                 max={16000}
                 angleOffset={180}
@@ -352,7 +421,7 @@ setTimeout(() => {
                 <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                     <h5>HP</h5>
                 <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
-                onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum), hpFilterCutoffChange()}}
+                onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum)}}
                 min={20} max={7000} angleOffset={180}
                 angleArc={270}
                 />
@@ -381,26 +450,15 @@ setTimeout(() => {
 
 
                 <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
-                onChange={(value) => {this.props.onBitChange(value, this.props.deckNum), bitsChange()}}
+                onChange={(value) => {this.props.onBitChange(value, this.props.deckNum)}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={100} angleOffset={180}
+                min={0} max={100} angleOffset={180} clockwise={true}
                 angleArc={270}
                 />
 
 
-
-                {/*<Pot title="CrushBuffer" defaultValue={this.props.bufferSize} value={this.props.bufferSize}
-                onChange={(value) => {this.props.onBufferSizeChange(value, this.props.deckNum), bufferChange()}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={256} max={16384} angleOffset={180}
-                angleArc={270}
-                />*/}
-                {/*<section>
-		<a href="#" id="button">&#x23FB;</a>
-		<span></span>
-	</section>*/}
                 {/*<div>*/}
-                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum), bitBypassChange()}}>&#xF011;</button>
+                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum)}}>&#xF011;</button>
                 <span></span>
                 {/*</div>*/}
                 </div>
@@ -408,7 +466,7 @@ setTimeout(() => {
                 <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                   <h5>Reverb</h5>
                   <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
-                onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum), reverbMixChange()}}
+                onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum)}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={100} angleOffset={180}
                 angleArc={270}
@@ -418,18 +476,22 @@ setTimeout(() => {
                 <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
                   <h5>Delay</h5>
                   <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
-                onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum), delayTimeChange()}}
+                onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum)}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={1000} angleOffset={180}
                 angleArc={270}
                 />
                 <Pot title="Mix" defaultValue={this.props.delayMix} value={this.props.delayMix}
-                onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum), delayMixChange()}}
+                onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum)}}
                 //onChange={(value) => this.lowPassFilter.frequency.value = value}
                 min={0} max={100} angleOffset={180}
                 angleArc={270}
                 />
                 </div>
+
+                {/*<MuiThemeProvider>
+  <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleXFade(value, this.props.deckNum)} defaultValue={this.props.xFade} value={this.props.xFade} axis="x" style={styles.root}/>
+  </MuiThemeProvider>*/}
             </div>
             </div>
             </div>

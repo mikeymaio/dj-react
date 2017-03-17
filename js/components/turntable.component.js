@@ -11,6 +11,7 @@ import ReactPlayer from 'react-player';
 import Fader from './fader.component';
 
 
+
 const styleDeck1 = {
   height: 266,
   width: 266,
@@ -241,7 +242,7 @@ function onStart() {
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                            <Fader className="deckSpeed" axis='y' defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
                         </div>
                     </div>
                 </div>}>
@@ -260,6 +261,55 @@ function onStart() {
 
                 <MuiThemeProvider>
                     <div className="turntable"
+                        style={styleTurntable}
+                        children={<div>
+                                    <Paper
+                                        className={deckClassNames}
+                                        style={styleDeck1}
+                                        zDepth={1}
+                                        rounded={false}
+                                        children={<div>
+                                            <Paper
+                                                className={platterClassNames}
+                                                style={stylePlatter1}
+                                                zDepth={2}
+                                                circle={true}
+                                                children={<div>
+                                                    <ReactPlayer
+                                                        id={this.props.deckNum}
+                                                        ref="player"
+                                                        className="player"
+                                                        //playing={true}
+                                                        url={this.props.song.url}
+                                                        playbackRate={this.props.speed}
+                                                        volume={this.props.volume}
+                                                        playing={this.props.play}
+                                                        hidden={true}
+                                                        width={0}
+                                                        height={0}
+                                                        style={style.player}
+                                                        crossorigin='use-credentials' />
+                                                        <div
+                                                            className="artist-info">
+                                                            <h2 className="artist-name">Artist:
+                                                                {this.props.song.name}
+                                                            </h2>
+                                                        </div>
+
+                                                        <div className="player-cover">
+                                                            <img src={this.props.song.cover} style={styleImg}/>
+                                                        </div>
+
+                                                        <div className="song-info">
+                                                            <h3 className="artist-song-name">Song:
+                                                                {this.props.song.name}
+                                                            </h3>
+                                                        </div>
+                                                    </div>}
+                                                />
+                                            </div>}
+                                        />
+                    {/*<div className="turntable"
                         style={styleTurntable}
                         children={<div>
                                     <Paper
@@ -307,7 +357,7 @@ function onStart() {
                                                     </div>}
                                                 />
                                             </div>}
-                                        />
+                                        />*/}
                     <div className="player-options" style={styleTurntableControls}>
                     <div className="player-buttons player-controls">
                     <div className="container_button2">
@@ -331,7 +381,7 @@ function onStart() {
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                            <Fader className="deckSpeed" axis="y" min={0} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
                         </div>
                     </div>
                 </div>}>

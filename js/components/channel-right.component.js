@@ -6,8 +6,8 @@ import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import Tuna from 'tunajs';
-import classnames from 'classnames';
 
+import classnames from 'classnames';
 // import { startStopSong } from '../actions/index.action';
 // import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
@@ -70,10 +70,10 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
             volume={this.props.volume}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
             startStopSong={this.props.startStopSong}
-            className={turntableClass} />
+            className={turntableClass}/>
           <MuiThemeProvider>
             <Mixer deckNum="_DECK2"
-            className={"mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"}
+            className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
             orientation={this.props.orientation}
             volume={this.props.volume}
             treble={this.props.treble}
@@ -90,6 +90,8 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
          <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
          <MuiThemeProvider>
         <FxSection
+        handleXFade={this.props.handleXFade}
+                xFade={this.props.xFade}
                 audioContext={this.props.audioContext}
                 song={this.props.song}
                 deckNum="_DECK2"
@@ -98,7 +100,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 treble={this.props.treble}
                 mid={this.props.mid}
                 bass={this.props.bass}
-                //handleVolumeChange={this.props.handleVolumeChange}
+                handleVolumeChange={this.props.handleVolumeChange}
                 handleTrebleControl={this.props.handleTrebleControl}
                 handleMidControl={this.props.handleMidControl}
                 handleBassControl={this.props.handleBassControl}
@@ -145,7 +147,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                  </div>
         {/*<div className="container-fluid">
           <MuiThemeProvider>
-            <FxContainer deckNum="_DECK1"
+            <FxContainer deckNum="_deck2"
             filter={this.props.filter}
             reverb={this.props.reverb}
             delay={this.props.delay}
@@ -156,7 +158,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
             handleDistortionChange={this.props.handleDistortionChange}/>
           </MuiThemeProvider>
         </div>*/}
-        {/*<AudioMeter deckNum="_DECK1"/>*/}
+        {/*<AudioMeter deckNum="_deck2"/>*/}
       </div>
     );
   }
@@ -164,6 +166,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
 
 function mapStateToProps(state) {
     return {
+        //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck2.activeSong,
         play: state.decksReducer.deck2.play,
         speed: state.decksReducer.deck2.speed,

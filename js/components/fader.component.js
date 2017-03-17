@@ -17,11 +17,21 @@ const styles = {
 };
 
 class Fader extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         return (
-            <div className="fader col-lg-6 col-md-6 col-sm-6" style={this.props.style}>
-                <Slider sliderStyle={styles.sliderOverRide} style={styles} defaultValue={this.props.defaultValue} min={0} max={1} value={this.props.value} onChange={this.props.onChange} axis='y' />
+           <div className="fader" >
+
+
+                {/*<label for="range">
+                    <input type="range" name="range" id="range" min="0" max="100" step="0.1" value={this.props.value} onChange={this.props.onChange} />
+                </label>*/}
+
+                <Slider id="range" sliderStyle={this.props.style} style={styles} defaultValue={this.props.defaultValue} min={this.props.min} max={this.props.max} value={this.props.value} onChange={this.props.onChange} axis={this.props.axis} />
             </div>
+
         );
     };
 }

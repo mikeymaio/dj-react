@@ -90,6 +90,8 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
          <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
          <MuiThemeProvider>
         <FxSection
+        handleXFade={this.props.handleXFade}
+                xFade={this.props.xFade}
                 audioContext={this.props.audioContext}
                 song={this.props.song}
                 deckNum="_DECK1"
@@ -98,7 +100,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 treble={this.props.treble}
                 mid={this.props.mid}
                 bass={this.props.bass}
-                //handleVolumeChange={this.props.handleVolumeChange}
+                handleVolumeChange={this.props.handleVolumeChange}
                 handleTrebleControl={this.props.handleTrebleControl}
                 handleMidControl={this.props.handleMidControl}
                 handleBassControl={this.props.handleBassControl}
@@ -164,6 +166,7 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
 
 function mapStateToProps(state) {
     return {
+        //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck1.activeSong,
         play: state.decksReducer.deck1.play,
         speed: state.decksReducer.deck1.speed,
