@@ -13,12 +13,12 @@ import classnames from 'classnames';
 import * as actions from '../actions/index.action'
 
 import Playlist from './playlist.container';
-// import Deck from './deck.container';
+
 import Turntable from './turntable.component';
 import Mixer from './mixer.component';
-import FxContainer from './fx-container.component';
+
 import Header from './header.component';
-import FxSection from './fx-section';
+import FxSection from './fx-section.component';
 import Meter from './meter.component';
 
 import Visualizer from './visualizer.component';

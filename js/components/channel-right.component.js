@@ -13,12 +13,12 @@ import classnames from 'classnames';
 import * as actions from '../actions/index.action'
 
 import Playlist from './playlist.container';
-// import Deck from './deck.container';
+
 import Turntable from './turntable.component';
 import Mixer from './mixer.component';
-import FxContainer from './fx-container.component';
+
 import Header from './header.component';
-import FxSection from './fx-section';
+import FxSection from './fx-section.component';
 import Meter from './meter.component';
 
 import Visualizer from './visualizer.component';
@@ -145,19 +145,6 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 />
                  </MuiThemeProvider>
                  </div>
-        {/*<div className="container-fluid">
-          <MuiThemeProvider>
-            <FxContainer deckNum="_deck2"
-            filter={this.props.filter}
-            reverb={this.props.reverb}
-            delay={this.props.delay}
-            distortion={this.props.distortion}
-            handleFilterChange={this.props.handleFilterChange}
-            handleReverbChange={this.props.handleReverbChange}
-            handleDelayChange={this.props.handleDelayChange}
-            handleDistortionChange={this.props.handleDistortionChange}/>
-          </MuiThemeProvider>
-        </div>*/}
         {/*<AudioMeter deckNum="_deck2"/>*/}
       </div>
     );

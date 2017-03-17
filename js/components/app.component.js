@@ -12,7 +12,7 @@ import Header from './header.component';
 import ChannelLeft from './channel-left.component';
 import ChannelRight from './channel-right.component';
 import Playlist from './playlist.container';
-import Crossfader from './crossfader.component';
+
 import Fader from './fader.component';
 
 
@@ -61,20 +61,33 @@ class App extends Component {
     return (
       <div className="container col-lg-11 col-lg-offset-1">
         {/*<Crossfader />*/}
-        <ChannelLeft name="deck1" xFade={this.props.xFade} handleXFade={this.props.handleXFade} orientation="left"/>
-        <ChannelRight name="deck2" xFade={this.props.xFade} handleXFade={this.props.handleXFade} orientation="right"/>
+        <ChannelLeft 
+          name="deck1"
+          xFade={this.props.xFade}
+          handleXFade={this.props.handleXFade}
+          orientation="left"
+          />
+        <ChannelRight
+          name="deck2"
+          xFade={this.props.xFade}
+          handleXFade={this.props.handleXFade}
+          orientation="right"
+          />
         <div className="container col-lg-8 col-lg-offset-1 col-md-2 col-md-offset-5 col-sm-2 col-sm-offset-4 col-xs-2 col-xs-offset-4">
-<div style={styles.crossfader}>
-<MuiThemeProvider>
-  <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" min={0} max={1} onChange={(event, value) => this.props.handleXFade(value, this.props.deckNum)} defaultValue={this.props.xFade} value={this.props.xFade} axis="x" style={styles.root}/>
-  </MuiThemeProvider>
-  </div>
-
-          {/*<div style={styles.crossfader}>
-                <MuiThemeProvider>
-                <Crossfader id="crossfader" className="crossfader" defaultValue={this.props.xFade} value={this.props.xFade} onChange={(value) =>{this.props.handleXFade(value)}} style={styles.root}/>
-                  </MuiThemeProvider>
-            </div>*/}
+        <div style={styles.crossfader}>
+          <MuiThemeProvider>
+            <Fader 
+              className="channelFader col-lg-1 col-md-1 col-sm-6"
+              min={0}
+              max={1}
+              onChange={(event, value) => this.props.handleXFade(value, this.props.deckNum)}
+              defaultValue={this.props.xFade}
+              value={this.props.xFade}
+              axis="x"
+              style={styles.root}
+              />
+          </MuiThemeProvider>
+        </div>
           <MuiThemeProvider>
             <Playlist />
           </MuiThemeProvider>

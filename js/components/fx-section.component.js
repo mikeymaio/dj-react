@@ -12,12 +12,12 @@ import Tuna from 'tunajs';
 // import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
 
-import Playlist from './playlist.container';
-// import Deck from './deck.container';
-import Turntable from './turntable.component';
-import Mixer from './mixer.component';
-import FxContainer from './fx-container.component';
-import Header from './header.component';
+// import Playlist from './playlist.container';
+
+// import Turntable from './turntable.component';
+// import Mixer from './mixer.component';
+
+
 import Fader from './fader.component';
 
 import Pot from './knob.component';

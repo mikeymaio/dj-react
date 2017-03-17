@@ -137,7 +137,7 @@ const deckState = {
             distortion: 0,
         },
         deck2: {
-            activeSong: playlistState.playlist[2],
+            activeSong: playlistState.playlist[1],
             play: false,
             progress: 0,
             volume: 0.8,

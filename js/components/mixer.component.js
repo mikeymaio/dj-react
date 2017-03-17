@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import Fader from './fader.component';
 import Pot from './knob.component';
 import Meter from './meter.component';
-import Deck from './deck.container';
+import Turntable from './turntable.component';
 // import { handleVolumeChange } from '../actions/index.action';
 // import { handleTrebleControl } from '../actions/index.action';
 // import { handleMidControl } from '../actions/index.action';
@@ -176,7 +176,7 @@ class Mixer extends React.Component {
                 />
             </div>
             <div className="meter col-lg-6 col-md-6 col-sm-6" style={styles.meterDiv}>
-                <Meter title="Meter" audioContext={TEST} style={styles.meter} command='start' src={<Deck />} width={200} height={1} />
+                <Meter title="Meter" audioContext={TEST} style={styles.meter} command='start' src={<Turntable />} width={200} height={1} />
             </div>
             </div>
             <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={styles.volumeFader}>
