@@ -15,6 +15,8 @@ import Playlist from './playlist.container';
 
 import Fader from './fader.component';
 
+import SearchTest from './search-test';
+
 
 const styles = {
   //   root: {
@@ -63,6 +65,9 @@ class Table extends Component {
     // var audioContext2 = new AudioContext();
     return (
       <div className="container col-lg-12 col-lg-offset-1">
+        <MuiThemeProvider>
+        <SearchTest />
+        </MuiThemeProvider>
         {/*<Crossfader />*/}
         <ChannelLeft 
           audioContext={this.props.audioContext}

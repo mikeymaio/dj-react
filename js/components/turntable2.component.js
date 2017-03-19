@@ -4,6 +4,10 @@ import classnames from 'classnames';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/index.action'
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
 import ReactPlayer from 'react-player';
@@ -183,7 +187,7 @@ const style = {
     height: 250,
     width: 250,
     margin: 'auto',
-    marginTop: '25%',
+    marginTop: '20%',
     backgroundColor: 'white',
     textAlign: 'center',
     display: 'block',
@@ -204,11 +208,27 @@ function onStart() {
     let decks = document.getElementsByClassName('platter')
     decks.classList.add('spin-platter');
     }
-}
 
 
+
+
+        // this.xFade.gain.value = crossfade(this.props.xFade, deckNum);
+    }
 
     render() {
+
+        const deckNum = this.props.deckNum;
+
+        function crossfade(value, deckNum) {
+    
+     // equal-power crossfade
+            if (deckNum === '_DECK1') {
+
+                return Math.cos(value * 0.5*Math.PI);
+            } else {
+                return Math.cos((1.0-value) * 0.5*Math.PI);
+             }
+         }
 
         let startStopClass = classnames('startStopButton2', {'active': this.props.play});
         let deckClassNames = classnames(this.props.deckNum)
@@ -222,7 +242,7 @@ function onStart() {
                     rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true}
                     children={<div className="player-container">
                         <h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
-                    <div className="player-options" style={styleTurntableControls}>
+                     <div className="player-options" style={styleTurntableControls}>
                     <div className="player-buttons player-controls">
                     <div className="container_button2">
                             <div className="hole2">
@@ -280,6 +300,7 @@ function onStart() {
                                                 children={<div className="drop_zone" 
                                                 //onDrop="drop_handler(event)" onDragOver="dragover_handler(event)" 
                                                 >
+                                                {/*<VideoDetail video={this.props.video}/>*/}
                                                     <ReactPlayer
                                                         id={this.props.deckNum}
                                                         ref="player"
@@ -287,29 +308,29 @@ function onStart() {
                                                         //playing={true}
                                                         url={this.props.song.url}
                                                         playbackRate={this.props.speed}
-                                                        volume={this.props.volume}
+                                                        volume={crossfade(this.props.xFade, deckNum)}
                                                         playing={this.props.play}
                                                         hidden={true}
-                                                        width={0}
-                                                        height={0}
+                                                        width={150}
+                                                        height={150}
                                                         style={style.player}
                                                         crossorigin='use-credentials' />
                                                         <div
                                                             className="artist-info">
-                                                            <h2 className="artist-name">Artist:
-                                                                {this.props.song.name}
-                                                            </h2>
+                                                            <h4 className="artist-name">Artist:
+                                                                {this.props.song.title}
+                                                            </h4>
                                                         </div>
 
                                                         <div className="player-cover">
                                                             <img src={this.props.song.cover} style={styleImg}/>
                                                         </div>
 
-                                                        <div className="song-info">
-                                                            <h3 className="artist-song-name">Song:
+                                                        {/*<div className="song-info">
+                                                            <h4 className="artist-song-name">Song:
                                                                 {this.props.song.name}
                                                             </h3>
-                                                        </div>
+                                                        </div>*/}
                                                     </div>}
                                                 />
                                             </div>}
@@ -386,7 +407,7 @@ function onStart() {
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" axis="y" min={0} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                            <Fader className="deckSpeed" axis="y" min={0.13} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
                         </div>
                     </div>
                 </div>}>
@@ -397,6 +418,63 @@ function onStart() {
         )
     }
 }
+
+// function mapStateToProps(state) {
+//     return {
+//         //xFade: state.decksReducer.xFade,
+//         song: state.decksReducer.deck1.activeSong,
+//         play: state.decksReducer.deck1.play,
+//         speed: state.decksReducer.deck1.speed,
+//         volume: state.decksReducer.deck1.volume,
+//         treble: state.decksReducer.deck1.treble,
+//         mid: state.decksReducer.deck1.mid,
+//         bass: state.decksReducer.deck1.bass,
+//         //lpFilterBypass: state.decksReducer.deck1.lpFilterBypass,
+//         lpFilterCutoff: state.decksReducer.deck1.lpFilterCutoff,
+//         lpFilterRes: state.decksReducer.deck1.lpFilterRes,
+//         //hpFilterBypass: state.decksReducer.deck1.hpFilterBypass,
+//         hpFilterCutoff: state.decksReducer.deck1.hpFilterCutoff,
+//         hpFilterRes: state.decksReducer.deck1.hpFilterRes,
+//         //reverbBypass: state.decksReducer.deck1.reverbBypass,
+//         reverbMix: state.decksReducer.deck1.reverbMix,
+//         delay: state.decksReducer.deck1.delay,
+//         distortion: state.decksReducer.deck1.distortion,
+//         bitCrusherBypass: state.decksReducer.deck1.bitCrusherBypass,
+//         bits: state.decksReducer.deck1.bits,
+//         normFreq: state.decksReducer.deck1.normFreq,
+//         bufferSize: state.decksReducer.deck1.bufferSize,
+//         //delayBypass: state.decksReducer.deck1.delayBypass,
+//         delayTime: state.decksReducer.deck1.delayTime,
+//         delayMix: state.decksReducer.deck1.delayMix,
+//     };
+// }
+
+// function mapDispatchToProps(dispatch) {
+//     return bindActionCreators({
+//         handlePlaybackSpeed: actions.handlePlaybackSpeed,
+//         startStopSong: actions.startStopSong,
+//         handleVolumeChange: actions.handleVolumeChange,
+//         handleTrebleControl: actions.handleTrebleControl,
+//         handleMidControl: actions.handleMidControl,
+//         handleBassControl: actions.handleBassControl,
+//         handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
+//         handleLpFilterResChange: actions.handleLpFilterResChange,
+//         handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
+//         handleHpFilterResChange: actions.handleHpFilterResChange,
+//         handleReverbMixChange: actions.handleReverbMixChange,
+//         handleDelayChange: actions.handleDelayChange,
+//         handleDistortionChange: actions.handleDistortionChange,
+//         handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
+//         handleBitChange: actions.handleBitChange,
+//         handleNormFreqChange: actions.handleNormFreqChange,
+//         handleBufferSizeChange: actions.handleBufferSizeChange,
+//         handleDelayTimeChange: actions.handleDelayTimeChange,
+//         handleDelayMixChange: actions.handleDelayMixChange,
+//         },
+//         dispatch);
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Turntable);
 
 export default Turntable;
 

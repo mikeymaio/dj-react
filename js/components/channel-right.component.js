@@ -14,7 +14,7 @@ import * as actions from '../actions/index.action'
 
 import Playlist from './playlist.container';
 
-import Turntable from './turntable.component';
+import Turntable from './turntable2.component';
 import Mixer from './mixer.component';
 
 import Header from './header.component';
@@ -63,12 +63,14 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
             className="container-fluid tt-mixer-container"
             style={styles.tt_mixer}>
           <Turntable
+            xFade={this.props.xFade}
             deckNum="_DECK2"
             song={this.props.song}
             play={this.props.play}
             speed={this.props.speed}
             volume={this.props.volume}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
+            handleXfade={this.props.handleXfade}
             startStopSong={this.props.startStopSong}
             className={turntableClass}/>
           <MuiThemeProvider>

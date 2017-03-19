@@ -12,7 +12,7 @@ const playing = state.decksReducer.deck1.play
 var test = new Audio();
 
 test.src = '/assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3';
-test.autoplay = true;
+test.autoplay = false;
 test.crossOrigin = 'anonymous';
 test.controls = true;
 

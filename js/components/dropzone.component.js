@@ -6,6 +6,8 @@ import {bindActionCreators} from 'redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 var Dropzone = require('react-dropzone');
 
+import FileReaderInput from 'react-file-reader-input';
+
 
 const styles = {
     playlist: {
@@ -35,9 +37,29 @@ var DropzoneDemo = React.createClass({
         };
     },
 
+     handleChange(e, results) {
+    results.forEach(result => {
+      const [e, file] = result;
+      let upload = {
+          url: file.preview,
+          name: file.name,
+          cover: file.cover || null,
+          format: file.type,
+          size: file.size,
+      }
+      this.setState({
+        files: [...this.state.files, upload]
+      });
+      console.log('result= ', result);
+      console.log('file= ', file);
+      this.props.handleSongUpload(upload);
+      console.log(`Successfully uploaded ${file.name}!`);
+    })
+     },
+
 onDrop(acceptedFiles, rejectedFiles) {
 
-
+//var file = URL.createObjectURL(acceptedFiles[0]);
       let upload = {
           url: acceptedFiles[0].preview,
           name: acceptedFiles[0].name,
@@ -47,10 +69,11 @@ onDrop(acceptedFiles, rejectedFiles) {
       }
       console.log('upload = ', upload);
       this.setState({
-        files: [...this.state.files, upload]
+        files: [...this.state.files, acceptedFiles[0]]
       });
-      console.log('state = ', this.state);
-    handleSongUpload(upload);
+      
+    //handleSongUpload(upload);
+    console.log('state = ', this.state);
     },
 
  renderList() {
@@ -71,10 +94,12 @@ onDrop(acceptedFiles, rejectedFiles) {
         });
 },
     render () {
+
+       
         return (
             <div className="list-group">
                  <div>
-                <div className="left list-group-item" style={{"display": "inline-block"}}>
+                <div id="list" className="left list-group-item" style={{"display": "inline-block"}}>
                     {/*<h5>Playlist</h5>*/}
                     {this.renderList()}
                 </div>
@@ -83,6 +108,13 @@ onDrop(acceptedFiles, rejectedFiles) {
                 <Dropzone ref="dropzone" style={{display: "inline-block", height: "100%"}} onDrop={this.onDrop} >
                     <div>Drop files here to build a set list</div>
                 </Dropzone>
+                {/*<form>
+        <label htmlFor="my-file-input">Upload a File:</label>
+        <FileReaderInput as="buffer" id="my-file-input"
+                         onChange={this.handleChange}>
+          <button onClick={(e) => e.preventDefault()} >Select a file!</button>
+        </FileReaderInput>
+      </form>*/}
                 </div>
             </div>
         );

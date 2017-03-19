@@ -7,12 +7,17 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 // import Dropzone from 'react-dropzone';
 import DropzoneDemo from './dropzone.component';
 
+import FileReader from './file-reader.component';
+
 import classnames from 'classnames';
 
 
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+
+import SearchBar from './search-bar.component';
+import VideoList from './video-list.component';
 
 
 const styles = {
@@ -103,6 +108,13 @@ onDrop(acceptedFiles, rejectedFiles) {
 
         <div id="playlist" className={playlistContainer}>
            <div id="nav" className={playlistClass}>
+               {/*<SearchBar onSearchTermChange={videoSearch}/>
+            <VideoList
+                videos={this.state.videos}
+                onVideoSelect={selectedVideo => {this.setState({selectedVideo}), console.log(selectedVideo)}} />*/}
+
+                
+               {/*<FileReader />*/}
                 <DropzoneDemo>
                 </DropzoneDemo>
                 {/*<Dropzone

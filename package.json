@@ -74,6 +74,7 @@
     "react-canvas-knob": "^0.3.0",
     "react-dom": "^15.3.1",
     "react-dropzone": "^3.12.0",
+    "react-file-reader-input": "^1.1.0",
     "react-music": "^1.0.2",
     "react-player": "^0.14.3",
     "react-redux": "^4.4.5",
@@ -81,6 +82,7 @@
     "react-volume-meter": "^1.1.3",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "tunajs": "^1.0.0"
+    "tunajs": "^1.0.0",
+    "youtube-api-search": "0.0.5"
   }
 }

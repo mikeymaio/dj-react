@@ -344,162 +344,119 @@ class FxSection extends React.Component {
                 name={this.props.name}
                 className="fx-container container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12"
                 style={styles.fxsection}>
-                 {/*<div>*/}
-            <div style={styles.knob}>
-{/*
-            <h4>Osc Controls</h4>
-            <div>
-            <button onClick={handleStart} > Start </button>
-            <button onClick={handleStop} > Stop </button>
-            </div>
-            <button onClick={() => {this.oscillator.type = 'sine'}} > Sine </button>
-            <button onClick={() => {this.oscillator.type = 'sawtooth'}} > Saw </button>
-            <button onClick={() => {this.oscillator.type = 'square'}} > Square </button>
-            <button onClick={() => {this.oscillator.type = 'triangle'}} > Tri </button>*/}
-
-        {/*<div>*/}
-    {/*<div className="eq-section">
-        <Pot
-            title="High"
-            value={this.props.treble}
-            onChange={(value) => {this.props.handleTrebleControl(value, this.props.deckNum), trebleChange()}}
-            min={-9}
-            max={9}
-            angleOffset={180}
-            angleArc={270}
-        />
-         <Pot
-            title="Mid"
-            value={this.props.mid}
-            onChange={(value) => {this.props.handleMidControl(value, this.props.deckNum), midChange()}}
-            min={-9}
-            max={9}
-            angleOffset={180}
-            angleArc={270}
-        />
-        <Pot
-            title="Low"
-            value={this.props.bass}
-            onChange={(value) => {this.props.handleBassControl(value, this.props.deckNum), bassChange()}}
-            min={-9}
-            max={9}
-            angleOffset={180}
-            angleArc={270}
-        />
-        </div>*/}
-        {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}
+                {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}
 
 
-        {/*<VolumeMeter audioContext={this.props.audioContext} width={300} height={200} command='start' style={styles.meter} />*/}
-        <div className="row">
-            <div className="container">
-                {/*<canvas id="analyser_render" style={{width: 500, height: 10}} />*/}
-              {/*<div
-              className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
-              style={{"display": "inline-block"}}>*/}
-                {/*<h4> Filters</h4>*/}
-                <div className="lpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                   <h5>LP</h5>
-                <Pot
-                title="Cutoff"
-                defaultValue={this.props.lpCutoff}
-                value={this.props.lpCutoff}
-                onChange={(value) => {this.props.onLpFilterCutoffChange(value, this.props.deckNum)}}
-                min={0}
-                max={16000}
-                angleOffset={180}
-                angleArc={270}
-                />
-                {/*<p>LP</p>*/}
-                {/*<Pot
-                title="LP Res"
-                defaultValue={this.props.lpRes}
-                value={this.props.lpRes}
-                onChange={(value) => {this.props.onLpFilterResChange(value, this.props.deckNum), lpFilterResChange()}}
-                min={0}
-                max={100}
-                angleOffset={180}
-                angleArc={270}
-                />*/}
+                {/*<VolumeMeter audioContext={this.props.audioContext} width={300} height={200} command='start' style={styles.meter} />*/}
+
+                <div style={styles.knob}>
+
+
+                <div className="row">
+                    <div className="container">
+                        {/*<canvas id="analyser_render" style={{width: 500, height: 10}} />*/}
+                    {/*<div
+                    className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                    style={{"display": "inline-block"}}>*/}
+                        {/*<h4> Filters</h4>*/}
+                        <div className="lpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <h5>LP</h5>
+                        <Pot
+                        title="Cutoff"
+                        defaultValue={this.props.lpCutoff}
+                        value={this.props.lpCutoff}
+                        onChange={(value) => {this.props.onLpFilterCutoffChange(value, this.props.deckNum)}}
+                        min={0}
+                        max={16000}
+                        angleOffset={180}
+                        angleArc={270}
+                        />
+                        {/*<p>LP</p>*/}
+                        {/*<Pot
+                        title="LP Res"
+                        defaultValue={this.props.lpRes}
+                        value={this.props.lpRes}
+                        onChange={(value) => {this.props.onLpFilterResChange(value, this.props.deckNum), lpFilterResChange()}}
+                        min={0}
+                        max={100}
+                        angleOffset={180}
+                        angleArc={270}
+                        />*/}
+                        </div>
+                        <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                            <h5>HP</h5>
+                        <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
+                        onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum)}}
+                        min={20} max={7000} angleOffset={180}
+                        angleArc={270}
+                        />
+                        {/*<p>HP</p>*/}
+                        {/*<Pot
+                        title="HP Res"
+                        defaultValue={this.props.hpRes}
+                        value={this.props.hpRes}
+                        onChange={(value) => {this.props.onHpFilterResChange(value, this.props.deckNum), hpFilterResChange()}}
+                        min={0}
+                        max={100}
+                        angleOffset={180}
+                        angleArc={270}
+                        />*/}
+                        {/*</div>*/}
+                        </div>
+                        <div className="distortion-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <h5>Crush</h5>
+
+                        {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
+                        onChange={(value) => {this.props.onNormFreqChange(value, this.props.deckNum), normFreqChange()}}
+                        //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        min={0} max={100} angleOffset={180}
+                        angleArc={270}
+                        />*/}
+
+
+                        <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
+                        onChange={(value) => {this.props.onBitChange(value, this.props.deckNum)}}
+                        //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        min={0} max={100} angleOffset={180} clockwise={true}
+                        angleArc={270}
+                        />
+
+
+                        {/*<div>*/}
+                        <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum)}}>&#xF011;</button>
+                        <span></span>
+                        {/*</div>*/}
+                        </div>
+
+                        <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <h5>Reverb</h5>
+                        <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
+                        onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum)}}
+                        //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        min={0} max={100} angleOffset={180}
+                        angleArc={270}
+                        />
+                        </div>
+
+                        <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <h5>Delay</h5>
+                        <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
+                        onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum)}}
+                        //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        min={0} max={1000} angleOffset={180}
+                        angleArc={270}
+                        />
+                        <Pot title="Mix" defaultValue={this.props.delayMix} value={this.props.delayMix}
+                        onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum)}}
+                        //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        min={0} max={100} angleOffset={180}
+                        angleArc={270}
+                        />
+                        </div>
+                    </div>
                 </div>
-                <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                    <h5>HP</h5>
-                <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
-                onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum)}}
-                min={20} max={7000} angleOffset={180}
-                angleArc={270}
-                />
-                {/*<p>HP</p>*/}
-                {/*<Pot
-                title="HP Res"
-                defaultValue={this.props.hpRes}
-                value={this.props.hpRes}
-                onChange={(value) => {this.props.onHpFilterResChange(value, this.props.deckNum), hpFilterResChange()}}
-                min={0}
-                max={100}
-                angleOffset={180}
-                angleArc={270}
-                />*/}
-                {/*</div>*/}
-                </div>
-                <div className="distortion-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h5>Crush</h5>
-
-                {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
-                onChange={(value) => {this.props.onNormFreqChange(value, this.props.deckNum), normFreqChange()}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={100} angleOffset={180}
-                angleArc={270}
-                />*/}
-
-
-                <Pot title="Crush" defaultValue={this.props.bits} value={this.props.bits}
-                onChange={(value) => {this.props.onBitChange(value, this.props.deckNum)}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={100} angleOffset={180} clockwise={true}
-                angleArc={270}
-                />
-
-
-                {/*<div>*/}
-                <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum)}}>&#xF011;</button>
-                <span></span>
-                {/*</div>*/}
-                </div>
-
-                <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h5>Reverb</h5>
-                  <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
-                onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum)}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={100} angleOffset={180}
-                angleArc={270}
-                />
-                </div>
-
-                <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
-                  <h5>Delay</h5>
-                  <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
-                onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum)}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={1000} angleOffset={180}
-                angleArc={270}
-                />
-                <Pot title="Mix" defaultValue={this.props.delayMix} value={this.props.delayMix}
-                onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum)}}
-                //onChange={(value) => this.lowPassFilter.frequency.value = value}
-                min={0} max={100} angleOffset={180}
-                angleArc={270}
-                />
-                </div>
-
-                {/*<MuiThemeProvider>
-  <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" onChange={(event, value) => this.props.handleXFade(value, this.props.deckNum)} defaultValue={this.props.xFade} value={this.props.xFade} axis="x" style={styles.root}/>
-  </MuiThemeProvider>*/}
             </div>
-            </div>
-            </div>
-            </div>
+        </div>
         )
     }
 }
