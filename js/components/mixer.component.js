@@ -53,7 +53,7 @@ const styles = {
   volumeFader: {
     // marginLeft: 1,
     position: 'absolute',
-    bottom: 35,
+    bottom: 20,
     backgroundColor: 'black',
     border: '5px solid silver',
     paddingBottom: 50,
@@ -66,7 +66,7 @@ const styles = {
     mixer: {
     display: 'inline-block',
     position: 'relative',
-    height: 414,
+    height: 390,
     width: '30%',
     background: 'black',
     marginTop: 20,
@@ -87,9 +87,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     // justifyContent: 'space-around',
-    marginTop: 10,
-    marginLeft: -5,
-    height: 200
+    marginTop: 5,
+    marginLeft: 0,
+    height: 180
   },
 //   meter: {
 //     display: 'flex',
@@ -109,8 +109,8 @@ meterDiv: {
     // flexDirection: 'column',
     justifyContent: 'space-around',
       transform: 'rotate(-90deg)',
-      marginTop: 90,
-      marginLeft: 10,
+      marginTop: 85,
+      marginLeft: 0,
       height: 30,
   }
 };

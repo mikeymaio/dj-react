@@ -9,7 +9,7 @@ const titleStyle = {
     color: '#009ab2',
     fontSize: 40,
     textAlign: 'center',
-    marginRight: 65,
+    //marginRight: 65,
 }
 
 const Header = () => (

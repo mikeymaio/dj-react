@@ -25,7 +25,7 @@ import Pot from './knob.component';
 
 import Visualizer from './visualizer.component';
 
-import VolumeMeter from './volume-meter';
+
 
 
 
@@ -44,6 +44,7 @@ const styles = {
     // width: '100%',
   },
     fxsection: {
+        display: 'flex',
     backgroundColor: "black",
     backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
@@ -347,19 +348,14 @@ class FxSection extends React.Component {
                 {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}
 
 
-                {/*<VolumeMeter audioContext={this.props.audioContext} width={300} height={200} command='start' style={styles.meter} />*/}
-
                 <div style={styles.knob}>
 
 
                 <div className="row">
                     <div className="container">
-                        {/*<canvas id="analyser_render" style={{width: 500, height: 10}} />*/}
-                    {/*<div
-                    className="filter-section col-lg-4 col-md-4 col-sm-4 col-xs-4"
-                    style={{"display": "inline-block"}}>*/}
+
                         {/*<h4> Filters</h4>*/}
-                        <div className="lpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <div className="lpFilter effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
                         <h5>LP</h5>
                         <Pot
                         title="Cutoff"
@@ -383,7 +379,7 @@ class FxSection extends React.Component {
                         angleArc={270}
                         />*/}
                         </div>
-                        <div className="hpFilter effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <div className="hpFilter effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
                             <h5>HP</h5>
                         <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
                         onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum)}}
@@ -403,7 +399,7 @@ class FxSection extends React.Component {
                         />*/}
                         {/*</div>*/}
                         </div>
-                        <div className="distortion-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <div className="distortion-section effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
                         <h5>Crush</h5>
 
                         {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
@@ -428,7 +424,7 @@ class FxSection extends React.Component {
                         {/*</div>*/}
                         </div>
 
-                        <div className="reverb-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <div className="reverb-section effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
                         <h5>Reverb</h5>
                         <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
                         onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum)}}
@@ -438,7 +434,7 @@ class FxSection extends React.Component {
                         />
                         </div>
 
-                        <div className="delay-section effect col-lg-2 col-md-2 col-sm-2 col-xs-2" style={{"display": "inline-block"}}>
+                        <div className="delay-section effect col-lg-3 col-md-3 col-sm-3 col-xs-3" style={{"display": "inline-block"}}>
                         <h5>Delay</h5>
                         <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
                         onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum)}}

@@ -16,13 +16,13 @@ injectTapEventPlugin();
 
 ReactDOM.render(
   <Provider store={store}>
-    <div>
-            <div className="row">
+    {/*<div>*/}
+            {/*<div className="row">
         <MuiThemeProvider>
           <Header />
         </MuiThemeProvider>
-        </div>
+        </div>*/}
     <App />
-    </div>
+    {/*</div>*/}
   </Provider>
   , document.getElementById('app'));

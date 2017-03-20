@@ -14,7 +14,6 @@ import ReactPlayer from 'react-player';
 
 import Fader from './fader.component';
 
-import VideoDetail from './video-detail.component';
 
 
 
@@ -22,7 +21,7 @@ const styleDeck1 = {
   height: 266,
   width: 266,
   //margin: 20,
-  marginTop: 40,
+  marginTop: 20,
   // float: 'left',
   backgroundColor: '#1f1f1f',
   textAlign: 'center',
@@ -40,83 +39,51 @@ const styleDeck1 = {
     webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     boxShadow: 'iinset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-    // backgroundImage: 'url(\'assets/images/turntable_top.jpg\')',
-    // backgroundSize: 'cover',
 };
 
 const styleImg = {
   height: '100%',
   width: '100%',
-  //margin: 20,
-//   marginBottom: 30,
-  // float: 'left',
-//   backgroundColor: '#1f1f1f',
   textAlign: 'center',
   borderRadius: '100%',
-  //marginLeft: '25%',
-  //display: 'inline-block',
-  //margin: 'auto',
+
 };
 
 const stylePlatter1 = {
   height: 250,
   width: 250,
   margin: 'auto',
-//   marginTop: 40,
   backgroundColor: 'white',
-//   backgroundImage: 'url(\'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerframeworks.com%2Fseries%2FSG%2F022%2Fsg022_0400_1.gif&f=1\')',
-//   backgroundSize: 'cover',
   textAlign: 'center',
   display: 'block',
-//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     webKitBorderRadius: 250,
     MozBorderRadius: 250,
     borderRadius: 250,
     marginTop: 8,
-    // webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
-    // MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
-    // boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
     boxShadow: '1px 1px 1px 1px #1f1f1f , -1px 1px 1px 1px #1f1f1f , 1px -1px 1px 1px #1f1f1f , -1px -1px 1px 1px #1f1f1f , 3px 3px 3px 3px #3a3a3a, -3px 3px 3px 3px #3a3a3a, 3px -3px 3px 3px #3a3a3a, -3px -3px 3px 3px #3a3a3a',
-    // display: 'none'
 };
 
 const styleTurntableContainer = {
-//   float: 'left',
-  height: '100%',
+  height: '90%',
   width: '70%',
   margin: 0,
   marginTop: 10,
+  marginBottom: 25,
   textAlign: 'center',
   display: 'inline-block',
-//   backgroundColor: '#1f1f1f',
     padding: 0,
-  paddingBottom: 450,
-//   border: '2px solid #00bcd4'
-// paddingRight: 0,
-// marginRight: -2
 };
 
 const styleTurntable = {
   float: 'left',
-  height: 350,
+  height: '100%',
   width: '100%',
   margin: 0,
   marginTop: 10,
   textAlign: 'center',
   display: 'inline-block',
   backgroundColor: '#1f1f1f',
-  paddingBottom: 410,
-
-    // borderBottom:'10px solid #0c0c0c',
-    // borderRight:'2px solid #090909',
-    // borderRadius:'1px',
-    // WebkitBorderRadius:'1px',
-    // MozBorderRadius:'1px',
-
+  paddingBottom: 380,
 
     backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
@@ -133,14 +100,8 @@ const styleTurntable = {
 };
 
 const styleTurntableControls = {
-//   float: 'right',
-  //textAlign: 'center',
-  //display: 'inline-block',
-  //backgroundColor: '#444444',
-  //paddingBottom: 8,
-  //marginLeft: 0
   width: '100%',
-  height: 100
+  height: 90
 };
 
 const styleStartStopBtn = {
@@ -160,12 +121,13 @@ const style = {
     // // height: 124,
     // flexDirection: 'row',
     justifyContent: 'space-around',
-    height: 80,
-    marginBottom: 40,
+    height: 75,
+    marginBottom: 10,
     // marginLeft: 500,
     },
   deckSpeed: {
       marginBottom: 15,
+      marginLeft: '-12px',
     //   marginRight: 5,
     //   float: 'right',
       color: '#009ab2',
@@ -179,13 +141,13 @@ const style = {
     //marginRight: 50,
     //marginBottom: 100,
     position: 'absolute',
-    bottom: 10,
-    left: '75%'
+    bottom: 0,
+    left: '80%'
   },
   player: {
     borderRadius: '50%',
-    height: 250,
-    width: 250,
+    // height: 250,
+    // width: 250,
     margin: 'auto',
     marginTop: '20%',
     backgroundColor: 'white',
@@ -202,7 +164,7 @@ class Turntable extends React.Component {
         this.state = {
         inputValue: 1
     }
-    
+
 function onStart() {
     //this.props.startStopSong(this.props.deckNum)
     let decks = document.getElementsByClassName('platter')
@@ -210,9 +172,6 @@ function onStart() {
     }
 
 
-
-
-        // this.xFade.gain.value = crossfade(this.props.xFade, deckNum);
     }
 
     render() {
@@ -220,7 +179,7 @@ function onStart() {
         const deckNum = this.props.deckNum;
 
         function crossfade(value, deckNum) {
-    
+
      // equal-power crossfade
             if (deckNum === '_DECK1') {
 
@@ -247,20 +206,10 @@ function onStart() {
                     <div className="container_button2">
                             <div className="hole2">
                                 <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
-                                    {/*<img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />*/}
                                     &#xf04b; &#xf04c;
                                 </div>
                             </div>
                         </div>
-                        {/*<div className="container_button">
-                            <div className="hole">
-                                <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
-                                    <div className="triangle" ></div>
-                                    <div className="lighter_triangle"></div>
-                                    <div className="darker_triangle"></div>
-                                </div>
-                            </div>
-                        </div>*/}
                         </div>
                         <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                         style={style.speedControl}>
@@ -297,8 +246,9 @@ function onStart() {
                                                 style={stylePlatter1}
                                                 zDepth={2}
                                                 circle={true}
-                                                children={<div className="drop_zone" 
-                                                //onDrop="drop_handler(event)" onDragOver="dragover_handler(event)" 
+                                                children={<div className="drop_zone"
+                                                //onDrop="drop_handler(event)"
+                                                //onDragOver="dragover_handler(event)"
                                                 >
                                                 {/*<VideoDetail video={this.props.video}/>*/}
                                                     <ReactPlayer
@@ -315,12 +265,12 @@ function onStart() {
                                                         height={150}
                                                         style={style.player}
                                                         crossorigin='use-credentials' />
-                                                        <div
+                                                        {/*<div
                                                             className="artist-info">
                                                             <h4 className="artist-name">Artist:
                                                                 {this.props.song.title}
                                                             </h4>
-                                                        </div>
+                                                        </div>*/}
 
                                                         <div className="player-cover">
                                                             <img src={this.props.song.cover} style={styleImg}/>

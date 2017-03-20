@@ -16,8 +16,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import SearchBar from './search-bar.component';
-import VideoList from './video-list.component';
+// import SearchBar from './search-bar.component';
+// import VideoList from './video-list.component';
 
 
 const styles = {
@@ -101,19 +101,14 @@ onDrop(acceptedFiles, rejectedFiles) {
           <RaisedButton
                     style={styles.button}
                     label="Playlist"
-                    className='col-lg-5 col-lg-offset-2 slider playlistBtn'
+                    className='col-lg-6 col-lg-offset-3 slider playlistBtn'
                     id="bot"
                     onTouchTap={() => this.setState({open: !this.state.open, clicked: true})}
                 />
 
         <div id="playlist" className={playlistContainer}>
            <div id="nav" className={playlistClass}>
-               {/*<SearchBar onSearchTermChange={videoSearch}/>
-            <VideoList
-                videos={this.state.videos}
-                onVideoSelect={selectedVideo => {this.setState({selectedVideo}), console.log(selectedVideo)}} />*/}
 
-                
                {/*<FileReader />*/}
                 <DropzoneDemo>
                 </DropzoneDemo>

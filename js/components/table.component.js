@@ -15,7 +15,7 @@ import Playlist from './playlist.container';
 
 import Fader from './fader.component';
 
-import SearchTest from './search-test';
+import Search from './search.component';
 
 
 const styles = {
@@ -46,13 +46,13 @@ const styles = {
   crossfader: {
     height: 5,
     // width: 276,
-    width: '50%',
+    width: '60%',
     border: '1px solid #E3DEDB',
     backgroundColor: 'black',
     position: "absolute",
-    bottom: 255,
+    bottom: 210,
     //left: '31.25%',
-    left: '8.3%',
+    left: '20%',
     paddingTop: 0,
     paddingBottom: 30,
   },
@@ -64,9 +64,9 @@ class Table extends Component {
     //var audioContext1 = new AudioContext();
     // var audioContext2 = new AudioContext();
     return (
-      <div className="container col-lg-12 col-lg-offset-1">
+      <div className="container col-lg-10 col-lg-offset-1" >
         <MuiThemeProvider>
-        <SearchTest />
+        <Search />
         </MuiThemeProvider>
         {/*<Crossfader />*/}
         <ChannelLeft 

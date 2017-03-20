@@ -22,7 +22,7 @@ import FxSection from './fx-section.component';
 import Meter from './meter.component';
 
 import Visualizer from './visualizer.component';
-import AudioMeter from './volMeter.component';
+
 
 import Pot from './knob.component';
 
@@ -32,7 +32,7 @@ import Pot from './knob.component';
 
 const styles = {
   tt_mixer: {
-    height: 432,
+    height: 420,
     // width: 500
   },
   container: {
@@ -44,19 +44,10 @@ const styles = {
 class ChannelLeft extends React.Component {
 
   render() {
-    // const filterChange = (value) => {
-    //       this.lowPassFilter.frequency.value = this.props.lpCutoff;
-    //     }
 
-    // const handleLPCutoff = (value) => {handleFilterCutoffChange(value, this.props.deckNum), filterChange()}
-// const model = {
-//   path: this.props.song.url,
-//   author: this.props.song.artist.name,
-//   title: this.props.song.artist.song
-// }
-let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
+let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
-      <div className="container-fluid col-lg-5 col-lg-offset-1 col-md-6 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" name={this.props.name}>
+      <div className="container-fluid col-lg-6 col-md-6 col-sm-10 col-xs-12 " name={this.props.name}>
 
         {/*<div className="row">*/}
         <div
@@ -148,7 +139,6 @@ let turntableClass = classnames("col-lg-4 col-md-4 col-sm-4 col-xs-4", this.prop
                 />
                  </MuiThemeProvider>
                  </div>
-        {/*<AudioMeter deckNum="_DECK2"/>*/}
       </div>
     );
   }

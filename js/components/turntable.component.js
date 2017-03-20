@@ -10,7 +10,6 @@ import ReactPlayer from 'react-player';
 
 import Fader from './fader.component';
 
-import VideoDetail from './video-detail.component';
 
 
 
