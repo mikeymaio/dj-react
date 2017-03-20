@@ -5,7 +5,7 @@ before_script:
   - git config --global user.name "HypeUFO"
   - git remote rm origin
   - git remote add origin https://HypeUFO:${GH_TOKEN}@github.com/HypeUFO/dj-react.git
-script: npm run deploy
+script: npm start
 env:
   global:
     secure: VRxvXIZmCR+qSxUumeaQmD+wBkCF8DGgipPEU4g+J2dhDJ1IsQJ8/X3NU3/APGDrsZTRhEVVm+lqyLy5coWa4bIt7ID37XT3npKqYyvJr09883rGzwSYuUqwkD8nyv+x3tLs9mqj3//dM1F7KER1j2W0ppgqyAGxobEESQITPbrkhT26ttSD77Zi/ugfGaB/C/70HYzJrGiC7ya0cke8edsmYprB9gGQH9ywTfeTDmflpibLXG7fBh8Go1b0K8Xhkryp+s78hjL2FO9mfiioKFStrybJiAuhO8ohQ8SP1FOGLEix/AwIwD8SMUn/xfQq/j7xUtLnXsrcW4C5MntKPfZc0IvTPK1BEcY5nVHFpe3qdnCC0FgzeeiVb4n/EP1Hqm3WoZX6sF0QAtKj0+8+udufqAzL6qw4IQlNZSK1PEQ3Eqw/FIwqCJamejZPCh8tUEf/pdja7PguV76lfaUf2fc4Qf6wEqWDc7uVUJY+7g4PqOeUML3RDxd/Kxke9s/q/zk/NeFptPwfaKfR/a6ROQwF4yVAKWfXg5iOe86aQX+Qb/+6OVPqi/dnXnwhtMIcVbnxYjSYIBMyoYpnVT0co+C8Yf4GP4ym2auM0N+rTrCPiBg7mt0uiCtyhp232UMV70LB9wH3pvWrtdNQL/LoRmcyMEOct/CHkvY/1YRrQxE=
