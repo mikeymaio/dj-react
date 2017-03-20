@@ -5,6 +5,7 @@ import chai from 'chai';
 const should = chai.should();
 
 import Hello from '../js/components/hello-world.component';
+
 import App from '../js/components/app.component';
 import Header from '../js/components/header.component';
 import Table from '../js/components/table.component';
@@ -14,7 +15,6 @@ import ChannelRight from '../js/components/channel-right.component';
 import Turntable from '../js/components/turntable2.component';
 import Mixer from '../js/components/mixer.component';
 import FxSection from '../js/components/fx-section.component';
-
 
 describe('Hello component', function() {
     it('Renders a greeting',  function() {
