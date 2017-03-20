@@ -4,6 +4,6 @@ deploy:
   provider: heroku
   api_key:
     secure: BdkMtFEdHxdCdLs5tLFRsF4E8nTRhaD4HdnXOwW+9+4TY/flYi3D/1uiHLf/zaITn/MKFXkqMaVitnCufLgnnjRRel0hHyRxyqwj/P43LmiBsAGn68JO4/cpJ7xCMNd/2gbSEf/HqAF9OtgciPaVRAIO+hwLdKHYuy285yByvComIIPY/XJKYzvQi4ScsrvPvUS2zfV/67H3aHRfNuMgj3xkUBWiv/V2da2w/ZetT4JxhZWpVdlvdbOZPiJXIhp2l0rQPtky6z6/wOInHRpMnRl0+rZ60/T7jr3TxbI1bHNYRCakHGeyZSAtSFaRiK6Tvv6MSQ7KIGn8K2bzt1CT8DHNQ2xxS15+H5HbSn7ce3aSfIiY2WL8Uqh71lDEUDRzJlcyuFGNBdZ6PefoLsWXuRkd5OacQ/W7qeVLXB7t6MLHA3WDQTxRiJvKq8ufxj5qLhwZ9NNl2siDXdhqPgcpC8M9aG09M5ysBRiA3zalhtjPbF1FASOaJUzQJIpBJgg6hmoyJYwOcw/xvOp2b3czLOJw7+skJtwFlASBphNaLrBzTHAIkJlqRMBHvb47pSKYk3fa3sd5S9ZT1lxpg3ISBDLAL9t+49A0ebZQI1+0ql6pkw1Wd0KtEuKyBXWrRWSf/zBiAN2Hj5D+LEchxlPZaxWYfatapFkor1s0CEsIMXw=
-  app: react-dj
+  app: dj-react
   on:
-    repo: HypeUFO/react-dj
+    repo: HypeUFO/dj-react
