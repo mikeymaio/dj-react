@@ -11,15 +11,32 @@ import ReactPlayer from 'react-player';
 import Fader from './fader.component';
 
 
+
+
 const styleDeck1 = {
-  height: '100%',
-  width: '100%',
+  height: 266,
+  width: 266,
   //margin: 20,
   marginTop: 40,
   // float: 'left',
   backgroundColor: '#1f1f1f',
   textAlign: 'center',
   display: 'inline-block',
+//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    webKitBorderRadius: 265,
+    MozBorderRadius: 265,
+    borderRadius: 265,
+    backgroundColor: '#1a1a1a',
+    backgroundColor: '#0a7da7',
+    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: 'iinset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    // backgroundImage: 'url(\'assets/images/turntable_top.jpg\')',
+    // backgroundSize: 'cover',
 };
 
 const styleImg = {
@@ -28,9 +45,12 @@ const styleImg = {
   //margin: 20,
 //   marginBottom: 30,
   // float: 'left',
-  backgroundColor: '#1f1f1f',
+//   backgroundColor: '#1f1f1f',
   textAlign: 'center',
-  display: 'inline-block',
+  borderRadius: '100%',
+  //marginLeft: '25%',
+  //display: 'inline-block',
+  //margin: 'auto',
 };
 
 const stylePlatter1 = {
@@ -39,8 +59,24 @@ const stylePlatter1 = {
   margin: 'auto',
 //   marginTop: 40,
   backgroundColor: 'white',
+//   backgroundImage: 'url(\'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerframeworks.com%2Fseries%2FSG%2F022%2Fsg022_0400_1.gif&f=1\')',
+//   backgroundSize: 'cover',
   textAlign: 'center',
   display: 'block',
+//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    webKitBorderRadius: 250,
+    MozBorderRadius: 250,
+    borderRadius: 250,
+    marginTop: 8,
+    // webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
+    // MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a',
+    // boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: '1px 1px 1px 1px #1f1f1f , -1px 1px 1px 1px #1f1f1f , 1px -1px 1px 1px #1f1f1f , -1px -1px 1px 1px #1f1f1f , 3px 3px 3px 3px #3a3a3a, -3px 3px 3px 3px #3a3a3a, 3px -3px 3px 3px #3a3a3a, -3px -3px 3px 3px #3a3a3a',
+    // display: 'none'
 };
 
 const styleTurntableContainer = {
@@ -69,16 +105,46 @@ const styleTurntable = {
   display: 'inline-block',
   backgroundColor: '#1f1f1f',
   paddingBottom: 410,
-//   border: '2px solid #00bcd4'
+
+    // borderBottom:'10px solid #0c0c0c',
+    // borderRight:'2px solid #090909',
+    // borderRadius:'1px',
+    // WebkitBorderRadius:'1px',
+    // MozBorderRadius:'1px',
+
+
+    backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    webKitBorderRadius: 10,
+    MozBorderRadius: 10,
+    borderRadius: 10,
+    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+
 };
 
 const styleTurntableControls = {
 //   float: 'right',
+  //textAlign: 'center',
+  //display: 'inline-block',
+  //backgroundColor: '#444444',
+  //paddingBottom: 8,
+  //marginLeft: 0
+  width: '100%',
+  height: 100
+};
+
+const styleStartStopBtn = {
+//   float: 'right',
   textAlign: 'center',
-  display: 'inline-block',
+  //display: 'inline-block',
   backgroundColor: '#444444',
-  paddingBottom: 8,
-  marginLeft: 15
+  padding: 5,
+  marginLeft: 20
 };
 
 const style = {
@@ -104,21 +170,22 @@ const style = {
      height: 10
   },
   speedControl: {
-    //   float: 'right',
-    // marginLeft: '100%',
+    //float: 'right',
+    //marginRight: 50,
+    //marginBottom: 100,
     position: 'absolute',
-    bottom: 0,
+    bottom: 10,
+    left: '75%'
   },
   player: {
-        borderRadius: '50%',
-        height: 250,
-  width: 250,
-  margin: 'auto',
-  marginTop: '25%',
-//   marginTop: 40,
-  backgroundColor: 'white',
-  textAlign: 'center',
-  display: 'block',
+    borderRadius: '50%',
+    height: 250,
+    width: 250,
+    margin: 'auto',
+    marginTop: '25%',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    display: 'block',
     }
 };
 
@@ -130,34 +197,61 @@ class Turntable extends React.Component {
         this.state = {
         inputValue: 1
     }
-
-
+    
+function onStart() {
+    //this.props.startStopSong(this.props.deckNum)
+    let decks = document.getElementsByClassName('platter')
+    decks.classList.add('spin-platter');
+    }
 }
+
 
 
     render() {
 
-        let startStopClass = classnames('fa', {'fa-pause': this.play}, {'fa-play': !this.play});
+        let startStopClass = classnames('startStopButton2', {'active': this.props.play});
+        let deckClassNames = classnames(this.props.deckNum)
+        let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
 
         if (!this.props.song) {
-            return <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
+            return (
+            <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter" style={stylePlatter1} zDepth={4} circle={true} children={<div className="player-container col-lg-6 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"><h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
-                    <div className="player-options col-lg-6 col-md-6 col-sm-6">
-                    <div className="player-buttons player-controls"  >
-                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
-                            <i className={startStopClass} />
-                        </button>
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0}
+                    rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true}
+                    children={<div className="player-container">
+                        <h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
+                    <div className="player-options" style={styleTurntableControls}>
+                    <div className="player-buttons player-controls">
+                    <div className="container_button2">
+                            <div className="hole2">
+                                <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    {/*<img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />*/}
+                                    &#xf04b; &#xf04c;
+                                </div>
+                            </div>
                         </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-6 col-md-1 col-md-offset-6 col-sm-1 col-sm-offset-8 col-xs-1 col-xs-offset-6" style={style.speedControl}>
+                        {/*<div className="container_button">
+                            <div className="hole">
+                                <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    <div className="triangle" ></div>
+                                    <div className="lighter_triangle"></div>
+                                    <div className="darker_triangle"></div>
+                                </div>
+                            </div>
+                        </div>*/}
+                        </div>
+                        <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
+                        style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                            <Fader className="deckSpeed" axis="y" min={0} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                        </div>
                     </div>
-
-                </div></div>}>
+                </div>}>
           </div>
         </MuiThemeProvider>
-            </div>;
+            </div>
+            )
         }
 
 
@@ -166,30 +260,135 @@ class Turntable extends React.Component {
 
         return (
             <div className={this.props.className} style={styleTurntableContainer}>
+
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1" style={styleDeck1} zDepth={0} rounded={false} children={<div><Paper className="platter player-container" style={stylePlatter1} zDepth={4} circle={true} children={<div><ReactPlayer className="player-cover" url={this.props.song.url} playbackRate={this.props.speed} volume={this.props.volume} playing={this.props.play} hidden={false} width="50%" height="50%" style={style.player} /><div className="artist-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h2 className="artist-name">Artist: {this.props.song.artist.name}</h2>
-                </div>
+                    <div className="turntable"
+                        style={styleTurntable}
+                        children={<div>
+                                    <Paper
+                                        className={deckClassNames}
+                                        style={styleDeck1}
+                                        zDepth={1}
+                                        rounded={false}
+                                        children={<div>
+                                            <Paper
+                                                className={platterClassNames}
+                                                style={stylePlatter1}
+                                                zDepth={2}
+                                                circle={true}
+                                                children={<div className="drop_zone" 
+                                                //onDrop="drop_handler(event)" onDragOver="dragover_handler(event)" 
+                                                >
+                                                    <ReactPlayer
+                                                        id={this.props.deckNum}
+                                                        ref="player"
+                                                        className="player"
+                                                        //playing={true}
+                                                        url={this.props.song.url}
+                                                        playbackRate={this.props.speed}
+                                                        volume={this.props.volume}
+                                                        playing={this.props.play}
+                                                        hidden={true}
+                                                        width={0}
+                                                        height={0}
+                                                        style={style.player}
+                                                        crossorigin='use-credentials' />
+                                                        <div
+                                                            className="artist-info">
+                                                            <h2 className="artist-name">Artist:
+                                                                {this.props.song.name}
+                                                            </h2>
+                                                        </div>
 
-                <div className={"player-cover col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2"}>
-                    <img src={this.props.song.cover} style={styleImg}/>
-                </div>
+                                                        <div className="player-cover">
+                                                            <img src={this.props.song.cover} style={styleImg}/>
+                                                        </div>
 
-                <div className="song-info col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
-                    <h3 className="artist-song-name">Song: {this.props.song.artist.song}</h3>
-                </div></div>} /> </div>} />
-                    <div className="player-options col-lg-6 col-md-6 col-sm-6">
-                    <div className="player-buttons player-controls" >
-                        <button onTouchTap={() => this.props.startStopSong(this.props.deckNum)} style={styleTurntableControls} className="player-btn big" title="Start/Stop">Start/Stop
-                            <i className={startStopClass} />
-                        </button>
+                                                        <div className="song-info">
+                                                            <h3 className="artist-song-name">Song:
+                                                                {this.props.song.name}
+                                                            </h3>
+                                                        </div>
+                                                    </div>}
+                                                />
+                                            </div>}
+                                        />
+                    {/*<div className="turntable"
+                        style={styleTurntable}
+                        children={<div>
+                                    <Paper
+                                        className={deckClassNames}
+                                        style={styleDeck1}
+                                        zDepth={1}
+                                        rounded={false}
+                                        children={<div>
+                                            <Paper
+                                                className={platterClassNames}
+                                                style={stylePlatter1}
+                                                zDepth={2}
+                                                circle={true}
+                                                children={<div>
+                                                    <ReactPlayer
+                                                        ref="player"
+                                                        className="player"
+                                                        //url="https://soundcloud.com/mikemaio/the-caves"
+                                                        playing={true}
+                                                        url={this.props.song.url}
+                                                        playbackRate={this.props.speed}
+                                                        volume={this.props.volume}
+                                                        playing={this.props.play}
+                                                        hidden={true}
+                                                        width={0}
+                                                        height={0}
+                                                        style={style.player}
+                                                        crossorigin='use-credentials' />
+                                                        <div
+                                                            className="artist-info">
+                                                            <h2 className="artist-name">Artist:
+                                                                {this.props.song.artist.name}
+                                                            </h2>
+                                                        </div>
+
+                                                        <div className="player-cover">
+                                                            <img src={this.props.song.cover} style={styleImg}/>
+                                                        </div>
+
+                                                        <div className="song-info">
+                                                            <h3 className="artist-song-name">Song:
+                                                                {this.props.song.artist.song}
+                                                            </h3>
+                                                        </div>
+                                                    </div>}
+                                                />
+                                            </div>}
+                                        />*/}
+                    <div className="player-options" style={styleTurntableControls}>
+                    <div className="player-buttons player-controls">
+                    <div className="container_button2">
+                            <div className="hole2">
+                                <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    {/*<img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />*/}
+                                    &#xf04b; &#xf04c;
+                                </div>
+                            </div>
                         </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-8 col-sm-1 col-sm-offset-12 col-xs-1 col-xs-offset-8" style={style.speedControl}>
+                        {/*<div className="container_button">
+                            <div className="hole">
+                                <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                                    <div className="triangle" ></div>
+                                    <div className="lighter_triangle"></div>
+                                    <div className="darker_triangle"></div>
+                                </div>
+                            </div>
+                        </div>*/}
+                        </div>
+                        <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
+                        style={style.speedControl}>
                             <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} value={this.props.speed/2} defaultValue={this.props.speed/2}/>
+                            <Fader className="deckSpeed" axis="y" min={0} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                        </div>
                     </div>
-
-                </div></div>}>
+                </div>}>
           </div>
         </MuiThemeProvider>
             </div>
