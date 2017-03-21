@@ -98,9 +98,9 @@ class Table extends Component {
               />
           </MuiThemeProvider>
         </div>
-          <MuiThemeProvider>
+          {/*<MuiThemeProvider>
             <Playlist />
-          </MuiThemeProvider>
+          </MuiThemeProvider>*/}
         </div>
       </div>
     );
