@@ -4,6 +4,7 @@
   "description": "A dj rig for the browser, built with react",
   "main": "js/index.js",
   "scripts": {
+    "postinstall": "sudo npm install http-server",
     "start": "http-server -c-1 build",
     "dev": "run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
