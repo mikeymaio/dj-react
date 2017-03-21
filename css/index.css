@@ -10,6 +10,11 @@ html, body {
     text-align: center;
 }
 
+.tt-mixer-container {
+    min-width: 390px;
+}
+
+
 /*.eq  p {
     margin-bottom: 4px;
 }*/
@@ -403,14 +408,17 @@ canvas {
     display:block;
 }
 
-.fx-container {
-        border: 1px solid #E3DEDB;
-        margin-left:0;
-    }
+
 
     .container-fluid {
         padding: 0;
         margin: 0;
+    }
+
+    .fx-container {
+        border: 1px solid #E3DEDB;
+        margin-left:0;
+        min-width: 390;
     }
 
 
@@ -934,14 +942,14 @@ canvas {
 
 .media-heading {
     white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
-white-space: -pre-wrap;      /* Opera 4-6 */
-white-space: -o-pre-wrap;    /* Opera 7 */
-white-space: pre-wrap;       /* css-3 */
-word-wrap: break-word;       /* Internet Explorer 5.5+ */
-white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
-/*word-break: break-all;*/
-word-break: normal;
-white-space: normal;
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    /*word-break: break-all;*/
+    word-break: normal;
+    white-space: normal;
 }
 
 /*.slide-up {
@@ -1050,3 +1058,11 @@ li {
 .effect {
     margin: 20px;
 }
+
+/*////////////  SEARCH BAR  ///////////////*/
+
+
+.search > div, input {
+    color: #22bcd4 !important;
+}
+

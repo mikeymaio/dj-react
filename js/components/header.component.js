@@ -6,7 +6,7 @@ const style = {
 }
 
 const titleStyle = {
-    color: '#009ab2',
+    color: '#22bcd4',
     fontSize: 40,
     textAlign: 'center',
     //marginRight: 65,

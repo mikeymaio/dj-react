@@ -152,8 +152,9 @@ this.handleUpdateInput = (searchText) => {
         <div className="row">
             {/*<div className="col-xs-12" style={{margin: "auto", display: "block"}}>*/}
             <AutoComplete
-                style={{marginLeft: "30%", backgroundColor: "white", width: "40%"}}
-                textFieldStyle={{color: "#009ab2", padding: '3%', width: '100%'}}
+                className="search"
+                style={{marginLeft: "30%", width: "40%"}}
+                textFieldStyle={{padding: '3%', width: '100%'}}
                 underlineStyle={{width: '94%'}}
                 listStyle={styles.results}
                 popoverProps={{useLayerForClickAway: false, open: true}}
