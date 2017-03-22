@@ -74,36 +74,6 @@ const playlistState = {
         }
 
     ],
-    // decks: {
-    //     deck1: {
-    //         activeSong: null,
-    //         play: true,
-    //         progress: 0,
-    //         volume: 0.8,
-    //         speed: 1,
-    //         treble: 0,
-    //         mid: 0,
-    //         bass: 0,
-    //         filter: 0,
-    //         reverb: 0,
-    //         delay: 0,
-    //         distortion: 0,
-    //     },
-    //     deck2: {
-    //         activeSong: null,
-    //         play: true,
-    //         progress: 0,
-    //         volume: 0.8,
-    //         speed: 1,
-    //         treble: 0,
-    //         mid: 0,
-    //         bass: 0,
-    //         filter: 0,
-    //         reverb: 0,
-    //         delay: 0,
-    //         distortion: 0,
-    //     },
-    // }
 }
 
 const deckState = {
@@ -167,7 +137,8 @@ const deckState = {
 
 //////////////////////////// TEST //////////////////////////////////////
 
-const playlistReducer = (state=playlistState, action) => {
+const playlistReducer = (state, action) => {
+    state = state || playlistState
     switch(action.type) {
         case 'SONG_UPLOADED':
         return [...state.playlist, action.payload];
@@ -182,6 +153,7 @@ const playlistReducer = (state=playlistState, action) => {
 
 
 const decksReducer = (state=deckState, action) => {
+    state = state || deckState
     switch(action.type) {
         case 'UPDATE_X_FADE':
             return {
@@ -287,7 +259,6 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck1: {...state.deck1, speed: action.payload * 2}
             }
-            
 //////////////////////////// DECK 2 //////////////////////////////////////
 
         case 'SONG_SELECTED_DECK2':

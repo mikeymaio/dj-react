@@ -397,6 +397,7 @@ canvas {
 
     .mixer {
         border: 1px solid #E3DEDB;
+        /*min-width: 125px;*/
     }
 
     .turntable {
@@ -439,7 +440,7 @@ canvas {
     padding: 0 !important;*/
     margin: 5px;
     flex-grow: 0;
-    flex-shrink: 1;
+    flex-shrink: 0;
     /*flex-basis: 25%;*/
     /*align-self: flex-start !important;*/
 
@@ -902,8 +903,14 @@ canvas {
 }
 
 
+/*////////////  SEARCH BAR  ///////////////*/
 
-/* ////////// PLAYLIST DRAWER //////////  */
+.search > div, input {
+    color: #22bcd4 !important;
+}
+
+
+/* ////////// PLAYLIST DRAWER & SEARCH RESULTS //////////  */
 
 .playlist {
   /*border: 1px solid rgba(255, 0, 0, .7);*/
@@ -929,18 +936,6 @@ canvas {
   z-index: 20;
 }
 
-/*ul {
-    width: 100%;
-    height: 309px;
-    position: relative;
-    color: #44def6;
-    background-color: black;
-    overflow: auto;
-    margin: auto;
-    border: 5px solid #1f1f1f;
-    padding-bottom: 20px;
-}*/
-
 
 .list-group {
     width: 100%;
@@ -954,13 +949,9 @@ canvas {
     margin: auto;
     border: 5px solid #1f1f1f;
     padding-bottom: 20px;
-    /*z-index: 500;*/
+
 }
 
-/*.list-group-item {
-    background-color: black;
-    width: 50%;
-}*/
 
 .list-group-item {
     background-color: black;
@@ -984,28 +975,6 @@ canvas {
     word-break: normal;
     white-space: normal;
 }
-
-/*.slide-up {
-  transform: translateY(70%);
-  z-index: 20;
-}*/
-
-
-/*::-webkit-scrollbar
-{
-  width: 9px;
-  height: 9px;
-}
-
-::-webkit-scrollbar-track
-{
-  background: black;
-}
-
-::-webkit-scrollbar-thumb
-{
-  background: gray;
-}*/
 
 .open {
   display: block;
@@ -1066,42 +1035,112 @@ li {
     display: none;
 }*/
 
+
+
+
+
 /*///////////// CROSSFADER ////////////*/
 
 
-/*.crossfader {
-    position: absolute;
-    bottom: 250px;
-    left: 33%
-}*/
 
-/*#results{
-    display: none;
-    height: 50px;
-    width: 50px;
-    background-color: white;
+/*////////////  MEDIA QUERIES  /////////////*/
 
-}*/
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+      #table {
+        padding-right: .9375rem;
+        padding-left: 0rem !important;
+        margin-left: 0px !important;
+    }
 
-/*.search-bar:active > .results {
-    display: block;
- 
-}*/
+    .search {
+          width: 200% !important;
+      }
 
+      .crossfader-container {
+        width: 225% !important ;
+        left: -90px !important;
+        bottom: 55000% !important;
+        /*height: 5;
+        border: 1px solid #E3DEDB;
+        background-color: black;
+        position: "absolute";
+        bottom: 15000%;
+        left: 31.25%;
+        left: 20%;
+        padding-top: 0;
+        padding-bottom: 30;*/
+    }
 
-
-/*////////////  SEARCH BAR  ///////////////*/
-
-
-.search > div, input {
-    color: #22bcd4 !important;
 }
 
-/*.container {
-    padding: 0px !important;
-    padding-right: 15px !important;
-}*/
+@media only screen 
+  and (min-device-width: 481px) 
+  and (max-device-width: 736px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+      #table {
+        padding-right: .9375rem;
+        padding-left: .9375rem;
+        margin-right: auto;
+        margin-left: auto;
+      }
 
-/*#table {
-    margin-top: 5%;
-}*/
+
+      .crossfader-container {
+        width: 200% !important ;
+        left: -137px !important;
+        bottom: 55000% !important;
+        /*height: 5;
+        border: 1px solid #E3DEDB;
+        background-color: black;
+        position: "absolute";
+        bottom: 15000%;
+        left: 31.25%;
+        left: 20%;
+        padding-top: 0;
+        padding-bottom: 30;*/
+    }
+
+}
+
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1023px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    #table {
+        margin-right: 0px !important;
+    /*padding-right: .9375rem;*/
+     /*padding-left: 0rem !important;
+     margin-left: 0rem !important;*/
+}
+
+      .crossfader-container {
+        width: 212% !important ;
+        left: -92px !important;
+        bottom: 55000% !important;
+    }
+
+}
+
+@media only screen
+  and (min-device-width: 1024px)
+  and (max-device-width: 1366)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    #table {
+
+    /*padding-right: .9375rem;
+     padding-left: 0rem !important;*/
+     margin-left: 0rem !important;
+}
+
+      .crossfader-container {
+        width: 212% !important ;
+        left: -92px !important;
+        bottom: 55000% !important;
+    }
+
+}

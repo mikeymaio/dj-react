@@ -50,7 +50,7 @@ const styles = {
     border: '1px solid #E3DEDB',
     backgroundColor: 'black',
     position: "absolute",
-    bottom: 210,
+    bottom: '15000%',
     //left: '31.25%',
     left: '20%',
     paddingTop: 0,
@@ -64,12 +64,20 @@ class Table extends Component {
     //var audioContext1 = new AudioContext();
     // var audioContext2 = new AudioContext();
     return (
-      <div className="container col-lg-10 col-lg-offset-1" >
-        <MuiThemeProvider>
-        <Search />
-        </MuiThemeProvider>
+      <div className="container col-lg-10 col-lg-offset-1" id="table" >
+        {/*<MuiThemeProvider>*/}
+        {/*<Search />*/}
+        {/*<Search className="search"
+                style={{marginLeft: "30%", width: "40%"}}
+                textFieldStyle={{padding: '3%', width: '100%'}}
+                underlineStyle={{width: '94%'}}
+                popoverProps={{useLayerForClickAway: false, open: true}}
+                hintText="Search YouTube To Get Started!"
+                />*/}
+        {/*</MuiThemeProvider>*/}
         {/*<Crossfader />*/}
-        <ChannelLeft 
+        <ChannelLeft
+        id="channelLeft"
           audioContext={this.props.audioContext}
           name="deck1"
           xFade={this.props.xFade}
@@ -77,6 +85,7 @@ class Table extends Component {
           orientation="left"
           />
         <ChannelRight
+        id="ChannelRight"
           audioContext={this.props.audioContext}
           name="deck2"
           xFade={this.props.xFade}
@@ -84,10 +93,13 @@ class Table extends Component {
           orientation="right"
           />
         <div className="container col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-        <div style={styles.crossfader}>
+        <div 
+        className="crossfader-container"
+        style={styles.crossfader}
+        >
           <MuiThemeProvider>
             <Fader 
-              className="channelFader"
+              className="crossfader"
               min={0}
               max={1}
               onChange={(event, value) => this.props.handleXFade(value, this.props.deckNum)}

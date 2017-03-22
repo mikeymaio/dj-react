@@ -48,7 +48,7 @@ class ChannelLeft extends React.Component {
 
 let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
-      <div className="container-fluid col-lg-6 col-md-6  col-sm-10  col-xs-12" name={this.props.name} style={{height: '50%'}} >
+      <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" name={this.props.name} style={{height: '50%'}} >
 
         {/*<div className="row">*/}
         <div

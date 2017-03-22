@@ -41,13 +41,13 @@ const styles = {
   },
 }
 
-class ChannelLeft extends React.Component {
+class ChannelRight extends React.Component {
 
   render() {
 
 let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
-      <div className="container-fluid col-lg-6 col-md-6 col-sm-10 col-xs-12 " name={this.props.name}>
+      <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 " name={this.props.name}>
 
         {/*<div className="row">*/}
         <div
@@ -199,5 +199,5 @@ function mapDispatchToProps(dispatch) {
         dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChannelLeft);
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelRight);
 

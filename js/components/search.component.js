@@ -149,9 +149,11 @@ this.handleUpdateInput = (searchText) => {
 
 
         return (
-        <div className="row">
+        <div 
+        //className="row"
+        >
             {/*<div className="col-xs-12" style={{margin: "auto", display: "block"}}>*/}
-            <AutoComplete
+            {/*<AutoComplete
                 className="search"
                 style={{marginLeft: "30%", width: "40%"}}
                 textFieldStyle={{padding: '3%', width: '100%'}}
@@ -159,6 +161,24 @@ this.handleUpdateInput = (searchText) => {
                 listStyle={styles.results}
                 popoverProps={{useLayerForClickAway: false, open: true}}
                 hintText="Search YouTube To Get Started!"
+                searchText={this.state.searchText}
+                onUpdateInput={videoSearch}
+                onNewRequest={this.handleNewRequest}
+                dataSource={this.state.videoData}
+                dataSourceConfig={{text: 'text', value: 'value'}}
+                filter={AutoComplete.caseInsensitiveFilter}
+                fullWidth={true}
+                //filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+                openOnFocus={true}
+            />*/}
+            <AutoComplete
+                className={this.props.className}
+                style={this.props.style}
+                textFieldStyle={this.props.textFieldStyle}
+                underlineStyle={this.props.underlineStyle}
+                listStyle={styles.results}
+                popoverProps={{useLayerForClickAway: false, open: true}}
+                hintText={this.props.hintText}
                 searchText={this.state.searchText}
                 onUpdateInput={videoSearch}
                 onNewRequest={this.handleNewRequest}

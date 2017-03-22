@@ -31,6 +31,7 @@ class Pot extends React.Component {
             <p style={styles.p}>{this.props.title}</p>
       <Knob
         //style={styles.knob}
+        className={this.props.className}
         value={this.props.value}
         onChange={this.props.onChange}
         min={this.props.min}

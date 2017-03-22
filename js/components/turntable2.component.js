@@ -17,7 +17,7 @@ import Fader from './fader.component';
 
 
 
-const styleDeck1 = {
+const styleDeck = {
   height: 266,
   width: 266,
   //margin: 20,
@@ -197,7 +197,7 @@ function onStart() {
             return (
             <div name={this.props.name} className={this.props.className} style={styleTurntableContainer}>
                 <MuiThemeProvider>
-                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck1} zDepth={0}
+                    <div className="turntable" style={styleTurntable} children={<div><Paper className="deck1 col-lg-6" style={styleDeck} zDepth={0}
                     rounded={false} children={<div><Paper className={platterClassNames} style={stylePlatter1} zDepth={4} circle={true}
                     children={<div className="player-container">
                         <h4 className="start-info">Select a song to get started</h4></div>} /></div>} />
@@ -237,7 +237,7 @@ function onStart() {
                         children={<div>
                                     <Paper
                                         className={deckClassNames}
-                                        style={styleDeck1}
+                                        style={styleDeck}
                                         zDepth={1}
                                         rounded={false}
                                         children={<div>
@@ -290,7 +290,7 @@ function onStart() {
                         children={<div>
                                     <Paper
                                         className={deckClassNames}
-                                        style={styleDeck1}
+                                        style={styleDeck}
                                         zDepth={1}
                                         rounded={false}
                                         children={<div>

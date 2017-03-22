@@ -1,7 +1,7 @@
 export function selectSong(file, deckNum) {
     //const SONG_SELECTED = 'SONG_SELECTED'
     const SONG_SELECTED = 'SONG_SELECTED';
-    console.log(file.title, ' has been selected');
+    //console.log(file.title, ' has been selected');
     return {
         type: SONG_SELECTED + deckNum,
         payload: file
@@ -141,8 +141,8 @@ export function handleDistortionChange(value, deckNum) {
     }
 }
 
-export function handleBitCrusherBypassChange(value, deckNum) {
-    console.log('bitcrusher bypass value changed', value);
+export function handleBitCrusherBypassChange(deckNum) {
+    console.log('bitcrusher bypass value changed');
     //state[deckNum].bitCrusherBypass == 0 ? value == 1 : value == 0
     return {
         type: 'UPDATE_BITCRUSHER_BYPASS' + deckNum,
