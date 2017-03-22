@@ -10,6 +10,12 @@ html, body {
     text-align: center;
 }
 
+h5 {
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 0px;
+}
+
 .tt-mixer-container {
     min-width: 390px;
 }
@@ -402,24 +408,54 @@ canvas {
         box-shadow: 0 8px 6px -6px black;*/
     }
 
-    
 
-    .fader, label {
+.fader, label {
     display:block;
 }
 
 
+.container-fluid {
+    padding: 0;
+    margin: 0;
+}
 
-    .container-fluid {
-        padding: 0;
-        margin: 0;
-    }
+.fx-container {
+    border: 1px solid #E3DEDB;
+    margin: auto;
+    /*margin-left:0;*/
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline !important;
+    min-width: 390px;
+}
 
-    .fx-container {
-        border: 1px solid #E3DEDB;
-        margin-left:0;
-        min-width: 390;
-    }
+
+
+.effect {
+    /*margin: 20px;
+    margin: 15px !important;
+    padding: 0 !important;*/
+    margin: 5px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    /*flex-basis: 25%;*/
+    /*align-self: flex-start !important;*/
+
+}
+
+.distortion-section {
+    /*margin: auto;
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: flex-start;*/
+    margin-top: 0px;
+}
+
+
 
 
 
@@ -482,9 +518,6 @@ canvas {
     transform: rotate(0deg);
 }
 
-.effect {
-    margin: 5px;
-}
 
 
 :active, :focus {
@@ -958,7 +991,7 @@ canvas {
 }*/
 
 
-::-webkit-scrollbar
+/*::-webkit-scrollbar
 {
   width: 9px;
   height: 9px;
@@ -972,7 +1005,7 @@ canvas {
 ::-webkit-scrollbar-thumb
 {
   background: gray;
-}
+}*/
 
 .open {
   display: block;
@@ -1055,9 +1088,7 @@ li {
  
 }*/
 
-.effect {
-    margin: 20px;
-}
+
 
 /*////////////  SEARCH BAR  ///////////////*/
 
@@ -1066,3 +1097,11 @@ li {
     color: #22bcd4 !important;
 }
 
+/*.container {
+    padding: 0px !important;
+    padding-right: 15px !important;
+}*/
+
+/*#table {
+    margin-top: 5%;
+}*/

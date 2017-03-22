@@ -343,20 +343,24 @@ class FxSection extends React.Component {
         return(
              <div
                 name={this.props.name}
-                className="fx-container container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                className="fx-container container-fluid"
+                //col-lg-12 col-md-12 col-sm-12 col-xs-12"
                 style={styles.fxsection}>
                 {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}
 
 
-                <div style={styles.knob}>
+                {/*<div style={styles.knob}>*/}
 
 
-                <div className="row">
-                    <div className="container">
+                {/*<div className="row">*/}
+                    {/*<div className="container">*/}
 
                         {/*<h4> Filters</h4>*/}
-                        <div className="lpFilter effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
-                        <h5>LP</h5>
+                        <div className="lpFilter effect" style={{"display": "inline-block"}}>
+                            <h5>LP</h5>
+                            <div className="effect" style={{"display": "inline-block"}}>
+
+                        {/*<h5>LP</h5>*/}
                         <Pot
                         title="Cutoff"
                         defaultValue={this.props.lpCutoff}
@@ -379,8 +383,10 @@ class FxSection extends React.Component {
                         angleArc={270}
                         />*/}
                         </div>
-                        <div className="hpFilter effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
+                        </div>
+                        <div className="hpFilter effect" style={{"display": "inline-block"}}>
                             <h5>HP</h5>
+                            <div className="effect" style={{"display": "inline-block"}}>
                         <Pot title="Cutoff" defaultValue={this.props.hpCutoff} value={this.props.hpCutoff}
                         onChange={(value) => {this.props.onHpFilterCutoffChange(value, this.props.deckNum)}}
                         min={20} max={7000} angleOffset={180}
@@ -399,9 +405,11 @@ class FxSection extends React.Component {
                         />*/}
                         {/*</div>*/}
                         </div>
-                        <div className="distortion-section effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
+                        </div>
+                        <div className="distortion-section effect" style={{"display": "inline-block"}}>
                         <h5>Crush</h5>
-
+                        <div className="effect" style={{"display": "inline-block"}}>
+                        
                         {/*<Pot title="CrushFreq" defaultValue={this.props.normFreq} value={this.props.normFreq}
                         onChange={(value) => {this.props.onNormFreqChange(value, this.props.deckNum), normFreqChange()}}
                         //onChange={(value) => this.lowPassFilter.frequency.value = value}
@@ -423,9 +431,11 @@ class FxSection extends React.Component {
                         <span></span>
                         {/*</div>*/}
                         </div>
+                        </div>
 
-                        <div className="reverb-section effect col-lg-1 col-md-1 col-sm-1 col-xs-1" style={{"display": "inline-block"}}>
+                        <div className="reverb-section effect" style={{"display": "inline-block"}}>
                         <h5>Reverb</h5>
+                        <div className="effect" style={{"display": "inline-block"}}>
                         <Pot title="Mix" defaultValue={this.props.reverbMix} value={this.props.reverbMix}
                         onChange={(value) => {this.props.onReverbMixChange(value, this.props.deckNum)}}
                         //onChange={(value) => this.lowPassFilter.frequency.value = value}
@@ -433,26 +443,33 @@ class FxSection extends React.Component {
                         angleArc={270}
                         />
                         </div>
-
-                        <div className="delay-section effect col-lg-3 col-md-3 col-sm-3 col-xs-3" style={{"display": "inline-block"}}>
-                        <h5>Delay</h5>
+                        </div>
+                        <div className="delay-section effect" style={{"display": "inline-block"}}>
+                            <h5>Delay</h5>
+                            <div className="effect" style={{"display": "inline-block"}}>
+                        {/*<h5>Delay</h5>*/}
                         <Pot title="Time" defaultValue={this.props.delayTime} value={this.props.delayTime}
                         onChange={(value) => {this.props.onDelayTimeChange(value, this.props.deckNum)}}
                         //onChange={(value) => this.lowPassFilter.frequency.value = value}
+                        className="effect"
                         min={0} max={1000} angleOffset={180}
                         angleArc={270}
                         />
-                        <Pot title="Mix" defaultValue={this.props.delayMix} value={this.props.delayMix}
+                        </div>
+                        <div className="effect" style={{"display": "inline-block"}}>
+                        <Pot title="Mix"
+                        className="effect" defaultValue={this.props.delayMix} value={this.props.delayMix}
                         onChange={(value) => {this.props.onDelayMixChange(value, this.props.deckNum)}}
                         //onChange={(value) => this.lowPassFilter.frequency.value = value}
                         min={0} max={100} angleOffset={180}
                         angleArc={270}
                         />
                         </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                // </div>
+            // </div>
+        // </div>
         )
     }
 }
