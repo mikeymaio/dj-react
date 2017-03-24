@@ -3,7 +3,23 @@
 }
 
 html, body {
-        background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpoper.com%2Fimages%2F00%2F43%2F63%2F77%2Fgray-floor-texture_00436377.jpg&f=1');
+    /*background-image: url('../assets/images/djR-bkgrd-1-enhance.jpg');*/
+
+    /*background-image: url('../assets/images/djR-bkgrd-1-manual.jpg');*/
+
+    /*background-image: url('../assets/images/djR-bkgrd-1-manual-2.jpg');*/
+
+    /*background-image: url('../assets/images/djR-bkgrd-1-manual-3.jpg');*/
+
+    background-image: url('../assets/images/djR-bkgrd-1-warmer.jpg');
+
+
+        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpoper.com%2Fimages%2F00%2F43%2F63%2F77%2Fgray-floor-texture_00436377.jpg&f=1');*/
+        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fordaq.com%2Fwww%2Fnews%2F2008%2FH3090_ST222.jpg&f=1');*/
+        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.swankydesign.com%2Fimages%2FMaterial%2520Finishes%2FBRUSHED-STAINLESS-CMYK.jpg&f=1');*/
+        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fallroundnews.com%2Fwp-content%2Fuploads%2F2012%2F02%2Fseamless-wood-texture-free-22.jpg&f=1');*/
+        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.photohdx.com%2Fimages%2F2015%2F01%2Fbrown-furniture-wood-textured-background.jpg&f=1');*/
+
         font-family: 'Roboto', sans-serif;
     }
 .header {
@@ -14,6 +30,7 @@ h5 {
     text-align: center;
     padding-top: 0.5rem;
     margin-bottom: 0px;
+    /*color: #797a7c;*/
 }
 
 .tt-mixer-container {
@@ -57,15 +74,14 @@ h5 {
     height: 100px;
     width: 100px;
     margin-left: 75px;
-    /*background-position: top center;*/
+
     /*margin-top: 33%;*/
-    position: absolute;
-    top: 30%;
-    /*background-color: gray;
-    background-size: cover;*/
-    border: 1px solid gray;
-    border-radius: 100%;
-    transition: height .4s;
+    /*position: absolute;*/
+    margin-top: 30%;
+    /*text-align: 'center',*/
+    /*border: 1px solid gray;*/
+    /*border-radius: 100%;*/
+    /*transition: height .4s;*/
 }
 
 /*.artist-info {
@@ -395,19 +411,31 @@ canvas {
     }
     
 
-    .mixer {
-        border: 1px solid #E3DEDB;
-        /*min-width: 125px;*/
-    }
+.mixer {
+    border: 1px solid #E3DEDB;
+    /*min-width: 125px;*/
+}
 
-    .turntable {
-        /*border: 1px solid #E3DEDB;*/
-        /*box-shadow: 0px 3px 0px 0px rgb(34,34,34),
-    			0px 7px 10px 0px rgb(17,17,17),
-    			inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
-    			inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
-        box-shadow: 0 8px 6px -6px black;*/
-    }
+.mixer-top {
+    margin: auto !important;
+    /*margin: 20px;
+    margin-right: 0px;*/
+}
+
+.turntable {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1e5799+7,3a3a3a+26,207cca+26,207cca+33,3a3a3a+40,3a3a3a+40,3a3a3a+42,2989d8+54,2989d8+58,207cca+73,207cca+73,7db9e8+99 */
+background: #1f1f1f; /* Old browsers */
+background: -moz-linear-gradient(left, #1f1f1f 2%, #3a3a3a 15%, #3a3a3a 15%, #3a3a3a 27%, #3a3a3a 33%, #3a3a3a 33%, #3a3a3a 42%, #3a3a3a 47%, #3a3a3a 53%, #3a3a3a 70%, #3a3a3a 70%, #2c2c2c 90%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #1f1f1f 2%,#3a3a3a 15%,#3a3a3a 15%,#3a3a3a 27%,#3a3a3a 33%,#3a3a3a 33%,#3a3a3a 42%,#3a3a3a 47%,#3a3a3a 53%,#3a3a3a 70%,#3a3a3a 70%,#2c2c2c 90%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #1f1f1f 2%,#3a3a3a 15%,#3a3a3a 15%,#3a3a3a 27%,#3a3a3a 33%,#3a3a3a 33%,#3a3a3a 42%,#3a3a3a 47%,#3a3a3a 53%,#3a3a3a 70%,#3a3a3a 70%,#2c2c2c 90%); /* W3C, IE10+, FF16+, Chrome15+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1f1f1f', endColorstr='#3a3a3a',GradientType=1 ); /* IE6-9 */
+    /*border: 1px solid #E3DEDB;*/
+    /*box-shadow: 0px 3px 0px 0px rgb(34,34,34),
+    	0px 7px 10px 0px rgb(17,17,17),
+    	inset 0px 1px 1px 0px rgba(250, 250, 250, .2), 
+    	inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
+    box-shadow: 0 8px 6px -6px black;*/
+}
 
 
 .fader, label {
@@ -429,7 +457,7 @@ canvas {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: baseline !important;
-    min-width: 390px;
+    /*min-width: 390px;*/
 }
 
 
@@ -590,7 +618,8 @@ canvas {
     			inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
     			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
     background-color: rgb(83,87,93);
-  	top: 3px;
+    color: #44def6;
+  	top: 1px;
 }
 .power-btn.active {
     box-shadow: 0px 0px 0px 0px rgb(34,34,34),
@@ -598,7 +627,7 @@ canvas {
     			inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
     			inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
     background-color: rgb(83,87,93);
-  	top: 3px;
+  	top: 1px;
  	color: #44def6;
   	text-shadow: 0px 0px 3px rgb(200,250,250);
 }
@@ -963,6 +992,9 @@ canvas {
     /*margin: 10px;*/
 }
 
+.media-object {
+    margin-left: 12px;;
+}
 
 .media-heading {
     white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
@@ -974,6 +1006,7 @@ canvas {
     /*word-break: break-all;*/
     word-break: normal;
     white-space: normal;
+    line-height: 1.25em; /* 1em = 12px in this case. 20/12 == 1.666666  */
 }
 
 .open {
@@ -1043,6 +1076,7 @@ li {
 
 
 
+
 /*////////////  MEDIA QUERIES  /////////////*/
 
 @media only screen 
@@ -1109,6 +1143,7 @@ li {
   and (min-device-width: 768px) 
   and (max-device-width: 1023px)
   and (-webkit-min-device-pixel-ratio: 2) {
+      .col
 
     #table {
         margin-right: 0px !important;
@@ -1143,4 +1178,42 @@ li {
         bottom: 55000% !important;
     }
 
+}
+
+
+.seek {
+    -webkit-appearance: none;
+    border: 1px solid white;
+    /*position: absolute;
+    top: 18px;*/
+    display: block;
+    width: 90%;
+    height: 10px;
+    margin: auto;
+    margin-top: 10px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    /*background-color: #242323;*/
+    background-color: gray;
+    /*left: 90px;*/
+
+    -webkit-box-shadow: inset 0px 4px 4px rgba(0,0,0,.6);
+    -moz-box-shadow: inset 0px 4px 4px rgba(0,0,0,.6);
+    box-shadow: inset 0px 4px 4px rgba(0,0,0,.6);
+}
+
+.seek::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border:1px solid black;
+
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #80e4df; /* Old browsers */
+    background: -webkit-linear-gradient(#55eff7 0%, #44def6 13%, #33cde5 33%, #22bcd4 47%, #11abc3 80%, #009ab2 100%);
+    background: -moz-linear-gradient(#55eff7 0%, #44def6 13%, #33cde5 33%, #22bcd4 47%, #11abc3 80%, #009ab2 100%);
+    background: -o-linear-gradient(#55eff7 0%, #44def6 13%, #33cde5 33%, #22bcd4 47%, #11abc3 80%, #009ab2 100%);
+    background: linear-gradient(#55eff7 0%, #44def6 13%, #33cde5 33%, #22bcd4 47%, #11abc3 80%, #009ab2 100%); /* W3C */
 }

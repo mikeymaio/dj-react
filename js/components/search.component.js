@@ -20,26 +20,29 @@ const styles = {
 },
     button: {
         // marginTop: 20,
-        display: "block"
+        // display: "block"
     },
     loadBtnGroup: {
         // float: 'right',
-        marginLeft: '15px',
-        marginBottom: '15px',
+        // marginLeft: '12px',
+        // marginBottom: '12px',
+        width: '100%',
         display: 'inline-block'
     },
     load: {
         // float: 'right',
         backgroundColor: '#1f1f1f',
         fontSize: 12,
+        // marginRight: '12px',
+        width: '50%',
        // marginLeft: "15%",
         // marginLeft: 5,
         // zIndex: 30
     },
     results: {
                 width: '100%',
+                maxHeight: 500,
                 /*height: 309px;*/
-                maxHeight: 250,
                 /*position: absolute;*/
                 // top: 20,
                 color: '#44def6',
@@ -77,7 +80,6 @@ this.handleUpdateInput = (searchText) => {
     }
 
       handleNewRequest() {
-        //   return;
     this.setState({
       searchText: '',
     });
@@ -93,9 +95,10 @@ this.handleUpdateInput = (searchText) => {
                         text: videos[i].snippet.title,
                         value: (
                         <MenuItem
-                            //disabled={true}
+                            disabled={true}
+                            onTouchTap={(event) => {event.preventDefault(); return;}}
                             primaryText={
-                                <li className="list-group-item col-lg-3 col-md-3">
+                                <li className="list-group-item">
                                 <div className="video-list media">
                                     <div className="media-left">
                                         <img className="media-object" src={videos[i].snippet.thumbnails.default.url}/>
@@ -149,7 +152,7 @@ this.handleUpdateInput = (searchText) => {
 
 
         return (
-        <div 
+        <div
         //className="row"
         >
             {/*<div className="col-xs-12" style={{margin: "auto", display: "block"}}>*/}
@@ -172,16 +175,19 @@ this.handleUpdateInput = (searchText) => {
                 openOnFocus={true}
             />*/}
             <AutoComplete
+            anchorOrigin={{vertical: 'bottom', horizontal: 'middle'}}
+            targetOrigin={{vertical: 'top', horizontal: 'middle'}}
                 className={this.props.className}
                 style={this.props.style}
                 textFieldStyle={this.props.textFieldStyle}
                 underlineStyle={this.props.underlineStyle}
                 listStyle={styles.results}
-                popoverProps={{useLayerForClickAway: false, open: true}}
+                popoverProps={{useLayerForClickAway: false, style:{width: '75%', backgroundColor: 'black'}}}
+                menuStyle={{width: '100%',}}
                 hintText={this.props.hintText}
                 searchText={this.state.searchText}
                 onUpdateInput={videoSearch}
-                onNewRequest={this.handleNewRequest}
+                //onNewRequest={this.handleNewRequest}
                 dataSource={this.state.videoData}
                 dataSourceConfig={{text: 'text', value: 'value'}}
                 filter={AutoComplete.caseInsensitiveFilter}

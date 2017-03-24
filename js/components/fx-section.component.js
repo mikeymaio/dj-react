@@ -427,7 +427,7 @@ class FxSection extends React.Component {
 
 
                         {/*<div>*/}
-                        <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(value, this.props.deckNum)}}>&#xF011;</button>
+                        <button className={bitCrusherBtnClassNames} name='bitCrusherBypass' value={this.props.bitCrusherBypass} onClick={(value) => {this.props.onBitCrusherBypassChange(this.props.deckNum)}}>&#xF011;</button>
                         <span></span>
                         {/*</div>*/}
                         </div>

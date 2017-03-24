@@ -19,7 +19,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 const styles = {
     faderSection: {
         backgroundColor: 'black',
-        marginLeft: 0,
+        // marginLeft: 0,
         width: '100%',
     },
     root: {
@@ -32,34 +32,30 @@ const styles = {
     paddingTop: 10,
     marginTop: 0,
     marginBottom: 0,
-        margin: 'auto',
-    width: '50%',
+    margin: 'auto',
+    width: '30%',
   },
   label: {
     display: 'flex',
     justifyContent: 'space-around',
     color: '#009ab2',
-    marginBottom: 0,
     backgroundColor: 'black',
-    width: 55,
-    // width: '100%',
-    // width: '470%',
-    marginLeft: -7,
-    // marginLeft: '0%',
-    marginTop: 3,
+    fontSize: '0.9em',
+    margin: 'auto',
     marginBottom: 5,
     // padding: 5,
   },
   volumeFader: {
     // marginLeft: 1,
-    position: 'absolute',
-    bottom: 20,
+    // position: 'absolute',
+    // bottom: 20,
     backgroundColor: 'black',
     border: '5px solid silver',
     paddingBottom: 50,
-    width: '60%',
+    width: '70%',
     height: 150,
-    left:'5%'
+    margin: 'auto',
+    // left:'5%'
     // width: '40%'
 
   },
@@ -102,7 +98,7 @@ meterDiv: {
     display: 'flex',
     // flexDirection: 'column',
     justifyContent: 'space-around',
-    height: 300,
+    height: 220,
 },
   meter: {
       display: 'flex',
@@ -112,7 +108,7 @@ meterDiv: {
       marginTop: 85,
       marginLeft: 0,
       height: 30,
-  }
+  },
 };
 
 // const test = new Audio();
@@ -129,45 +125,29 @@ class Mixer extends React.Component {
         // this.state = {
         // }
 
-        this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    //     this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
-    // Gain for Volume Slider
-        this.gain = this.audioContext.createGain();
-        this.gain.defaultValue = 0.8;
-        this.gain.minValue = 0;
-        this.gain.maxValue = 1.5;
+    // // Gain for Volume Slider
+    //     this.gain = this.audioContext.createGain();
+    //     this.gain.defaultValue = 0.8;
+    //     this.gain.minValue = 0;
+    //     this.gain.maxValue = 1.5;
 
 
-
-    // EQ
-        // const treble = this.audioContext.createBiquadFilter();
-        // treble.type = 'highshelf';
-        // treble.frequency.value = 7000;
-        // treble.gain.value = 1;
-
-        // const mid = this.audioContext.createBiquadFilter();
-        // mid.type = 'peaking';
-        // mid.frequency.value = 1000;
-        // mid.gain.value = 1;
-
-        // const bass = this.audioContext.createBiquadFilter();
-        // bass.type = 'lowshelf';
-        // bass.frequency.value = 100;
-        // bass.gain.value = 1;
     }
 
 
 
     render() {
 
-        let eqClassNames = classnames("eq col-lg-6 col-md-6 col-sm-6", this.props.orientation)
+        let eqClassNames = classnames("eq", this.props.orientation)
 
         const TEST = {
             audioContext: 'player'
         }
         return (
         <div name={this.props.name} className={this.props.className} style={styles.mixer}>
-            <div className="row">
+            <div className="mixer-top">
             <div className={eqClassNames} style={styles.eq}>
                 {/*<Knob name="High"/>
                 <Knob name="Mid"/>
@@ -182,14 +162,14 @@ class Mixer extends React.Component {
                 angleArc={270}
                 />
             </div>
-            <div className="meter col-lg-6 col-md-6 col-sm-6" style={styles.meterDiv}>
+            <div className="meter" style={styles.meterDiv}>
                 <Meter title="Meter" audioContext={this.props.audioContext} style={styles.meter} command='start' src={null} width={200} height={1} />
             </div>
             </div>
-            <div className="volumeFader col-lg-1 col-lg-offset-2 col-md-1 col-sm-6" style={styles.volumeFader}>
-                <label htmlFor="channelFader col-lg-1 col-md-1 col-sm-6" style={styles.label} className="volumeLabel">Volume</label>
+            <div className="volumeFader" style={styles.volumeFader}>
+                <label htmlFor="channelFader" style={styles.label} className="volumeLabel">Volume</label>
                 <div style={styles.faderSection}>
-                <Fader className="channelFader col-lg-1 col-md-1 col-sm-6" axis="y" min={0} max={1} onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={styles.root}/>
+                <Fader className="channelFader" axis="y" min={0} max={1} onChange={(event, value) => this.props.handleVolumeChange(value, this.props.deckNum)} defaultValue={this.props.volume} value={this.props.volume} style={styles.root}/>
                 </div>
             </div>
             {/*<Meter />*/}

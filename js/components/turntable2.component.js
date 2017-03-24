@@ -21,7 +21,7 @@ const styleDeck = {
   height: 266,
   width: 266,
   //margin: 20,
-  marginTop: 20,
+  marginTop: 15,
   // float: 'left',
   backgroundColor: '#1f1f1f',
   textAlign: 'center',
@@ -44,7 +44,7 @@ const styleDeck = {
 const styleImg = {
   height: '100%',
   width: '100%',
-  textAlign: 'center',
+//   textAlign: 'center',
   borderRadius: '100%',
 
 };
@@ -82,26 +82,23 @@ const styleTurntable = {
   marginTop: 10,
   textAlign: 'center',
   display: 'inline-block',
-  backgroundColor: '#1f1f1f',
+//   backgroundColor: '#1f1f1f',
   paddingBottom: 380,
 
-    backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-    webKitBorderRadius: 10,
-    MozBorderRadius: 10,
-    borderRadius: 10,
-    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+  webKitBorderRadius: 10,
+  MozBorderRadius: 10,
+  borderRadius: 10,
+  webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+  MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+  boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
 
 };
 
 const styleTurntableControls = {
   width: '100%',
-  height: 90
+  height: 90,
+  paddingTop: 25,
+  paddingBottom: 25,
 };
 
 const styleStartStopBtn = {
@@ -110,44 +107,30 @@ const styleStartStopBtn = {
   //display: 'inline-block',
   backgroundColor: '#444444',
   padding: 5,
-  marginLeft: 20
+  marginLeft: 20,
 };
 
 const style = {
     root: {
-        // float: 'right',
-        marginTop: 0,
-        display: 'flex',
-    // // height: 124,
-    // flexDirection: 'row',
+     marginTop: 0,
+    display: 'flex',
     justifyContent: 'space-around',
     height: 75,
-    marginBottom: 10,
-    // marginLeft: 500,
+    marginBottom: 7,
     },
   deckSpeed: {
-      marginBottom: 15,
-      marginLeft: '-12px',
-    //   marginRight: 5,
-    //   float: 'right',
-      color: '#009ab2',
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'space-around',
-     height: 10
+    marginBottom: 15,
+    marginLeft: '-12px',
+    color: '#009ab2',
+    height: 10
   },
   speedControl: {
-    //float: 'right',
-    //marginRight: 50,
-    //marginBottom: 100,
     position: 'absolute',
     bottom: 0,
     left: '80%'
   },
   player: {
     borderRadius: '50%',
-    // height: 250,
-    // width: 250,
     margin: 'auto',
     marginTop: '20%',
     backgroundColor: 'white',
@@ -162,19 +145,44 @@ class Turntable extends React.Component {
         super(props);
 
         this.state = {
-        inputValue: 1
+        // inputValue: 1
+
+        played: 0,
+        loaded: 0,
+        duration: 0,
     }
 
-function onStart() {
-    //this.props.startStopSong(this.props.deckNum)
-    let decks = document.getElementsByClassName('platter')
-    decks.classList.add('spin-platter');
+    this.onSeekMouseDown = e => {
+        this.setState({ seeking: true })
+    }
+    this.onSeekChange = e => {
+        this.setState({ played: parseFloat(e.target.value) })
+    }
+    this.onSeekMouseUp = e => {
+        this.setState({ seeking: false })
+        this.player.seekTo(parseFloat(e.target.value))
     }
 
-
+    this.onProgress = state => {
+        // Slider should only update if not seeking
+        if (!this.state.seeking) {
+        this.setState(state)
+        }
     }
+
+}
+
+
 
     render() {
+
+    const {
+        played, loaded, duration,
+        soundcloudConfig,
+        vimeoConfig,
+        youtubeConfig,
+        fileConfig
+    } = this.state
 
         const deckNum = this.props.deckNum;
 
@@ -230,11 +238,19 @@ function onStart() {
 
         return (
             <div className={this.props.className} style={styleTurntableContainer}>
-
                 <MuiThemeProvider>
+
                     <div className="turntable"
                         style={styleTurntable}
                         children={<div>
+                            <input
+                                                type='range' min={0} max={1} step='any'
+                                                className="seek"
+                                                value={played}
+                                                onMouseDown={this.onSeekMouseDown}
+                                                onChange={this.onSeekChange}
+                                                onMouseUp={this.onSeekMouseUp}
+                                            />
                                     <Paper
                                         className={deckClassNames}
                                         style={styleDeck}
@@ -253,7 +269,7 @@ function onStart() {
                                                 {/*<VideoDetail video={this.props.video}/>*/}
                                                     <ReactPlayer
                                                         id={this.props.deckNum}
-                                                        ref="player"
+                                                        ref={player => { this.player = player }}
                                                         className="player"
                                                         //playing={true}
                                                         url={this.props.song.url}
@@ -261,10 +277,16 @@ function onStart() {
                                                         volume={crossfade(this.props.xFade, deckNum)}
                                                         playing={this.props.play}
                                                         hidden={true}
-                                                        width={150}
-                                                        height={150}
-                                                        style={style.player}
-                                                        crossorigin='use-credentials' />
+                                                        //width={150}
+                                                        //height={150}
+                                                        //style={style.player}
+                                                        crossorigin='use-credentials'
+                                                        onBuffer={() => console.log('onBuffer')}
+                                                        onEnded={() => this.props.startStopSong(this.props.deckNum)}
+                                                        onError={err => console.log('onError', err)}
+                                                        onProgress={this.onProgress}
+                                                        //onDuration={duration => this.setState({ duration })}
+                                                        />
                                                         {/*<div
                                                             className="artist-info">
                                                             <h4 className="artist-name">Artist:

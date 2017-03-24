@@ -27,6 +27,8 @@ import Visualizer from './visualizer.component';
 
 import Pot from './knob.component';
 
+import WaveformDisplay from './waveform-display.component';
+
 
 
 // import Turntable2 from './turntable2';
@@ -43,25 +45,70 @@ const styles = {
 }
 
 class ChannelLeft extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+        // inputValue: 1
+
+        played: 0,
+        loaded: 0,
+        duration: 0,
+    }
+
+
+  // this.onSeekMouseDown = e => {
+  //     // this.setState({ seeking: true })
+  //     this.props.handleSeek(this.props.deckNum)
+  //   }
+  //   this.onSeekChange = e => {
+  //     this.props.handleProgressChange(e.target.value, this.props.deckNum)
+  //   }
+  //   this.onSeekMouseUp = e => {
+  //     // this.handleSeek({ seeking: false })
+  //     this.props.handleSeek(this.props.deckNum)
+  //     // this.player.seekTo(parseFloat(e.target.value))
+  //   }
+
+
+  // this.onProgress = state => {
+  //     // We only want to update time slider if we are not currently seeking
+  //     if (!this.props.seeking) {
+  //       this.props.handleProgressChange(e.target.value, this.props.deckNum)
+  //     }
+  //   }
+
+  }
 
   render() {
 
 let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
       <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" name={this.props.name} style={{height: '50%'}} >
-
+        {/*<input
+          type='range' min={0} max={1} step='any'
+          className="seek"
+          value={this.props.progress}
+          onMouseDown={this.props.handleSeek}
+          onChange={this.onSeekChange}
+          onMouseUp={this.onSeekMouseUp}
+        />*/}
         {/*<div className="row">*/}
         <div
             className="container-fluid tt-mixer-container"
             style={styles.tt_mixer}>
           <Turntable
-          style={{height: 0, marginBottom: 0, paddingBottom: 0}}
+            style={{height: 0, marginBottom: 0, paddingBottom: 0}}
             deckNum="_DECK1"
             xFade={this.props.xFade}
+            progress={this.props.progress}
+            seeking={this.props.seeking}
             song={this.props.song}
             play={this.props.play}
             speed={this.props.speed}
             volume={this.props.volume}
+            handleSeek={this.props.handleSeek}
+            handleProgressChange={this.props.handleProgressChange}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
             handleXfade={this.props.handleXfade}
             startStopSong={this.props.startStopSong}
@@ -155,6 +202,7 @@ function mapStateToProps(state) {
         play: state.decksReducer.deck1.play,
         speed: state.decksReducer.deck1.speed,
         volume: state.decksReducer.deck1.volume,
+        progress: state.decksReducer.deck1.progress,
         treble: state.decksReducer.deck1.treble,
         mid: state.decksReducer.deck1.mid,
         bass: state.decksReducer.deck1.bass,
@@ -199,6 +247,8 @@ function mapDispatchToProps(dispatch) {
         handleBufferSizeChange: actions.handleBufferSizeChange,
         handleDelayTimeChange: actions.handleDelayTimeChange,
         handleDelayMixChange: actions.handleDelayMixChange,
+        handleProgressChange: actions.handleProgressChange,
+        handleSeek: actions.handleSeek,
         },
         dispatch);
 }

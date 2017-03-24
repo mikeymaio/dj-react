@@ -3,8 +3,8 @@ import AppBar from 'material-ui/AppBar';
 import Search from './search.component';
 
 const style = {
-    backgroundColor: '#1f1f1f',
-    lineHeight: 50
+    backgroundColor: '#000',
+    lineHeight: 50,
 }
 
 const titleStyle = {

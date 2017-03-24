@@ -84,6 +84,7 @@ const deckState = {
             activeSong: playlistState.playlist[2],
             play: false,
             progress: 0,
+            seeking: false,
             volume: 0.8,
             speed: 1,
             treble: 0,
@@ -110,6 +111,7 @@ const deckState = {
             activeSong: playlistState.playlist[1],
             play: false,
             progress: 0,
+            seeking: false,
             volume: 0.8,
             speed: 1,
             treble: 0,
@@ -164,6 +166,26 @@ const decksReducer = (state=deckState, action) => {
             return {
                 ...state,
                 deck1: {...state.deck1, activeSong: action.payload}
+            }
+        case 'START_STOP_SONG_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, play: !state.deck1.play}
+            }
+        case 'UPDATE_PLAYBACK_SPEED_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, speed: action.payload * 2}
+            }
+        case 'SEEK_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, seeking: !state.deck1.seeking}
+            }
+        case 'UPDATE_PR0GRESS_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, progress: action.payload}
             }
         case 'UPDATE_LP_FILTER_CUTOFF_DECK1':
             return {
@@ -245,26 +267,32 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck1: {...state.deck1, bass: action.payload}
             }
-            case 'START_STOP_SONG_DECK1':
-        // state.play = !state.play;
-        return {
-                ...state,
-                deck1: {...state.deck1, play: !state.deck1.play}
-            }
-            // return Object.assign({}, state, {
-            //     deck1: {play: !state.play}
-            // });
-        case 'UPDATE_PLAYBACK_SPEED_DECK1':
-        return {
-                ...state,
-                deck1: {...state.deck1, speed: action.payload * 2}
-            }
 //////////////////////////// DECK 2 //////////////////////////////////////
 
         case 'SONG_SELECTED_DECK2':
             return {
                 ...state,
                 deck2: {...state.deck2, activeSong: action.payload}
+            }
+        case 'SEEK_DECK2':
+            return {
+                ...state,
+                deck1: {...state.deck2, seeking: !state.deck2.seeking}
+            }
+        case 'UPDATE_PR0GRESS_DECK2':
+            return {
+                ...state,
+                deck1: {...state.deck2, progress: action.payload}
+            }
+        case 'START_STOP_SONG_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, play: !state.deck2.play}
+            }
+        case 'UPDATE_PLAYBACK_SPEED_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, speed: action.payload * 2}
             }
         case 'UPDATE_LP_FILTER_CUTOFF_DECK2':
             return {
@@ -346,24 +374,9 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 deck2: {...state.deck2, bass: action.payload}
             }
-            case 'START_STOP_SONG_DECK2':
-        // state.play = !state.play;
-        return {
-                ...state,
-                deck2: {...state.deck2, play: !state.deck2.play}
-            }
-            // return Object.assign({}, state, {
-            //     deck2: {play: !state.play}
-            // });
-        case 'UPDATE_PLAYBACK_SPEED_DECK2':
-        return {
-                ...state,
-                deck2: {...state.deck2, speed: action.payload * 2}
-            }
-
+        }
+        return state;
     }
-    return state;
-}
 
 //////////////////////////// TEST //////////////////////////////////////
 

@@ -26,6 +26,21 @@ export function startStopSong(deckNum) {
     };
 }
 
+export function handleSeek(deckNum) {
+    const SEEK = 'SEEK';
+    return {
+        type: SEEK + deckNum,
+    }
+}
+
+export function handleProgressChange(value, deckNum) {
+    const UPDATE_PROGRESS = 'UPDATE_PROGRESS';
+    return {
+        type: UPDATE_PROGRESS + deckNum,
+        payload: value
+    }
+}
+
 export function handleVolumeChange(value, deckNum) {
     console.log('volume changed', value);
     const UPDATE_VOLUME = 'UPDATE_VOLUME';
