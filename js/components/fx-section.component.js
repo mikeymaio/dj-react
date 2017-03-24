@@ -343,7 +343,7 @@ class FxSection extends React.Component {
         return(
              <div
                 name={this.props.name}
-                className="fx-container container-fluid"
+                className="fx-container container"
                 //col-lg-12 col-md-12 col-sm-12 col-xs-12"
                 style={styles.fxsection}>
                 {/*<Visualizer model={ model } audioContext={this.audioContext} playing={this.props.play} width={300} height={300} play={this.props.play} />*/}

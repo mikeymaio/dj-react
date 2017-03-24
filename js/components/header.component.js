@@ -5,6 +5,7 @@ import Search from './search.component';
 const style = {
     backgroundColor: '#000',
     lineHeight: 50,
+    width: '100%',
 }
 
 const titleStyle = {
