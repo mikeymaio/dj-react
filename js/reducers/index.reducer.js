@@ -5,19 +5,19 @@ const playlistState = {
     playlist:
     [
         {
-            url: '../assets/test_playlist/Hugo-99_Problems_163BPM.mp3' ,
+            url: '/dj-react/assets/test_playlist/Hugo-99_Problems_163BPM.mp3',
             cover: 'http://www.thailandballoonfestival.com/tibf2013/images/HugoSlider1.jpg',
                 name: 'Hugo',
                 song: '99 Problems'
         },
         {
-            url: '../assets/test_playlist/Creedence_Clearwater_Revival-Suzie_Q.mp3' ,
+            url: '/dj-react/assets/test_playlist/Creedence_Clearwater_Revival-Suzie_Q.mp3' ,
             cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2F2.bp.blogspot.com%2F-Y6gSuNZrGy8%2FT2s-cIQwS_I%2FAAAAAAAABwY%2FHAgkHzR2k_M%2Fs1600%2F114125684.jpg&f=1',
                 name: 'Creedence Clearwater Revival',
                 song: 'Suzie Q'
         },
         {
-            url: '../assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3',
+            url: '/dj-react/assets/test_playlist/James_Brown_vs_Led Zeppelin-Whole_Lotta_Sex_Machine.mp3',
             cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fi.ytimg.com%2Fvi%2FJOD-M7WZkZQ%2Fhqdefault.jpg&f=1',
 
                 name: 'James Brown Vs Led Zeppelin',
@@ -25,7 +25,7 @@ const playlistState = {
 
         },
         {
-            url: '../assets/test_playlist/Marvin_Gaye-Sexual_Healing_(Kygo_Remix)101BPM.mp3' ,
+            url: '/dj-react/assets/test_playlist/Marvin_Gaye-Sexual_Healing_(Kygo_Remix)101BPM.mp3' ,
             cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.themusicninja.com%2Fwp-content%2Fuploads%2F2013%2F11%2F26.jpg&f=1',
 
                 name: 'Marvin Gaye',
@@ -33,7 +33,7 @@ const playlistState = {
 
         },
         {
-            url: '../assets/test_playlist/I_Took_A_Pill_In_Ibiza_(SeeB Remix)102BPM.mp3' ,
+            url: '/dj-react/assets/test_playlist/I_Took_A_Pill_In_Ibiza_(SeeB Remix)102BPM.mp3' ,
             cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fnothinbuthits.com%2Fwp-content%2Fuploads%2F2016%2F04%2FI-Took-A-Pill-In-Ibiza.png&f=1',
 
                 name: 'Mike Posner',
@@ -41,7 +41,7 @@ const playlistState = {
 
         },
         {
-            url: '../assets/test_playlist/Fifth_Harmony-Worth_It_Ft_Kid_Ink_100BPM.mp3' ,
+            url: '/dj-react/assets/test_playlist/Fifth_Harmony-Worth_It_Ft_Kid_Ink_100BPM.mp3' ,
             cover: 'https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fradiomelodia.gr%2Fwp-content%2Fuploads%2F2015%2F03%2Ffifth-harmony_worth-it.jpg&f=1',
 
                 name: 'Fifth Harmony',
