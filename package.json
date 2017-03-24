@@ -55,6 +55,7 @@
     "chokidar-cli": "^1.2.0",
     "cpr": "^2.0.0",
     "enzyme": "^2.4.1",
+    "gh-pages": "^0.12.0",
     "http-server": "^0.9.0",
     "mkdirp": "^0.5.1",
     "mocha": "^3.0.1",
