@@ -115,7 +115,7 @@ const style = {
      marginTop: 0,
     display: 'flex',
     justifyContent: 'space-around',
-    height: 75,
+    height: 65,
     marginBottom: 7,
     },
   deckSpeed: {

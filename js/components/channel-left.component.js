@@ -54,9 +54,10 @@ class ChannelLeft extends React.Component {
         played: 0,
         loaded: 0,
         duration: 0,
+        source: null
     }
 
-
+    }
   // this.onSeekMouseDown = e => {
   //     // this.setState({ seeking: true })
   //     this.props.handleSeek(this.props.deckNum)
@@ -78,21 +79,47 @@ class ChannelLeft extends React.Component {
   //     }
   //   }
 
+//let source;
+componentDidMount() {
+this.getData = () => {
+  source = this.props.createBufferSource();
+  var request = new XMLHttpRequest();
+
+  request.open('GET', this.props.activeSong, true);
+
+  request.responseType = 'arraybuffer';
+
+
+  request.onload = () => {
+    var audioData = request.response;
+
+    audioCtx.decodeAudioData(audioData, (buffer) => {
+      console.log(buffer);
+        this.setState({
+          source: buffer
+        })
+        // source.connect(audioCtx.destination);
+        // source.loop = true;
+      },
+
+      (e) => { console.log("Error with decoding audio data" + e.err); });
+
   }
+
+  request.send();
+}
+
+
+}
 
   render() {
 
-let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
+console.log(this.state.source);
+
+const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
       <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" name={this.props.name} style={{height: '50%'}} >
-        {/*<input
-          type='range' min={0} max={1} step='any'
-          className="seek"
-          value={this.props.progress}
-          onMouseDown={this.props.handleSeek}
-          onChange={this.onSeekChange}
-          onMouseUp={this.onSeekMouseUp}
-        />*/}
+        {/*<WaveformDisplay buffer={this.state.source} width={500} zoom={1} color="cadetblue"/>*/}
         {/*<div className="row">*/}
         <div
             className="container-fluid tt-mixer-container"
@@ -194,6 +221,7 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
     );
   }
 }
+
 
 function mapStateToProps(state) {
     return {

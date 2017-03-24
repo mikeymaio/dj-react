@@ -27,7 +27,7 @@ const styles = {
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: 'black',
-    height: 100,
+    height: 90,
     paddingBottom: 0,
     paddingTop: 10,
     marginTop: 0,
@@ -53,7 +53,7 @@ const styles = {
     border: '5px solid silver',
     paddingBottom: 50,
     width: '70%',
-    height: 150,
+    height: 135,
     margin: 'auto',
     // left:'5%'
     // width: '40%'
