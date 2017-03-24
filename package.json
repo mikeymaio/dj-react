@@ -4,7 +4,7 @@
   "description": "A dj rig for the browser, built with react",
   "main": "js/index.js",
   "scripts": {
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build --repo \"https://github.com/HypeUFO/dj-react.git\"",
     "start": "http-server -c-1 build",
     "dev": "run-p watch serve",
     "test": "mocha --recursive --compilers js:babel-core/register",
