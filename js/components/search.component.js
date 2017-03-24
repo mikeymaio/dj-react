@@ -7,6 +7,7 @@ const API_KEY = 'AIzaSyAQvNFc6ulIgwEv592xp9Ws6SAsHyQHl-o';
 
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
+import Snackbar from 'material-ui/Snackbar';
 
 import { connect } from 'react-redux';
 import {selectSong} from '../actions/index.action';
@@ -41,7 +42,7 @@ const styles = {
     },
     results: {
                 width: '100%',
-                maxHeight: 500,
+                maxHeight: 400,
                 /*height: 309px;*/
                 /*position: absolute;*/
                 // top: 20,
@@ -70,20 +71,24 @@ class Search extends Component {
         };
 
         //this.videoSearch('EDM');
-this.handleUpdateInput = (searchText) => {
-    this.setState({
-      searchText: searchText,
-    });
-  };
+        this.handleUpdateInput = (searchText) => {
+            this.setState({
+            searchText: searchText,
+            });
+        };
 
+        this.handleNewRequest = () => {
+            this.setState({
+            searchText: '',
+            });
+        }
 
+        this.handleTouchTap = () => {
+            this.setState({
+            open: true,
+            });
+        };
     }
-
-      handleNewRequest() {
-    this.setState({
-      searchText: '',
-    });
-  }
 
 
     videoSearch(term) {
@@ -107,21 +112,22 @@ this.handleUpdateInput = (searchText) => {
                                         <p className="media-heading">{videos[i].snippet.title}</p>
                                     </div>
                                     <div style={styles.loadBtnGroup}>
-                                        <button style={styles.load} onTouchTap={() => this.props.selectSong(
+                                        <button style={styles.load} onTouchTap={() => {this.props.selectSong(
                                             {title:videos[i].snippet.title,
                                             url: `https://www.youtube.com/embed/${videos[i].id.videoId}`,
                                             cover: videos[i].snippet.thumbnails.default.url
-                                            },
-                                            '_DECK1')}
+                                            }, '_DECK1'),
+                                            this.handleTouchTap()}}
                                             >
                                             LOAD TO DECK 1
                                         </button>
-                                        <button style={styles.load} onTouchTap={() => this.props.selectSong(
+                                        <button style={styles.load} onTouchTap={() => {
+                                            this.props.selectSong(
                                             {title:videos[i].snippet.title,
                                             url: `https://www.youtube.com/embed/${videos[i].id.videoId}`,
                                             cover: videos[i].snippet.thumbnails.default.url
-                                            },
-                                            '_DECK2')}
+                                            }, '_DECK2'),
+                                            this.handleTouchTap()}}
                                             >
                                             LOAD TO DECK 2
                                         </button>
@@ -175,14 +181,14 @@ this.handleUpdateInput = (searchText) => {
                 openOnFocus={true}
             />*/}
             <AutoComplete
-            anchorOrigin={{vertical: 'bottom', horizontal: 'middle'}}
-            targetOrigin={{vertical: 'top', horizontal: 'middle'}}
+                anchorOrigin={{vertical: 'bottom', horizontal: 'middle'}}
+                targetOrigin={{vertical: 'top', horizontal: 'middle'}}
                 className={this.props.className}
                 style={this.props.style}
                 textFieldStyle={this.props.textFieldStyle}
                 underlineStyle={this.props.underlineStyle}
                 listStyle={styles.results}
-                popoverProps={{useLayerForClickAway: false, style:{width: '75%', backgroundColor: 'black'}}}
+                popoverProps={{useLayerForClickAway: false, style:{width: '55%', backgroundColor: 'black'}}}
                 menuStyle={{width: '100%',}}
                 hintText={this.props.hintText}
                 searchText={this.state.searchText}
@@ -196,6 +202,13 @@ this.handleUpdateInput = (searchText) => {
                 openOnFocus={true}
             />
             {/*</div>*/}
+            <Snackbar
+                open={this.state.open}
+                message="Success!"
+                autoHideDuration={3000}
+                contentStyle={{color: "#22bcd4"}}
+                style={{border: "2px solid #22bcd4"}}
+            />
         </div>
         );
     }
