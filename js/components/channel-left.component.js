@@ -118,13 +118,15 @@ console.log(this.state.source);
 
 const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
-      <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" name={this.props.name} style={{height: '50%'}} >
+      <div id="_DECK1" className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12" name={this.props.name} style={{height: '50%'}} >
         {/*<WaveformDisplay buffer={this.state.source} width={500} zoom={1} color="cadetblue"/>*/}
         {/*<div className="row">*/}
         <div
             className="container-fluid tt-mixer-container"
             style={styles.tt_mixer}>
           <Turntable
+            audioContext={this.props.audioContext}
+            selectSong={this.props.selectSong}
             style={{height: 0, marginBottom: 0, paddingBottom: 0}}
             deckNum="_DECK1"
             xFade={this.props.xFade}
@@ -162,7 +164,7 @@ const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-
          <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
          <MuiThemeProvider>
         <FxSection
-        handleXFade={this.props.handleXFade}
+                handleXFade={this.props.handleXFade}
                 xFade={this.props.xFade}
                 audioContext={this.props.audioContext}
                 song={this.props.song}
@@ -258,6 +260,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         handlePlaybackSpeed: actions.handlePlaybackSpeed,
         startStopSong: actions.startStopSong,
+        selectSong: actions.selectSong,
         handleVolumeChange: actions.handleVolumeChange,
         handleTrebleControl: actions.handleTrebleControl,
         handleMidControl: actions.handleMidControl,

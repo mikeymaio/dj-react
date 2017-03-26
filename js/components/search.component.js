@@ -205,7 +205,7 @@ class Search extends Component {
             <Snackbar
                 open={this.state.open}
                 message="Success!"
-                autoHideDuration={3000}
+                autoHideDuration={2000}
                 contentStyle={{color: "#22bcd4"}}
                 style={{border: "2px solid #22bcd4"}}
             />

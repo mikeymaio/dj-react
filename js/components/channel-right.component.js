@@ -47,13 +47,15 @@ class ChannelRight extends React.Component {
 
 let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
-      <div className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 " name={this.props.name}>
+      <div id="_DECK2" className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 " name={this.props.name}>
 
         {/*<div className="row">*/}
         <div
             className="container-fluid tt-mixer-container"
             style={styles.tt_mixer}>
           <Turntable
+            audioContext={this.props.audioContext}
+            selectSong={this.props.selectSong}
             xFade={this.props.xFade}
             deckNum="_DECK2"
             song={this.props.song}

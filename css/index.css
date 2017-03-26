@@ -3,28 +3,14 @@
 }
 
 html, body {
-    /*background-image: url('../assets/images/djR-bkgrd-1-enhance.jpg');*/
-
-    /*background-image: url('../assets/images/djR-bkgrd-1-manual.jpg');*/
-
-    /*background-image: url('../assets/images/djR-bkgrd-1-manual-2.jpg');*/
-
-    /*background-image: url('../assets/images/djR-bkgrd-1-manual-3.jpg');*/
 
     background-image: url('../assets/images/djR-bkgrd-1-warmer.jpg');
-
-
-        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwallpoper.com%2Fimages%2F00%2F43%2F63%2F77%2Fgray-floor-texture_00436377.jpg&f=1');*/
-        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.fordaq.com%2Fwww%2Fnews%2F2008%2FH3090_ST222.jpg&f=1');*/
-        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.swankydesign.com%2Fimages%2FMaterial%2520Finishes%2FBRUSHED-STAINLESS-CMYK.jpg&f=1');*/
-        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fallroundnews.com%2Fwp-content%2Fuploads%2F2012%2F02%2Fseamless-wood-texture-free-22.jpg&f=1');*/
-        /*background-image: url('https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.photohdx.com%2Fimages%2F2015%2F01%2Fbrown-furniture-wood-textured-background.jpg&f=1');*/
-
-        font-family: 'Roboto', sans-serif;
-    }
-.header {
-    text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
+
+/*.header {
+    text-align: center;
+}*/
 
 h5 {
     text-align: center;
@@ -91,6 +77,16 @@ h5 {
 .start-info {
 
     margin-top: 30%;
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    /*word-break: break-all;*/
+    word-break: break-all;
+    white-space: normal;
+    line-height: 1.25em; /* 1em = 12px in this case. 20/12 == 1.666666  */
 }
 
 /*.artist-name,

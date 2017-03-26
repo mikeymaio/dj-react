@@ -1,7 +1,7 @@
 export function selectSong(file, deckNum) {
     //const SONG_SELECTED = 'SONG_SELECTED'
     const SONG_SELECTED = 'SONG_SELECTED';
-    //console.log(file.title, ' has been selected');
+    console.log(file.title, ' has been selected');
     return {
         type: SONG_SELECTED + deckNum,
         payload: file

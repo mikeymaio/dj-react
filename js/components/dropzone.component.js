@@ -59,6 +59,23 @@ var DropzoneDemo = React.createClass({
 
 onDrop(acceptedFiles, rejectedFiles) {
 
+      var input = document.getElementById(`fileLoaderFor_DECK1`);
+    console.log(input.files);
+    var file = acceptedFiles[0].preview;
+    var thisDeck = document.getElementById('_DECK1');
+    var audio = thisDeck.getElementsByTagName("AUDIO")[0];
+
+        // this.props.selectSong(
+        //             {title: input.files[0].name,
+        //             url: file,
+        //             cover: null
+        //             }, this.props.deckNum);
+
+    audio.src= file;
+
+    // this.player.url = file;
+    console.log(file);
+
 //var file = URL.createObjectURL(acceptedFiles[0]);
       let upload = {
           url: acceptedFiles[0].preview,
@@ -77,8 +94,8 @@ onDrop(acceptedFiles, rejectedFiles) {
     },
 
  renderList() {
-        // return this.state.files.map((file) => {
-            return this.props.playlist.map((file) => {
+        return this.state.files.map((file) => {
+            // return this.props.playlist.map((file) => {
             return (
                 <li
                     key={file.name}

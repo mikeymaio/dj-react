@@ -78,7 +78,7 @@ class Table extends Component {
         {/*</MuiThemeProvider>*/}
         {/*<Crossfader />*/}
         <ChannelLeft
-        id="channelLeft"
+          id="channelLeft"
           audioContext={this.props.audioContext}
           name="deck1"
           xFade={this.props.xFade}
@@ -86,7 +86,7 @@ class Table extends Component {
           orientation="left"
           />
         <ChannelRight
-        id="ChannelRight"
+          id="chennelRight"
           audioContext={this.props.audioContext}
           name="deck2"
           xFade={this.props.xFade}
