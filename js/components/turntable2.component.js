@@ -193,7 +193,7 @@ class Turntable extends React.Component {
           url: file,
           name: acceptedFiles[0].name,
           title: acceptedFiles[0].name,
-          cover: "../assets/images/djR-vinyl-label.jpg",
+          cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
           //cover: "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fi.ytimg.com%2Fvi%2FJOD-M7WZkZQ%2Fhqdefault.jpg&f=1",
           format: acceptedFiles[0].type,
           size: acceptedFiles[0].size,
