@@ -180,6 +180,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         handlePlaybackSpeed: actions.handlePlaybackSpeed,
         startStopSong: actions.startStopSong,
+        selectSong: actions.selectSong,
         handleVolumeChange: actions.handleVolumeChange,
         handleTrebleControl: actions.handleTrebleControl,
         handleMidControl: actions.handleMidControl,

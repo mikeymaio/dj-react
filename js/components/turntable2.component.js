@@ -153,7 +153,7 @@ class Turntable extends React.Component {
         played: 0,
         loaded: 0,
         duration: 0,
-        fileUpload: {url: null, name: ''},
+        // fileUpload: {url: null, name: ''},
         open: false
     }
 
@@ -183,21 +183,24 @@ class Turntable extends React.Component {
     const thisDeck = document.getElementById(this.props.deckNum);
 
     const audio = thisDeck.getElementsByTagName("AUDIO")[0];
-    const playerCover = thisDeck.getElementsByClassName("start-info")[0];
+
+    // const video = thisDeck.getElementsByTagName("VIDEO")[0];
+    // const playerCover = thisDeck.getElementsByClassName("start-info")[0];
 
     // playerCover.innerHTML = acceptedFiles[0].name;
 
-    playerCover.innerHTML = acceptedFiles[0].name;
+    // playerCover.innerHTML = acceptedFiles[0].name;
 
-    this.setState({
-        fileUpload: {url: file, name: acceptedFiles[0].name},
-        open: true
-    });
-    audio.src= file;
-    audio.loop= false;
+    // this.setState({
+    //     fileUpload: {url: file, name: acceptedFiles[0].name},
+    //     open: true
+    // });
+    // audio.src= file;
+    // audio.loop= false;
+    // video.loop= false;
 
 
-    console.log(playerCover);
+    // console.log(playerCover);
 
     console.log('file = ', file)
 
@@ -209,7 +212,7 @@ class Turntable extends React.Component {
     const upload = {
         //   url: objectUrl,
         //   url: acceptedFiles[0].preview,
-          url: null,
+          url: file,
           name: acceptedFiles[0].name,
           title: acceptedFiles[0].name,
           cover: acceptedFiles[0].cover || null,
@@ -222,7 +225,7 @@ class Turntable extends React.Component {
 
     // audio.src= this.state.fileUpload.url;
 
-    // this.props.selectSong(upload, this.props.deckNum);
+    this.props.selectSong(upload, this.props.deckNum);
 
 
     
@@ -241,6 +244,8 @@ class Turntable extends React.Component {
 // 	getSound.send(); // Send the Request and Load the File
 	
 // 	window.addEventListener("keydown",onKeyDown); // Create Event Listener for KeyDown
+
+//     	// window.addEventListener("play", onPlay); // Create Event Listener for KeyDown
 	
 // 	function onKeyDown(e){
 // 		switch (e.keyCode) {
@@ -253,6 +258,16 @@ class Turntable extends React.Component {
 // 			break;
 // 		}
 //  	}
+    //  const play = this.props.play;
+
+//      function onPlay(play) {
+//          if (play) {
+//              var playSound = context.createBufferSource(); // Declare a New Sound
+// 				playSound.buffer = track; // Attatch our Audio Data as it's Buffer
+// 				playSound.connect(context.destination);  // Link the Sound to the Output
+// 				playSound.start(0); // Play the Sound Immediately
+//          }
+//      }
 
 
 // getSound.send();
@@ -290,10 +305,9 @@ class Turntable extends React.Component {
         let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
 
         if (this.props.song.name === "") {
+            // if (!this.props.song) {
             return (
            <div className={this.props.className} style={styleTurntableContainer}>
-                {/*<input type="file" id={`fileLoaderFor${this.props.deckNum}`} multiple size="50" onChange={this.handleUpload} />*/}
-                {/*<audio id="audio_player" controls/>*/}
                 <MuiThemeProvider>
                     <div className="turntable"
                         style={styleTurntable}
@@ -322,7 +336,7 @@ class Turntable extends React.Component {
                                                 style={stylePlatter1}
                                                 zDepth={2}
                                                 circle={true}
-                                                children={<div 
+                                                children={<div
                                                 //className="drop_zone"
                                                 //onDrop={this.handleDrop}
                                                 //onDragOver="dragover_handler(event)"
@@ -447,11 +461,12 @@ class Turntable extends React.Component {
                                                 style={stylePlatter1}
                                                 zDepth={2}
                                                 circle={true}
-                                                children={<div 
+                                                children={<div
                                                 //className="drop_zone"
                                                 //onDrop={this.handleDrop}
                                                 //onDragOver="dragover_handler(event)"
                                                 >
+                                                {/*<audio id="audio_player" src={this.props.song.url} controls/>*/}
                                                     <ReactPlayer
                                                         id={this.props.deckNum}
                                                         ref={player => { this.player = player }}

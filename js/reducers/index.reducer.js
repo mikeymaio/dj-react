@@ -98,6 +98,7 @@ const decksReducer = (state=deckState, action) => {
                 both: {...state.both, xFade: action.payload}
             }
         case 'SONG_SELECTED_DECK1':
+        console.log(action.payload)
             return {
                 ...state,
                 deck1: {...state.deck1, activeSong: action.payload}

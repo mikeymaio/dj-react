@@ -95,6 +95,8 @@ class FxSection extends React.Component {
 
         var deck = document.querySelector(':scope .' + this.props.deckNum + ' audio');
 
+        // var deck = document.querySelector(':scope .' + this.props.deckNum + ' video');
+
         this.source = audioContext.createMediaElementSource(deck);
 
 
