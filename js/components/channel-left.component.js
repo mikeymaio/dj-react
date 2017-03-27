@@ -27,7 +27,6 @@ import Visualizer from './visualizer.component';
 
 import Pot from './knob.component';
 
-import WaveformDisplay from './waveform-display.component';
 
 
 
@@ -35,7 +34,7 @@ import WaveformDisplay from './waveform-display.component';
 
 const styles = {
   tt_mixer: {
-    height: 420,
+    height: 425,
     // width: 500
   },
   container: {

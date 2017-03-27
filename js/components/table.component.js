@@ -39,23 +39,33 @@ const styles = {
     marginTop: 0,
     // marginLeft: 25,
     marginLeft: '10%',
-    marginTop: 5
+    marginTop: 0
         // marginLeft: '0%',
     // width: '100%',
   },
   crossfader: {
-    height: 5,
+    height: 50,
     // width: 276,
     width: '60%',
     border: '1px solid #E3DEDB',
     backgroundColor: 'black',
     position: "absolute",
     // bottom: '15000%',
-    bottom: 162,
+    bottom: 150,
     //left: '31.25%',
     left: '20%',
     paddingTop: 0,
     paddingBottom: 30,
+  },
+  label: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    color: '#009ab2',
+    backgroundColor: 'black',
+    fontSize: '1em',
+    margin: 'auto',
+    marginBottom: 0,
+    // padding: 5,
   },
 };
 
@@ -94,12 +104,14 @@ class Table extends Component {
           orientation="right"
           />
         <div className="container col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3">
-        <div 
+        <div
         className="crossfader-container"
         style={styles.crossfader}
         >
+        <label htmlFor="crossfader" style={styles.label} className="crossfaderLabel">Crossfader</label>
           <MuiThemeProvider>
-            <Fader 
+            <Fader
+              id="crossfader"
               className="crossfader"
               min={0}
               max={1}

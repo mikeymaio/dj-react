@@ -32,7 +32,7 @@ import Pot from './knob.component';
 
 const styles = {
   tt_mixer: {
-    height: 420,
+    height: 425,
     // width: 500
   },
   container: {

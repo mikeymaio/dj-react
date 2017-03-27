@@ -28,7 +28,7 @@ const customStyles = {
 };
 
 
-class HelpModal extends React.Component {
+class IntroModal extends React.Component {
     constructor(props) {
         super(props)
 
@@ -67,7 +67,7 @@ class HelpModal extends React.Component {
         >
 
           <h2 ref="subtitle">Welcome To DJ-React!</h2>
-          <p ref="content" >DJ React let's you search for songs on YouTube and mix from one song to another. To get started...</p>
+          <p ref="content" >DJ React is a vitrual DJ setup. You can import songs from your device or search Youtube. (Note: When playing songs from Youtube, only play/pause, playback speed, and the crossfader will work. This is a limitation of Youtube's player and will be fixed when I switch to SoundCloud's API) To get started, either drag and drop songs or videos from your device onto the turntables, or use the search bar to find songs on Youtube. Happy DJing!</p>
           <button onClick={this.closeModal} style={{float: 'right'}} >close</button>
         </Modal>
       </div>
@@ -75,4 +75,4 @@ class HelpModal extends React.Component {
   }
 }
 
-export default HelpModal;
+export default IntroModal;

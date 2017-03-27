@@ -75,18 +75,7 @@ h5 {
 }*/
 
 .start-info {
-
     margin-top: 30%;
-    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
-    white-space: pre-wrap;       /* css-3 */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
-    /*word-break: break-all;*/
-    word-break: break-all;
-    white-space: normal;
-    line-height: 1.25em; /* 1em = 12px in this case. 20/12 == 1.666666  */
 }
 
 /*.artist-name,
@@ -240,6 +229,11 @@ canvas#meter {
 canvas {
     -webkit-transform:rotate(45deg);
     transform:rotate(45deg);
+}
+
+.waveDisplay {
+    -webkit-transform:rotate(0deg);
+    transform:rotate(0deg);
 }
 
 .channelFader {

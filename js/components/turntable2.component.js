@@ -16,7 +16,7 @@ import Fader from './fader.component';
 
 import Dropzone from 'react-dropzone';
 import Snackbar from 'material-ui/Snackbar';
-
+import WaveDisplay from './waveformDisplay.component';
 
 
 
@@ -184,38 +184,16 @@ class Turntable extends React.Component {
 
     const audio = thisDeck.getElementsByTagName("AUDIO")[0];
 
-    // const video = thisDeck.getElementsByTagName("VIDEO")[0];
-    // const playerCover = thisDeck.getElementsByClassName("start-info")[0];
-
-    // playerCover.innerHTML = acceptedFiles[0].name;
-
-    // playerCover.innerHTML = acceptedFiles[0].name;
-
-    // this.setState({
-    //     fileUpload: {url: file, name: acceptedFiles[0].name},
-    //     open: true
-    // });
-    // audio.src= file;
-    // audio.loop= false;
-    // video.loop= false;
-
-
-    // console.log(playerCover);
 
     console.log('file = ', file)
 
-    // const objectUrl = URL.createObjectURL(acceptedFiles[0]);
-
-    // console.log("objectURL = ", objectUrl)
-    // this.player.url = file;
 
     const upload = {
-        //   url: objectUrl,
-        //   url: acceptedFiles[0].preview,
+
           url: file,
           name: acceptedFiles[0].name,
           title: acceptedFiles[0].name,
-          cover: acceptedFiles[0].cover || null,
+          cover: "../assets/images/djR-vinyl-label.jpg",
           //cover: "https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fi.ytimg.com%2Fvi%2FJOD-M7WZkZQ%2Fhqdefault.jpg&f=1",
           format: acceptedFiles[0].type,
           size: acceptedFiles[0].size,
@@ -223,55 +201,7 @@ class Turntable extends React.Component {
 
     // //handleSongUpload(upload);
 
-    // audio.src= this.state.fileUpload.url;
-
     this.props.selectSong(upload, this.props.deckNum);
-
-
-    
-        // URL.revokeObjectURL(objectUrl);
-
-//  var context = this.props.audioContext; // Create and Initialize the Audio Context
-// 	var track; // Create the Sound 
-// 	var getSound = new XMLHttpRequest(); // Load the Sound with XMLHttpRequest
-// 	getSound.open("GET", this.props.song.url, true); // Path to Audio File
-// 	getSound.responseType = "arraybuffer"; // Read as Binary Data
-// 	getSound.onload = function() {
-// 		context.decodeAudioData(getSound.response, function(buffer){
-// 			track = buffer; // Decode the Audio Data and Store it in a Variable
-// 		});
-// 	}
-// 	getSound.send(); // Send the Request and Load the File
-	
-// 	window.addEventListener("keydown",onKeyDown); // Create Event Listener for KeyDown
-
-//     	// window.addEventListener("play", onPlay); // Create Event Listener for KeyDown
-	
-// 	function onKeyDown(e){
-// 		switch (e.keyCode) {
-// 			// X
-// 			case 88:
-// 				var playSound = context.createBufferSource(); // Declare a New Sound
-// 				playSound.buffer = track; // Attatch our Audio Data as it's Buffer
-// 				playSound.connect(context.destination);  // Link the Sound to the Output
-// 				playSound.start(0); // Play the Sound Immediately
-// 			break;
-// 		}
-//  	}
-    //  const play = this.props.play;
-
-//      function onPlay(play) {
-//          if (play) {
-//              var playSound = context.createBufferSource(); // Declare a New Sound
-// 				playSound.buffer = track; // Attatch our Audio Data as it's Buffer
-// 				playSound.connect(context.destination);  // Link the Sound to the Output
-// 				playSound.start(0); // Play the Sound Immediately
-//          }
-//      }
-
-
-// getSound.send();
-
 
     }
 }
@@ -308,6 +238,10 @@ class Turntable extends React.Component {
             // if (!this.props.song) {
             return (
            <div className={this.props.className} style={styleTurntableContainer}>
+               {/*<WaveDisplay
+                    audioContext={this.props.audioContext}
+                    song={this.props.song}
+                />*/}
                 <MuiThemeProvider>
                     <div className="turntable"
                         style={styleTurntable}
@@ -433,6 +367,11 @@ class Turntable extends React.Component {
             <div className={this.props.className} style={styleTurntableContainer}>
                 {/*<input type="file" id={`fileLoaderFor${this.props.deckNum}`} multiple size="50" onChange={this.handleUpload} />*/}
                 {/*<audio id="audio_player" controls/>*/}
+                {/*<WaveDisplay
+                    audioContext={this.props.audioContext}
+                    song={this.props.song}
+                    //className='waveDisplay'
+                />*/}
                 <MuiThemeProvider>
                     <div className="turntable"
                         style={styleTurntable}

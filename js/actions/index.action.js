@@ -8,6 +8,14 @@ export function selectSong(file, deckNum) {
     }
 }
 
+export function handleModal() {
+    const UPDATE_MODAL = 'UPDATE_MODAL';
+    console.log("modal changed")
+    return {
+        type: UPDATE_MODAL,
+    }
+}
+
 export function handleSongUpload(file) {
     //const SONG_SELECTED = 'SONG_SELECTED'
     const SONG_UPLOADED = 'SONG_UPLOADED';
