@@ -134,7 +134,7 @@ class FxSection extends React.Component {
             dryLevel: 1,                            //0 to 1+
             wetLevel: 0, //this.props.reverbMix,                            //0 to 1+
             level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-            impulse: "/assets/impulses/LargeLongEchoHall.wav",    //the path to your impulse response
+            impulse: "../dj-react/assets/impulses/LargeLongEchoHall.wav",    //the path to your impulse response
             bypass: false //this.props.reverbBypass
         });
 

@@ -5,7 +5,7 @@ const playlistState = {
     playlist:
     [
     {
-            url: '../assets/audio/vinyl-crackle.wav',
+            url: '../dj-react/assets/audio/vinyl-crackle.wav',
             name: '',
         },
     ],
