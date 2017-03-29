@@ -190,7 +190,7 @@ class Turntable extends React.Component {
 
     const upload = {
 
-          url: file,
+          url: `../dj-react/${file}`,
           name: acceptedFiles[0].name,
           title: acceptedFiles[0].name,
           cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
@@ -275,6 +275,7 @@ class Turntable extends React.Component {
                                                         ref={player => { this.player = player }}
                                                         className="player"
                                                         //playing={true}
+                                                        loop={this.props.song.name === '' ? true : false}
                                                         url={this.props.song.url}
                                                         playbackRate={this.props.speed}
                                                         volume={crossfade(this.props.xFade, deckNum)}
