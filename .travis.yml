@@ -1,10 +1,8 @@
 language: node_js
-node_js: node
-before_script: npm install -g http-server
-deploy:
-  provider: heroku
-  api_key:
-    secure: B2DDVv2iEnM7Icyggp2xdFzf16Rw+OQ/nc8QppSSsDu3Y83dkeJUKK9LjPYbxW5Gww528oXstR+6u07nkDldaPgHPFpLCB+Bdj+pXFbJ/ARzvnlCxzZLSGj6/0LhOrpNtKkAhclziNmgN8YYoQwlgu2PuhryFxm+WC2BDxjwAAbA8/p757M9Xm6J2TVxXL9//OPivvTw1r+X9GM5cbI3vNtq91/JAW5BaguqSxFpyLgYj/xmv8lUwmVJedmNvqqP2PkvWfoMbn1tTgUvQ3nRQhTE0alA0yGrpfcRo8B6wLz3N8bmDv7eIv2D8FHmy1ZBxWyReL+bt++Ovu/If/2xpEyXtkxVwA/P2U+YzCMxnpxBZs0hUePBqvYfFW0ZwUAyuT/rosnv4NrDzzIrRfspi/m/6HN/PjnuRxNLm8suSb9K/BRSHt8DY+HcLEcSFICV2e2eLvMxW2pmqsdJdPxpDqnTXPvS2D4joIDowGIMX2ZcVo/0HXAdDzxur0/sSaa912SbJzGMLFM4frIKK8KM5oKiumOADmPR5RrPKbVffMmXEzqgrCHQz0nxXrroVK1K9aIeG8aKq5RtuZ9zGh1NiFus8re/i6KZbaYqaq0gngAFAymKhq3EnsasRR4gTei5PvicyaxyRuqbv9TcRo7fSohdbf+n53oPp27jgLsfYzg=
-  app: dj-react
-  on:
-    repo: HypeUFO/dj-react
+node_js:
+  - "4.1"
+script:
+  # run build script specified in package.json
+  - npm run build
+  # call script for deploying of produced artifacts
+  - bash ./.travis-deploy.sh

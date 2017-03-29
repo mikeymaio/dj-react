@@ -234,144 +234,8 @@ class Turntable extends React.Component {
         let deckClassNames = classnames(this.props.deckNum)
         let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
 
-        if (this.props.song.name === "") {
-            // if (!this.props.song) {
-            return (
-           <div className={this.props.className} style={styleTurntableContainer}>
-               {/*<WaveDisplay
-                    audioContext={this.props.audioContext}
-                    song={this.props.song}
-                />*/}
-                <MuiThemeProvider>
-                    <div className="turntable"
-                        style={styleTurntable}
-                        children={<div>
-                            <input
-                                type='range' min={0} max={1} step='any'
-                                className="seek"
-                                value={played}
-                                onMouseDown={this.onSeekMouseDown}
-                                onChange={this.onSeekChange}
-                                onMouseUp={this.onSeekMouseUp}
-                                />
-                                <Dropzone ref="dropzone"
-                                            style={{height: "100%"}}
-                                            onDrop={this.handleDrop}
-                                            disableClick={true}
-                                            >
-                                    <Paper
-                                        className={deckClassNames}
-                                        style={styleDeck}
-                                        zDepth={1}
-                                        rounded={false}
-                                        children={<div>
-                                            <Paper
-                                                className={platterClassNames}
-                                                style={stylePlatter1}
-                                                zDepth={2}
-                                                circle={true}
-                                                children={<div
-                                                //className="drop_zone"
-                                                //onDrop={this.handleDrop}
-                                                //onDragOver="dragover_handler(event)"
-                                                >
-                                                    <ReactPlayer
-                                                        id={this.props.deckNum}
-                                                        ref={player => { this.player = player }}
-                                                        className="player"
-                                                        //playing={true}
-                                                        url={this.props.song.url}
-                                                        playbackRate={this.props.speed}
-                                                        volume={crossfade(this.props.xFade, deckNum)}
-                                                        playing={this.props.play}
-                                                        hidden={true}
-                                                        loop={true}
-                                                        //width={150}
-                                                        //height={150}
-                                                        //style={style.player}
-                                                        crossorigin='use-credentials'
-                                                        onBuffer={() => console.log('onBuffer')}
-                                                        onEnded={() => this.props.startStopSong(this.props.deckNum)}
-                                                        onError={err => console.log('onError', err)}
-                                                        onProgress={this.onProgress}
-                                                        //onDuration={duration => this.setState({ duration })}
-                                                        />
-                                                        {/*<div
-                                                            className="artist-info">
-                                                            <h4 className="artist-name">Artist:
-                                                                {this.props.song.title}
-                                                            </h4>
-                                                        </div>*/}
-
-                                                        <div className="player-cover">
-                                                            <h4 className="start-info">Drop files here to get started</h4>
-                                                        </div>
-
-                                                        {/*<div className="song-info">
-                                                            <h4 className="artist-song-name">Song:
-                                                                {this.props.song.name}
-                                                            </h3>
-                                                        </div>*/}
-                                                    </div>}
-                                                />
-                                            </div>
-                                            }
-                                        />
-                                        </Dropzone>
-                    <div className="player-options" style={styleTurntableControls}>
-                    <div className="player-buttons player-controls">
-                    <div className="container_button2">
-                            <div className="hole2">
-                                <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
-                                    {/*<img className="startStopImg" src="/assets/images/start-stopbutton.jpg" />*/}
-                                    &#xf04b; &#xf04c;
-                                </div>
-                            </div>
-                            {/*<Snackbar
-                                open={this.state.open}
-                                message="Success!"
-                                autoHideDuration={2000}
-                                contentStyle={{color: "#22bcd4"}}
-                                style={{border: "2px solid #22bcd4"}}
-                            />*/}
-                        </div>
-                        {/*<div className="container_button">
-                            <div className="hole">
-                                <div className="startStopButton" onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
-                                    <div className="triangle" ></div>
-                                    <div className="lighter_triangle"></div>
-                                    <div className="darker_triangle"></div>
-                                </div>
-                            </div>
-                        </div>*/}
-                        </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
-                        style={style.speedControl}>
-                            <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" axis="y" min={0.13} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
-                        </div>
-                    </div>
-                </div>}>
-          </div>
-        </MuiThemeProvider>
-            </div>
-
-            )
-        }
-
-
-
-
-
         return (
             <div className={this.props.className} style={styleTurntableContainer}>
-                {/*<input type="file" id={`fileLoaderFor${this.props.deckNum}`} multiple size="50" onChange={this.handleUpload} />*/}
-                {/*<audio id="audio_player" controls/>*/}
-                {/*<WaveDisplay
-                    audioContext={this.props.audioContext}
-                    song={this.props.song}
-                    //className='waveDisplay'
-                />*/}
                 <MuiThemeProvider>
                     <div className="turntable"
                         style={styleTurntable}
@@ -434,7 +298,8 @@ class Turntable extends React.Component {
                                                         </div>*/}
 
                                                         <div className="player-cover">
-                                                            <img src={this.props.song.cover} style={styleImg}/>
+                                                            {this.props.song.name === '' ? <h4 className="start-info">Drop files here to get started</h4> :
+                                                            <img src={this.props.song.cover} style={styleImg}/>}
                                                         </div>
 
                                                         {/*<div className="song-info">
