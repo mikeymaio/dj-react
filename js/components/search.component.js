@@ -77,7 +77,7 @@ search() {
                                 <img className="media-object" src={track.artwork_url}/>
                             </div>
                             <div className="media-body">
-                                <p className="media-heading">{track.title}</p>
+                                <a href={track.user.permalink_url} className="media-heading">{track.title}</a>
                             </div>
                             <div style={styles.loadBtnGroup}>
                                 <button style={styles.load} onTouchTap={() => {this.props.selectSong(

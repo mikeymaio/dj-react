@@ -11,10 +11,10 @@ import Paper from 'material-ui/Paper';
 import Header from './header.component';
 import ChannelLeft from './channel-left.component';
 import ChannelRight from './channel-right.component';
-import Playlist from './playlist.container';
 
 import Fader from './fader.component';
-import Snackbar from 'material-ui/Snackbar';
+
+
 
 
 const styles = {
@@ -22,27 +22,20 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    //backgroundColor: 'black',
     height: 0,
     width: '80%',
     paddingBottom: 15,
     marginTop: 0,
-    // marginLeft: 25,
     marginLeft: '10%',
-    marginTop: 0
-        // marginLeft: '0%',
-    // width: '100%',
+    marginTop: 0,
   },
   crossfader: {
     height: 50,
-    // width: 276,
     width: '60%',
     border: '1px solid #E3DEDB',
     backgroundColor: 'black',
     position: "absolute",
-    // bottom: '15000%',
     bottom: 150,
-    //left: '31.25%',
     left: '20%',
     paddingTop: 0,
     paddingBottom: 30,
@@ -55,15 +48,12 @@ const styles = {
     fontSize: '1em',
     margin: 'auto',
     marginBottom: 0,
-    // padding: 5,
   },
 };
 
 
 class Table extends Component {
   render() {
-    //var audioContext1 = new AudioContext();
-    // var audioContext2 = new AudioContext();
     return (
       <div className="container col-lg-10 col-lg-offset-1" id="table" >
         <ChannelLeft
@@ -102,9 +92,6 @@ class Table extends Component {
               />
           </MuiThemeProvider>
         </div>
-          {/*<MuiThemeProvider>
-            <Playlist />
-          </MuiThemeProvider>*/}
         </div>
       </div>
     );
@@ -115,30 +102,6 @@ class Table extends Component {
 function mapStateToProps(state) {
     return {
         xFade: state.decksReducer.both.xFade,
-        // song: state.decksReducer.deck1.activeSong,
-        // play: state.decksReducer.deck1.play,
-        // speed: state.decksReducer.deck1.speed,
-        // volume: state.decksReducer.deck1.volume,
-        // treble: state.decksReducer.deck1.treble,
-        // mid: state.decksReducer.deck1.mid,
-        // bass: state.decksReducer.deck1.bass,
-        // //lpFilterBypass: state.decksReducer.deck1.lpFilterBypass,
-        // lpFilterCutoff: state.decksReducer.deck1.lpFilterCutoff,
-        // lpFilterRes: state.decksReducer.deck1.lpFilterRes,
-        // //hpFilterBypass: state.decksReducer.deck1.hpFilterBypass,
-        // hpFilterCutoff: state.decksReducer.deck1.hpFilterCutoff,
-        // hpFilterRes: state.decksReducer.deck1.hpFilterRes,
-        // //reverbBypass: state.decksReducer.deck1.reverbBypass,
-        // reverbMix: state.decksReducer.deck1.reverbMix,
-        // delay: state.decksReducer.deck1.delay,
-        // distortion: state.decksReducer.deck1.distortion,
-        // bitCrusherBypass: state.decksReducer.deck1.bitCrusherBypass,
-        // bits: state.decksReducer.deck1.bits,
-        // normFreq: state.decksReducer.deck1.normFreq,
-        // bufferSize: state.decksReducer.deck1.bufferSize,
-        // //delayBypass: state.decksReducer.deck1.delayBypass,
-        // delayTime: state.decksReducer.deck1.delayTime,
-        // delayMix: state.decksReducer.deck1.delayMix,
     };
 }
 
@@ -146,25 +109,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
       handleXFade: actions.handleXFade,
-        // handlePlaybackSpeed: actions.handlePlaybackSpeed,
-        // startStopSong: actions.startStopSong,
-        // handleVolumeChange: actions.handleVolumeChange,
-        // handleTrebleControl: actions.handleTrebleControl,
-        // handleMidControl: actions.handleMidControl,
-        // handleBassControl: actions.handleBassControl,
-        // handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
-        // handleLpFilterResChange: actions.handleLpFilterResChange,
-        // handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
-        // handleHpFilterResChange: actions.handleHpFilterResChange,
-        // handleReverbMixChange: actions.handleReverbMixChange,
-        // handleDelayChange: actions.handleDelayChange,
-        // handleDistortionChange: actions.handleDistortionChange,
-        // handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
-        // handleBitChange: actions.handleBitChange,
-        // handleNormFreqChange: actions.handleNormFreqChange,
-        // handleBufferSizeChange: actions.handleBufferSizeChange,
-        // handleDelayTimeChange: actions.handleDelayTimeChange,
-        // handleDelayMixChange: actions.handleDelayMixChange,
         },
         dispatch);
 }

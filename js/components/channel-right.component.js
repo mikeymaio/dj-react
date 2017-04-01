@@ -12,9 +12,8 @@ import classnames from 'classnames';
 // import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
 
-import Playlist from './playlist.container';
 
-import Turntable from './turntable2.component';
+import Turntable from './turntable.component';
 import Mixer from './mixer.component';
 
 import Header from './header.component';
@@ -66,8 +65,7 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
             handleXfade={this.props.handleXfade}
             startStopSong={this.props.startStopSong}
             className={turntableClass}/>
-          <MuiThemeProvider>
-            <Mixer deckNum="_DECK2"
+          <Mixer deckNum="_DECK2"
             className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
             audioContext={this.props.audioContext}
             orientation={this.props.orientation}
@@ -79,12 +77,9 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
             handleTrebleControl={this.props.handleTrebleControl}
             handleMidControl={this.props.handleMidControl}
             handleBassControl={this.props.handleBassControl}
-            />
-          </MuiThemeProvider>
-        {/*</div>*/}
+          />
         </div>
          <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-         <MuiThemeProvider>
         <FxSection
         handleXFade={this.props.handleXFade}
                 xFade={this.props.xFade}
@@ -139,8 +134,7 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
                 value={this.props.filter}
                 play={this.props.play}
                 />
-                 </MuiThemeProvider>
-                 </div>
+            </div>
       </div>
     );
   }

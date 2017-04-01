@@ -1065,8 +1065,9 @@ ul {
     z-index: 200;
 }
 
-p {
+a {
     color: white;
+    text-decoration: none
 }
 
 /*///////////// CROSSFADER ////////////*/

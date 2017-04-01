@@ -12,7 +12,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 class App extends Component {
   render() {
     const audioContext = new AudioContext();
-    // var audioContext2 = new AudioContext();
     return (
       <div>
       <div className="row">

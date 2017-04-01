@@ -23,15 +23,18 @@ const titleStyle = {
 
 const Header = () => (
   <AppBar
-    title={<Search
+    title={
+      <div>
+      <Search
         className="search"
+        id="search"
         //style={{marginTop: '10px', marginLeft: 0, float: "left"}}
-        style={{marginRight: 180, width: "40%"}}
+        style={{marginRight: 120, width: "40%", display: "inline-block"}}
         //textFieldStyle={{padding: '3%', width: '100%'}}
         underlineStyle={{width: '100%'}}
         popoverProps={{useLayerForClickAway: false}}
         hintText="Search Songs On SoundCloud!"
-      />}
+      /></div>}
     className="header"
     style={style}
     titleStyle={titleStyle}
@@ -40,14 +43,8 @@ const Header = () => (
     showMenuIconButton={true}
     iconElementLeft={<h3 style={{fontFamily: 'Revalia'}} >DJ React</h3>}
     iconStyleLeft={{marginTop: 18, marginLeft: 24, color: "#22bcd4"}}
-    //iconElementRight={<RaisedButton
-    //               style={{margin: 7, marginRight: 40}}
-    //               label="Help"
-    //               className='helpBtn'
-    //              onTouchTap={() => this.props.handleModal}
-    //           />}
-    //iconStyleRight={{display: "inline-block", height: 12, color: "#22bcd4"}}
-
+    iconElementRight={<a href="https://soundcloud.com"><img style={{height: 60, width: 60}} src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.edmnations.com%2Fwp-content%2Fuploads%2F2016%2F02%2FSoundcloud_Logo1.jpg&f=1"/></a>}
+    iconStyleRight={{marginTop: 5, marginRight: 24,}}
   />
 );
 
