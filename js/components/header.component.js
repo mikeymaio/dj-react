@@ -1,9 +1,9 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
+
 import Search from './search.component';
 import RaisedButton from 'material-ui/RaisedButton';
 
-// import IntroModal from './intro-modal.component';
 
 
 const style = {
@@ -23,14 +23,14 @@ const titleStyle = {
 
 const Header = () => (
   <AppBar
-    title={<Search 
+    title={<Search
         className="search"
         //style={{marginTop: '10px', marginLeft: 0, float: "left"}}
-        style={{marginRight: 100, width: "50%"}}
+        style={{marginRight: 180, width: "40%"}}
         //textFieldStyle={{padding: '3%', width: '100%'}}
         underlineStyle={{width: '100%'}}
-        popoverProps={{useLayerForClickAway: false, open: true}}
-        hintText="Search YouTube To Get Started!"
+        popoverProps={{useLayerForClickAway: false}}
+        hintText="Search Songs On SoundCloud!"
       />}
     className="header"
     style={style}

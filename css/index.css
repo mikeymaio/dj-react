@@ -1059,8 +1059,15 @@ li {
 }*/
 
 
+ul {
+    display: block;
+    background-color: black;
+    z-index: 200;
+}
 
-
+p {
+    color: white;
+}
 
 /*///////////// CROSSFADER ////////////*/
 

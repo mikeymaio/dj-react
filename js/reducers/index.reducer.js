@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 const playlistState = {
     playlist:
     [
-    {
+        {
             url: '../dj-react/assets/audio/vinyl-crackle.wav',
             name: '',
         },
@@ -12,6 +12,10 @@ const playlistState = {
 }
 
 const deckState = {
+        searchResults: {
+            loading: false,
+            tracks: [],
+        },
         both: {
             xFade: 0.5,
         },
@@ -96,6 +100,16 @@ const decksReducer = (state=deckState, action) => {
             return {
                 ...state,
                 both: {...state.both, xFade: action.payload}
+            }
+        case 'REQUEST_DATA':
+            return {
+                ...state,
+                searchResults: {...state.searchResults, loading: true}
+            }
+        case 'RECEIVE_DATA':
+            return {
+                ...state,
+                searchResults: {loading: false, tracks: action.payload}
             }
         case 'SONG_SELECTED_DECK1':
         console.log(action.payload)

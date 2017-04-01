@@ -269,7 +269,10 @@ class Turntable extends React.Component {
                                                 //onDrop={this.handleDrop}
                                                 //onDragOver="dragover_handler(event)"
                                                 >
-                                                {/*<audio id="audio_player" src={this.props.song.url} controls/>*/}
+                                                {/*<audio id="audio_player" crossOrigin="anonymous" src='https://api.soundcloud.com/tracks/211905108/stream?client_id=l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK'
+                                                style={{marginTop: 75}}
+                                                //autoPlay 
+                                                controls/>*/}
                                                     <ReactPlayer
                                                         id={this.props.deckNum}
                                                         ref={player => { this.player = player }}
@@ -284,11 +287,12 @@ class Turntable extends React.Component {
                                                         //width={150}
                                                         //height={150}
                                                         //style={style.player}
-                                                        crossorigin='use-credentials'
+                                                        crossOrigin='anonymous'
                                                         onBuffer={() => console.log('onBuffer')}
                                                         onEnded={() => this.props.startStopSong(this.props.deckNum)}
                                                         onError={err => console.log('onError', err)}
                                                         onProgress={this.onProgress}
+                                                        soundcloudConfig={{clientId: 'l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK',}}
                                                         //onDuration={duration => this.setState({ duration })}
                                                         />
                                                         {/*<div

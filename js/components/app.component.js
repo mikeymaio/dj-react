@@ -16,9 +16,7 @@ class App extends Component {
     return (
       <div>
       <div className="row">
-        <MuiThemeProvider>
           <Header />
-        </MuiThemeProvider>
         </div>
         <IntroModal />
      <Table audioContext={audioContext} />

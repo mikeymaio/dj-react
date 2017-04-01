@@ -14,20 +14,10 @@ import ChannelRight from './channel-right.component';
 import Playlist from './playlist.container';
 
 import Fader from './fader.component';
-
-import Search from './search.component';
+import Snackbar from 'material-ui/Snackbar';
 
 
 const styles = {
-  //   root: {
-  //   // display: 'flex',
-  //   // flexDirection: 'row',
-  //   // justifyContent: 'space-around',
-  //   margin: '0 auto',
-  //   marginBottom: 30,
-
-
-  // },
   root: {
     display: 'flex',
     flexDirection: 'row',
@@ -76,17 +66,6 @@ class Table extends Component {
     // var audioContext2 = new AudioContext();
     return (
       <div className="container col-lg-10 col-lg-offset-1" id="table" >
-        {/*<MuiThemeProvider>*/}
-        {/*<Search />*/}
-        {/*<Search className="search"
-                style={{marginLeft: "30%", width: "40%"}}
-                textFieldStyle={{padding: '3%', width: '100%'}}
-                underlineStyle={{width: '94%'}}
-                popoverProps={{useLayerForClickAway: false, open: true}}
-                hintText="Search YouTube To Get Started!"
-                />*/}
-        {/*</MuiThemeProvider>*/}
-        {/*<Crossfader />*/}
         <ChannelLeft
           id="channelLeft"
           audioContext={this.props.audioContext}
