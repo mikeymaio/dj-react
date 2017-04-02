@@ -23,19 +23,12 @@ import Loader from './loader.component';
 
 
 const styleDeck = {
-  height: 266,
-  width: 266,
-  //margin: 20,
-  marginTop: 15,
-  // float: 'left',
-  backgroundColor: '#1f1f1f',
-  textAlign: 'center',
-  display: 'inline-block',
-//   backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-moz-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-webkit-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
-//     backgroundImage: '-ms-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
+    height: 266,
+    width: 266,
+    marginTop: 15,
+    backgroundColor: '#1f1f1f',
+    textAlign: 'center',
+    display: 'inline-block',
     webKitBorderRadius: 265,
     MozBorderRadius: 265,
     borderRadius: 265,
@@ -47,20 +40,19 @@ const styleDeck = {
 };
 
 const styleImg = {
-  height: '100%',
-  width: '100%',
-//   textAlign: 'center',
-  borderRadius: '100%',
+    height: '100%',
+    width: '100%',
+    borderRadius: '100%',
 
 };
 
 const stylePlatter1 = {
-  height: 250,
-  width: 250,
-  margin: 'auto',
-  backgroundColor: 'white',
-  textAlign: 'center',
-  display: 'block',
+    height: 250,
+    width: 250,
+    margin: 'auto',
+    backgroundColor: 'white',
+    textAlign: 'center',
+    display: 'block',
     webKitBorderRadius: 250,
     MozBorderRadius: 250,
     borderRadius: 250,
@@ -69,50 +61,45 @@ const stylePlatter1 = {
 };
 
 const styleTurntableContainer = {
-  height: '90%',
-  width: '70%',
-  margin: 0,
-  marginTop: 5,
-  marginBottom: 25,
-  textAlign: 'center',
-  display: 'inline-block',
+    height: '90%',
+    width: '70%',
+    margin: 0,
+    marginTop: 5,
+    marginBottom: 25,
+    textAlign: 'center',
+    display: 'inline-block',
     padding: 0,
 };
 
 const styleTurntable = {
-  float: 'left',
-  height: '100%',
-  width: '100%',
-  margin: 0,
-  marginTop: 10,
-  textAlign: 'center',
-  display: 'inline-block',
-//   backgroundColor: '#1f1f1f',
-  paddingBottom: 380,
-
-  webKitBorderRadius: 10,
-  MozBorderRadius: 10,
-  borderRadius: 10,
-  webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-  MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-  boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
-
+    float: 'left',
+    height: '100%',
+    width: '100%',
+    margin: 0,
+    marginTop: 10,
+    textAlign: 'center',
+    display: 'inline-block',
+    paddingBottom: 380,
+    webKitBorderRadius: 10,
+    MozBorderRadius: 10,
+    borderRadius: 10,
+    webKitBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    MozBoxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
+    boxShadow: 'inset 0px 2px 0px #a8a8a8, 0px 2px 0px #2a2a2a, 0px 3px 0px #2a2a2a, 0px 4px 0px #2a2a2a, 0px 5px 0px #2a2a2a, 0px 6px 0px #2a2a2a, 0px 7px 0px #2a2a2a, 0px 8px 0px #2a2a2a, 0px 9px 0px #2a2a2a, 0px 10px 0px #2a2a2a, 10px 20px 10px #000',
 };
 
 const styleTurntableControls = {
-  width: '100%',
-  height: 90,
-  paddingTop: 25,
-  paddingBottom: 25,
+    width: '100%',
+    height: 90,
+    paddingTop: 25,
+    paddingBottom: 25,
 };
 
 const styleStartStopBtn = {
-//   float: 'right',
-  textAlign: 'center',
-  //display: 'inline-block',
-  backgroundColor: '#444444',
-  padding: 5,
-  marginLeft: 20,
+    textAlign: 'center',
+    backgroundColor: '#444444',
+    padding: 5,
+    marginLeft: 20,
 };
 
 const style = {
@@ -150,12 +137,9 @@ class Turntable extends React.Component {
         super(props);
 
         this.state = {
-        // inputValue: 1
-
         played: 0,
         loaded: 0,
         duration: 0,
-        // fileUpload: {url: null, name: ''},
         open: false
     }
 
@@ -173,38 +157,23 @@ class Turntable extends React.Component {
     this.onProgress = state => {
         // Slider should only update if not seeking
         if (!this.state.seeking) {
-        this.setState(state)
+            // console.log('progress state = ', state);
+            this.setState(state)
         }
     }
 
-
-
     this.handleDrop = (acceptedFiles, rejectedFiles) => {
-
-    const file = acceptedFiles[0].preview;
-    // const thisDeck = document.getElementById(this.props.deckNum);
-
-    // const audio = thisDeck.getElementsByTagName("AUDIO")[0];
-
-
-    console.log('file = ', file)
-
-
-    const upload = {
-
-          url: file,
-          name: acceptedFiles[0].name,
-          title: acceptedFiles[0].name,
-          cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
-          format: acceptedFiles[0].type,
-          size: acceptedFiles[0].size,
-      }
-
-    this.props.selectSong(upload, this.props.deckNum);
-
+        const upload = {
+            url: file,
+            name: acceptedFiles[0].name,
+            title: acceptedFiles[0].name,
+            cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
+            format: acceptedFiles[0].type,
+            size: acceptedFiles[0].size,
+        }
+        this.props.selectSong(upload, this.props.deckNum);
     }
 }
-
 
     render() {
 
@@ -226,20 +195,21 @@ class Turntable extends React.Component {
                 <MuiThemeProvider>
                     <div className="turntable"
                         style={styleTurntable}
-                        children={<div>
-                            <input
-                                type='range' min={0} max={1} step='any'
-                                className="seek"
-                                value={played}
-                                onMouseDown={this.onSeekMouseDown}
-                                onChange={this.onSeekChange}
-                                onMouseUp={this.onSeekMouseUp}
+                        children={
+                            <div>
+                                <input
+                                    type='range' min={0} max={1} step='any'
+                                    className="seek"
+                                    value={played}
+                                    onMouseDown={this.onSeekMouseDown}
+                                    onChange={this.onSeekChange}
+                                    onMouseUp={this.onSeekMouseUp}
                                 />
                                 <Dropzone ref="dropzone"
                                             style={{height: "100%"}}
                                             onDrop={this.handleDrop}
                                             disableClick={true}
-                                            >
+                                        >
                                     <Paper
                                         className={deckClassNames}
                                         style={styleDeck}
@@ -293,21 +263,35 @@ class Turntable extends React.Component {
                                             </div>
                                             }
                                         />
-                                        </Dropzone>
+                                    </Dropzone>
                     <div className="player-options" style={styleTurntableControls}>
-                    <div className="player-buttons player-controls">
-                    <div className="container_button2">
-                            <div className="hole2">
-                                <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
+                        <div className="player-buttons player-controls">
+                            <div className="container_button2">
+                                <div className="hole2">
+                                    <div className={startStopClass} onTouchTap={() => this.props.startStopSong(this.props.deckNum)}>
                                     &#xf04b; &#xf04c;
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        </div>
-                        <div className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
-                        style={style.speedControl}>
-                            <label htmlFor="deckSpeed" style={style.deckSpeed} className="deckSpeedLabel">Speed</label>
-                            <Fader className="deckSpeed" axis="y" min={0.13} max={1} defaultValue={this.props.speed/2} style={style.root} onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)} />
+                        <div
+                            className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
+                            style={style.speedControl}>
+                                <label 
+                                    htmlFor="deckSpeed"
+                                    style={style.deckSpeed}
+                                    className="deckSpeedLabel">
+                                    Speed
+                                </label>
+                                <Fader
+                                    className="deckSpeed"
+                                    axis="y"
+                                    min={0.13}
+                                    max={1}
+                                    defaultValue={this.props.speed/2}
+                                    style={style.root}
+                                    onChange={(event, value) => this.props.handlePlaybackSpeed(value, this.props.deckNum)}
+                                />
                         </div>
                     </div>
                 </div>}>
@@ -336,23 +320,6 @@ function mapDispatchToProps(dispatch) {
         // handlePlaybackSpeed: actions.handlePlaybackSpeed,
         // startStopSong: actions.startStopSong,
         // handleVolumeChange: actions.handleVolumeChange,
-        // handleTrebleControl: actions.handleTrebleControl,
-        // handleMidControl: actions.handleMidControl,
-        // handleBassControl: actions.handleBassControl,
-        // handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
-        // handleLpFilterResChange: actions.handleLpFilterResChange,
-        // handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
-        // handleHpFilterResChange: actions.handleHpFilterResChange,
-        // handleReverbMixChange: actions.handleReverbMixChange,
-        // handleDelayChange: actions.handleDelayChange,
-        // handleDistortionChange: actions.handleDistortionChange,
-        // handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
-        // handleBitChange: actions.handleBitChange,
-        // handleNormFreqChange: actions.handleNormFreqChange,
-        // handleBufferSizeChange: actions.handleBufferSizeChange,
-        // handleDelayTimeChange: actions.handleDelayTimeChange,
-        // handleDelayMixChange: actions.handleDelayMixChange,
-        // },
         },
         dispatch);
 
