@@ -163,13 +163,16 @@ class Turntable extends React.Component {
     }
 
     this.handleDrop = (acceptedFiles, rejectedFiles) => {
+
+        const file = acceptedFiles[0];
+
         const upload = {
-            url: file,
-            name: acceptedFiles[0].name,
-            title: acceptedFiles[0].name,
+            url: file.preview,
+            name: file.name,
+            title: file.name,
             cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
-            format: acceptedFiles[0].type,
-            size: acceptedFiles[0].size,
+            format: file.type,
+            size: file.size,
         }
         this.props.selectSong(upload, this.props.deckNum);
     }
