@@ -1,54 +1,31 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
-
 import Search from './search.component';
-import RaisedButton from 'material-ui/RaisedButton';
 
 
-
-const style = {
-    backgroundColor: '#000',
-    //lineHeight: 50,
-    width: '100%',
-}
-
-const titleStyle = {
-    color: '#22bcd4',
-    fontSize: 40,
-    textAlign: 'center',
-
-
-    // marginRight: 0,
-}
 
 const Header = () => (
-  <AppBar
-    title={
-      <div>
-      <Search
-        className="search"
-        id="search"
-        //style={{marginTop: '10px', marginLeft: 0, float: "left"}}
-        style={{marginLeft: '25%', width: "40%", display: "inline-block", float: "left"}}
-        //textFieldStyle={{padding: '3%', width: '100%'}}
-        underlineStyle={{width: '100%'}}
-        popoverProps={{useLayerForClickAway: false}}
-        hintText="Search Songs On SoundCloud!"
-      />
-      </div>}
-    className="header"
-    style={style}
-    titleStyle={titleStyle}
-    //iconClassNameRight="muidocs-icon-navigation-expand-more"
-    //iconStyleLeft={{display: "none"}}
-    showMenuIconButton={true}
-    iconElementLeft={<h3 style={{fontFamily: 'Revalia'}} >DJ React</h3>}
-    iconStyleLeft={{marginTop: 18, marginLeft: 24, color: "#22bcd4"}}
-    iconClassNameLeft="logo"
-    iconElementRight={<a href="https://soundcloud.com"><img id="sc-logo" style={{height: 65, width: 70}} src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.edmnations.com%2Fwp-content%2Fuploads%2F2016%2F02%2FSoundcloud_Logo1.jpg&f=1"/></a>}
-    iconStyleRight={{marginTop: 3, marginRight: 24,}}
-    iconClassNameRight="sc-logo"
-  />
+  <div>
+    <nav className="navbar navbar-default" style={{backgroundColor: "black", color: "#22bcd4"}}>
+      <div className="container-fluid" style={{margin: "0, auto"}}>
+
+        <h3 style={{color: "#22bcd4",fontFamily: 'Revalia', fontSize: "1.75rem", marginLeft: 24, lineHeight: "1.5"}} className="navbar-brand" href="#">DJ React</h3>
+
+        <a className="pull-right" href="https://soundcloud.com"><img id="sc-logo" style={{height: 55, width: 60, float: "right"}} src="https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.edmnations.com%2Fwp-content%2Fuploads%2F2016%2F02%2FSoundcloud_Logo1.jpg&f=1"/></a>
+
+          <div className="col-lg-6 col-lg-offset-2 col-md-6 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+            <Search
+              id="search"
+              className="search"
+              style={{display: "inline-block", width: "65%", textAlign: "center"}}
+              textFieldStyle={{padding: '3%', width: '100%'}}
+              underlineStyle={{width: '100%'}}
+              popoverProps={{useLayerForClickAway: false}}
+              hintText="Search Songs On SoundCloud!"
+            />
+        </div>
+      </div>
+    </nav>
+  </div>
 );
 
 
