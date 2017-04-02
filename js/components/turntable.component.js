@@ -168,15 +168,13 @@ class Turntable extends React.Component {
 
         const file = acceptedFiles[0];
 
-        // const url = file.preview.replace(^('blob:http://localhost:8080/')\s+);
+        // const pathArray = file.preview.split( '/' );
 
-        const pathArray = file.preview.split( '/' );
+        // console.log(pathArray);
 
-        console.log(pathArray);
+        // const url = `${pathArray[0]}//${pathArray[2]}/dj-react/${pathArray[3]}`
 
-        const url = `${pathArray[0]}//${pathArray[2]}/dj-react/${pathArray[3]}`
-
-        console.log(url);
+        // console.log(url);
 
 
         const upload = {
