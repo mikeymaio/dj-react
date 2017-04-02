@@ -1,8 +1,8 @@
 import React from 'react'
-import Avatar from 'material-ui/Avatar'
-import {List, ListItem} from 'material-ui/List'
-import Subheader from 'material-ui/Subheader'
-import { connect } from 'react-redux'
+// import Avatar from 'material-ui/Avatar'
+// import {List, ListItem} from 'material-ui/List'
+// import Subheader from 'material-ui/Subheader'
+import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import _ from 'lodash';
@@ -13,6 +13,9 @@ import {fetchDataFromApi} from '../actions/index.action';
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
 import Snackbar from 'material-ui/Snackbar';
+import Loader from './loader.component';
+
+
 
 const CLIENT_ID = 'l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK';
 
@@ -62,8 +65,25 @@ search() {
         this.props.fetchData(input)
     }
 
+renderLoader() {
+    return [{text: "loader", value: (<MenuItem disabled={true} style={{textAlign:"center"}} primaryText={<Loader size={40} />} />)}];
+}
+
   renderList() {
-    return this.props.tracks.map((track, index) => {
+      if (this.props.tracks === []) {
+            return [{
+          text: 'NoResults',
+            value: (
+                <MenuItem
+                    disabled={true}
+                    primaryText={
+                        <h5 style={{color: "#22bcd4", paddingTop: 15}}>No Results</h5>
+                        }
+                    />),
+                url: null
+                }]
+      } else {
+        return this.props.tracks.map((track, index) => {
             return (
             {
           text: track.title,
@@ -83,7 +103,7 @@ search() {
                                 <button style={styles.load} onTouchTap={() => {this.props.selectSong(
                                     {title:track.title,
                                     url: track.stream_url + '?client_id=' + CLIENT_ID,
-                                    cover: track.artwork_url
+                                    cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
                                     }, '_DECK1'),
                                     this.handleTouchTap()
                                     }}
@@ -94,7 +114,7 @@ search() {
                                     this.props.selectSong(
                                     {title:track.title,
                                     url: track.stream_url + '?client_id=' + CLIENT_ID,
-                                    cover: track.artwork_url
+                                    cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
                                     }, '_DECK2'),
                                     this.handleTouchTap()
                                     }}
@@ -110,11 +130,12 @@ search() {
                 }
             );
         });
+      }
   }
 
   render() {
 
-    const dataArray = this.renderList();
+    const dataArray = this.props.loading ? this.renderLoader() : this.renderList();
 
     const scSearch = _.debounce((e) => {this.search()}, 500);
 
@@ -128,22 +149,23 @@ search() {
                 textFieldStyle={this.props.textFieldStyle}
                 underlineStyle={this.props.underlineStyle}
                 listStyle={styles.results}
-                popoverProps={{useLayerForClickAway: false, style:{width: '55%', backgroundColor: 'black'}}}
-                menuStyle={{width: '100%',}}
+                popoverProps={{useLayerForClickAway: false, style:{width: '55%', backgroundColor: 'black', minWidth: 320}}}
+                menuStyle={{width: '100%'}}
                 hintText={this.props.hintText}
                 onUpdateInput={scSearch}
                 onNewRequest={this.handleNewRequest}
                 dataSource={dataArray}
                 dataSourceConfig={{text: 'text', value: 'value'}}
                 filter={AutoComplete.caseInsensitiveFilter}
-                fullWidth={true}
+                fullWidth={false}
                 openOnFocus={true}
             />
+            {/*{this.props.loading ? <Loader size={40} style={{float:"left"}}/> : false }*/}
             <Snackbar
                 open={this.state.open}
                 message="Success!"
                 autoHideDuration={2000}
-                contentStyle={{color: "#22bcd4"}}
+                contentStyle={{color: "#22bcd4", textAlign: "center"}}
                 style={{border: "2px solid #22bcd4"}}
             />
             </div>
@@ -152,7 +174,8 @@ search() {
 }
 
 const mapStateToProps = (state) => ({
-  tracks: state.decksReducer.searchResults.tracks
+  tracks: state.decksReducer.searchResults.tracks,
+  loading: state.decksReducer.searchResults.loading
 })
 
 function mapDispatchToProps(dispatch) {

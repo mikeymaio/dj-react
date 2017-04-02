@@ -31,7 +31,7 @@ import Pot from './knob.component';
 
 const styles = {
   tt_mixer: {
-    height: 425,
+    height: 415,
     // width: 500
   },
   container: {
@@ -59,6 +59,7 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
             deckNum="_DECK2"
             song={this.props.song}
             play={this.props.play}
+            buffering={this.props.buffering}
             speed={this.props.speed}
             volume={this.props.volume}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
@@ -145,6 +146,7 @@ function mapStateToProps(state) {
         //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck2.activeSong,
         play: state.decksReducer.deck2.play,
+        buffering: state.decksReducer.deck2.buffering,
         speed: state.decksReducer.deck2.speed,
         volume: state.decksReducer.deck2.volume,
         treble: state.decksReducer.deck2.treble,

@@ -40,6 +40,23 @@ export const fetchDataFromApi = (q) => {
   }
 }
 
+export function handleBufferStart(deckNum) {
+    const START_BUFFER = 'START_BUFFER';
+    console.log('buffering');
+    return {
+        type: START_BUFFER + deckNum,
+        payload: true
+    }
+}
+
+export function handleBufferEnd(deckNum) {
+    const END_BUFFER = 'END_BUFFER';
+    console.log('ready');
+    return {
+        type: END_BUFFER + deckNum,
+        payload: false
+    }
+}
 
 export function handleModal() {
     const UPDATE_MODAL = 'UPDATE_MODAL';

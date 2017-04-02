@@ -18,6 +18,8 @@ import Dropzone from 'react-dropzone';
 import Snackbar from 'material-ui/Snackbar';
 import WaveDisplay from './waveformDisplay.component';
 
+import Loader from './loader.component';
+
 
 
 const styleDeck = {
@@ -70,7 +72,7 @@ const styleTurntableContainer = {
   height: '90%',
   width: '70%',
   margin: 0,
-  marginTop: 10,
+  marginTop: 5,
   marginBottom: 25,
   textAlign: 'center',
   display: 'inline-block',
@@ -214,7 +216,7 @@ class Turntable extends React.Component {
         fileConfig
     } = this.state
 
-
+        let loaderClass = classnames('loader', 'deckLoader', {'hide': !this.props.buffering});
         let startStopClass = classnames('startStopButton2', {'active': this.props.play});
         let deckClassNames = classnames(this.props.deckNum)
         let platterClassNames = classnames('platter', 'player-container', {'spinPlatter': this.props.play})
@@ -262,6 +264,7 @@ class Turntable extends React.Component {
                                                         hidden={true}
                                                         crossOrigin='anonymous'
                                                         onBuffer={() => console.log('onBuffer')}
+                                                        onReady={() => this.props.handleBufferEnd(this.props.deckNum)}
                                                         onEnded={() => this.props.startStopSong(this.props.deckNum)}
                                                         onError={err => console.log('onError', err)}
                                                         onProgress={this.onProgress}
@@ -274,8 +277,8 @@ class Turntable extends React.Component {
                                                                 {this.props.song.title}
                                                             </h4>
                                                         </div>*/}
-
                                                         <div className="player-cover">
+                                                            <Loader className={loaderClass} size={105} />
                                                             {this.props.song.name === '' ? <h4 className="start-info">Drop files here or search</h4> :
                                                             <img src={this.props.song.cover} style={styleImg}/>}
                                                         </div>
@@ -316,62 +319,47 @@ class Turntable extends React.Component {
     }
 }
 
-// function mapStateToProps(state) {
-//     return {
-//         //xFade: state.decksReducer.xFade,
-//         song: state.decksReducer.deck1.activeSong,
-//         play: state.decksReducer.deck1.play,
-//         speed: state.decksReducer.deck1.speed,
-//         volume: state.decksReducer.deck1.volume,
-//         treble: state.decksReducer.deck1.treble,
-//         mid: state.decksReducer.deck1.mid,
-//         bass: state.decksReducer.deck1.bass,
-//         //lpFilterBypass: state.decksReducer.deck1.lpFilterBypass,
-//         lpFilterCutoff: state.decksReducer.deck1.lpFilterCutoff,
-//         lpFilterRes: state.decksReducer.deck1.lpFilterRes,
-//         //hpFilterBypass: state.decksReducer.deck1.hpFilterBypass,
-//         hpFilterCutoff: state.decksReducer.deck1.hpFilterCutoff,
-//         hpFilterRes: state.decksReducer.deck1.hpFilterRes,
-//         //reverbBypass: state.decksReducer.deck1.reverbBypass,
-//         reverbMix: state.decksReducer.deck1.reverbMix,
-//         delay: state.decksReducer.deck1.delay,
-//         distortion: state.decksReducer.deck1.distortion,
-//         bitCrusherBypass: state.decksReducer.deck1.bitCrusherBypass,
-//         bits: state.decksReducer.deck1.bits,
-//         normFreq: state.decksReducer.deck1.normFreq,
-//         bufferSize: state.decksReducer.deck1.bufferSize,
-//         //delayBypass: state.decksReducer.deck1.delayBypass,
-//         delayTime: state.decksReducer.deck1.delayTime,
-//         delayMix: state.decksReducer.deck1.delayMix,
-//     };
-// }
+function mapStateToProps(state) {
+    return {
+        // buffering: state.decksReducer.deck1.buffering,
+        // song: state.decksReducer.deck1.activeSong,
+        // play: state.decksReducer.deck1.play,
+        // speed: state.decksReducer.deck1.speed,
+        // volume: state.decksReducer.deck1.volume,
+    };
+}
 
-// function mapDispatchToProps(dispatch) {
-//     return bindActionCreators({
-//         handlePlaybackSpeed: actions.handlePlaybackSpeed,
-//         startStopSong: actions.startStopSong,
-//         handleVolumeChange: actions.handleVolumeChange,
-//         handleTrebleControl: actions.handleTrebleControl,
-//         handleMidControl: actions.handleMidControl,
-//         handleBassControl: actions.handleBassControl,
-//         handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
-//         handleLpFilterResChange: actions.handleLpFilterResChange,
-//         handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
-//         handleHpFilterResChange: actions.handleHpFilterResChange,
-//         handleReverbMixChange: actions.handleReverbMixChange,
-//         handleDelayChange: actions.handleDelayChange,
-//         handleDistortionChange: actions.handleDistortionChange,
-//         handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
-//         handleBitChange: actions.handleBitChange,
-//         handleNormFreqChange: actions.handleNormFreqChange,
-//         handleBufferSizeChange: actions.handleBufferSizeChange,
-//         handleDelayTimeChange: actions.handleDelayTimeChange,
-//         handleDelayMixChange: actions.handleDelayMixChange,
-//         },
-//         dispatch);
-// }
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        handleBufferStart: actions.handleBufferStart,
+        handleBufferEnd: actions.handleBufferEnd,
+        // handlePlaybackSpeed: actions.handlePlaybackSpeed,
+        // startStopSong: actions.startStopSong,
+        // handleVolumeChange: actions.handleVolumeChange,
+        // handleTrebleControl: actions.handleTrebleControl,
+        // handleMidControl: actions.handleMidControl,
+        // handleBassControl: actions.handleBassControl,
+        // handleLpFilterCutoffChange: actions.handleLpFilterCutoffChange,
+        // handleLpFilterResChange: actions.handleLpFilterResChange,
+        // handleHpFilterCutoffChange: actions.handleHpFilterCutoffChange,
+        // handleHpFilterResChange: actions.handleHpFilterResChange,
+        // handleReverbMixChange: actions.handleReverbMixChange,
+        // handleDelayChange: actions.handleDelayChange,
+        // handleDistortionChange: actions.handleDistortionChange,
+        // handleBitCrusherBypassChange: actions.handleBitCrusherBypassChange,
+        // handleBitChange: actions.handleBitChange,
+        // handleNormFreqChange: actions.handleNormFreqChange,
+        // handleBufferSizeChange: actions.handleBufferSizeChange,
+        // handleDelayTimeChange: actions.handleDelayTimeChange,
+        // handleDelayMixChange: actions.handleDelayMixChange,
+        // },
+        },
+        dispatch);
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Turntable);
+}
 
-export default Turntable;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Turntable);
+
+// export default Turntable;
 
