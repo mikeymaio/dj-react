@@ -3,115 +3,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import Tuna from 'tunajs';
-
 import classnames from 'classnames';
-// import { startStopSong } from '../actions/index.action';
-// import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
-
 
 import Turntable from './turntable.component';
 import Mixer from './mixer.component';
-
-import Header from './header.component';
 import FxSection from './fx-section.component';
-import Meter from './meter.component';
 
-import Visualizer from './visualizer.component';
-
-
-import Pot from './knob.component';
-
-
-
-
-// import Turntable2 from './turntable2';
 
 const styles = {
   tt_mixer: {
     height: 415,
-    // width: 500
   },
   container: {
     margin: 0,
     padding: 0
   },
 }
-
 class ChannelLeft extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-        // inputValue: 1
-
-        played: 0,
-        loaded: 0,
-        duration: 0,
-        source: null
-    }
-
-    }
-  // this.onSeekMouseDown = e => {
-  //     // this.setState({ seeking: true })
-  //     this.props.handleSeek(this.props.deckNum)
-  //   }
-  //   this.onSeekChange = e => {
-  //     this.props.handleProgressChange(e.target.value, this.props.deckNum)
-  //   }
-  //   this.onSeekMouseUp = e => {
-  //     // this.handleSeek({ seeking: false })
-  //     this.props.handleSeek(this.props.deckNum)
-  //     // this.player.seekTo(parseFloat(e.target.value))
-  //   }
-
-
-  // this.onProgress = state => {
-  //     // We only want to update time slider if we are not currently seeking
-  //     if (!this.props.seeking) {
-  //       this.props.handleProgressChange(e.target.value, this.props.deckNum)
-  //     }
-  //   }
-
-//let source;
-componentDidMount() {
-this.getData = () => {
-  source = this.props.createBufferSource();
-  var request = new XMLHttpRequest();
-
-  request.open('GET', this.props.activeSong, true);
-
-  request.responseType = 'arraybuffer';
-
-
-  request.onload = () => {
-    var audioData = request.response;
-
-    audioCtx.decodeAudioData(audioData, (buffer) => {
-      console.log(buffer);
-        this.setState({
-          source: buffer
-        })
-        // source.connect(audioCtx.destination);
-        // source.loop = true;
-      },
-
-      (e) => { console.log("Error with decoding audio data" + e.err); });
-
-  }
-
-  request.send();
-}
-
-
-}
 
   render() {
-
-console.log(this.state.source);
 
 const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
@@ -163,7 +74,6 @@ const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-
                 audioContext={this.props.audioContext}
                 song={this.props.song}
                 deckNum="_DECK1"
-                //type='square'
                 oscFreq={50}
                 treble={this.props.treble}
                 mid={this.props.mid}
@@ -199,9 +109,8 @@ const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-
                 onDelayMixChange={this.props.handleDelayMixChange}
                 bits={this.props.bits}
                 normFreq={this.props.normFreq}
-                bufferSize={this.props.bufferSize} //4096
+                bufferSize={this.props.bufferSize}
                 bitCrusherBypass={this.props.bitCrusherBypass}
-                //onCutoffChange={this.props.handleFilterChange}
                 reverbMix={this.props.reverbMix}
                 delayTime={this.props.delayTime}
                 delayMix={this.props.delayMix}
@@ -220,7 +129,6 @@ const turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-
 
 function mapStateToProps(state) {
     return {
-        //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck1.activeSong,
         play: state.decksReducer.deck1.play,
         buffering: state.decksReducer.deck1.buffering,
@@ -230,13 +138,10 @@ function mapStateToProps(state) {
         treble: state.decksReducer.deck1.treble,
         mid: state.decksReducer.deck1.mid,
         bass: state.decksReducer.deck1.bass,
-        //lpFilterBypass: state.decksReducer.deck1.lpFilterBypass,
         lpFilterCutoff: state.decksReducer.deck1.lpFilterCutoff,
         lpFilterRes: state.decksReducer.deck1.lpFilterRes,
-        //hpFilterBypass: state.decksReducer.deck1.hpFilterBypass,
         hpFilterCutoff: state.decksReducer.deck1.hpFilterCutoff,
         hpFilterRes: state.decksReducer.deck1.hpFilterRes,
-        //reverbBypass: state.decksReducer.deck1.reverbBypass,
         reverbMix: state.decksReducer.deck1.reverbMix,
         delay: state.decksReducer.deck1.delay,
         distortion: state.decksReducer.deck1.distortion,
@@ -244,7 +149,6 @@ function mapStateToProps(state) {
         bits: state.decksReducer.deck1.bits,
         normFreq: state.decksReducer.deck1.normFreq,
         bufferSize: state.decksReducer.deck1.bufferSize,
-        //delayBypass: state.decksReducer.deck1.delayBypass,
         delayTime: state.decksReducer.deck1.delayTime,
         delayMix: state.decksReducer.deck1.delayMix,
     };

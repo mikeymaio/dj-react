@@ -87,10 +87,6 @@ class FxSection extends React.Component {
 
     componentDidMount() {
         setTimeout(() => {
-            console.log('componentDidMount');
-
-        //var audioContext = new AudioContext();
-
         var audioContext = this.props.audioContext;
 
         var deck = document.querySelector(':scope .' + this.props.deckNum + ' audio');
@@ -164,20 +160,8 @@ class FxSection extends React.Component {
         this.lowPassFilter = audioContext.createBiquadFilter();
         this.highPassFilter = audioContext.createBiquadFilter();
 
-        // const deckNum = this.props.deckNum
-//          function crossfade(value, deckNum) {
-//   // equal-power crossfade
-//             if (deckNum === '_DECK1') {
-//                 return Math.cos(value * 0.5*Math.PI);
-//             } else {
-//                 return Math.cos((1.0-value) * 0.5*Math.PI);
-//             }
-//          }
-
-
-
         this.gainNode.gain.value = 1;
-        this.xFade.gain.value = this.props.xFade; //crossfade(this.props.xFade, deckNum);
+        this.xFade.gain.value = this.props.xFade;
 
         // EQ
 

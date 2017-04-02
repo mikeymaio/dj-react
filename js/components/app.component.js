@@ -7,6 +7,9 @@ import NewMeter from './new-meter.component';
 
 
 class App extends Component {
+  componentDidMount() {
+    console.log("Hello fellow dev! Why not fork the repo and send me a PR? There is much work to be done! https://github.com/HypeUFO/dj-react")
+  }
   render() {
     const audioContext = new AudioContext();
     return (

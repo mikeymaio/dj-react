@@ -3,36 +3,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Paper from 'material-ui/Paper';
-import Tuna from 'tunajs';
-
 import classnames from 'classnames';
-// import { startStopSong } from '../actions/index.action';
-// import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
-
 
 import Turntable from './turntable.component';
 import Mixer from './mixer.component';
-
-import Header from './header.component';
 import FxSection from './fx-section.component';
-import Meter from './meter.component';
-
-import Visualizer from './visualizer.component';
-
-
-import Pot from './knob.component';
-
-
-
-// import Turntable2 from './turntable2';
 
 const styles = {
   tt_mixer: {
     height: 415,
-    // width: 500
   },
   container: {
     margin: 0,
@@ -47,8 +27,6 @@ class ChannelRight extends React.Component {
 let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 col-xs-4", this.props.orientation)
     return (
       <div id="_DECK2" className="container-fluid col-lg-6 col-md-6 col-sm-12 col-xs-12 " name={this.props.name}>
-
-        {/*<div className="row">*/}
         <div
             className="container-fluid tt-mixer-container"
             style={styles.tt_mixer}>
@@ -87,7 +65,6 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
                 audioContext={this.props.audioContext}
                 song={this.props.song}
                 deckNum="_DECK2"
-                //type='square'
                 oscFreq={50}
                 treble={this.props.treble}
                 mid={this.props.mid}
@@ -123,9 +100,8 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
                 onDelayMixChange={this.props.handleDelayMixChange}
                 bits={this.props.bits}
                 normFreq={this.props.normFreq}
-                bufferSize={this.props.bufferSize} //4096
+                bufferSize={this.props.bufferSize}
                 bitCrusherBypass={this.props.bitCrusherBypass}
-                //onCutoffChange={this.props.handleFilterChange}
                 reverbMix={this.props.reverbMix}
                 delayTime={this.props.delayTime}
                 delayMix={this.props.delayMix}
@@ -143,7 +119,6 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
 
 function mapStateToProps(state) {
     return {
-        //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck2.activeSong,
         play: state.decksReducer.deck2.play,
         buffering: state.decksReducer.deck2.buffering,
@@ -152,13 +127,10 @@ function mapStateToProps(state) {
         treble: state.decksReducer.deck2.treble,
         mid: state.decksReducer.deck2.mid,
         bass: state.decksReducer.deck2.bass,
-        //lpFilterBypass: state.decksReducer.deck2.lpFilterBypass,
         lpFilterCutoff: state.decksReducer.deck2.lpFilterCutoff,
         lpFilterRes: state.decksReducer.deck2.lpFilterRes,
-        //hpFilterBypass: state.decksReducer.deck2.hpFilterBypass,
         hpFilterCutoff: state.decksReducer.deck2.hpFilterCutoff,
         hpFilterRes: state.decksReducer.deck2.hpFilterRes,
-        //reverbBypass: state.decksReducer.deck2.reverbBypass,
         reverbMix: state.decksReducer.deck2.reverbMix,
         delay: state.decksReducer.deck2.delay,
         distortion: state.decksReducer.deck2.distortion,
@@ -166,7 +138,6 @@ function mapStateToProps(state) {
         bits: state.decksReducer.deck2.bits,
         normFreq: state.decksReducer.deck2.normFreq,
         bufferSize: state.decksReducer.deck2.bufferSize,
-        //delayBypass: state.decksReducer.deck2.delayBypass,
         delayTime: state.decksReducer.deck2.delayTime,
         delayMix: state.decksReducer.deck2.delayMix,
     };
