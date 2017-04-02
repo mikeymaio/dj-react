@@ -12,9 +12,8 @@ import classnames from 'classnames';
 // import { handlePlaybackSpeed } from '../actions/index.action';
 import * as actions from '../actions/index.action'
 
-import Playlist from './playlist.container';
 
-import Turntable from './turntable2.component';
+import Turntable from './turntable.component';
 import Mixer from './mixer.component';
 
 import Header from './header.component';
@@ -32,7 +31,7 @@ import Pot from './knob.component';
 
 const styles = {
   tt_mixer: {
-    height: 425,
+    height: 415,
     // width: 500
   },
   container: {
@@ -60,14 +59,14 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
             deckNum="_DECK2"
             song={this.props.song}
             play={this.props.play}
+            buffering={this.props.buffering}
             speed={this.props.speed}
             volume={this.props.volume}
             handlePlaybackSpeed={this.props.handlePlaybackSpeed}
             handleXfade={this.props.handleXfade}
             startStopSong={this.props.startStopSong}
             className={turntableClass}/>
-          <MuiThemeProvider>
-            <Mixer deckNum="_DECK2"
+          <Mixer deckNum="_DECK2"
             className="mixer col-lg-2 col-md-2 col-sm-2 col-xs-2"
             audioContext={this.props.audioContext}
             orientation={this.props.orientation}
@@ -79,12 +78,9 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
             handleTrebleControl={this.props.handleTrebleControl}
             handleMidControl={this.props.handleMidControl}
             handleBassControl={this.props.handleBassControl}
-            />
-          </MuiThemeProvider>
-        {/*</div>*/}
+          />
         </div>
          <div className="container-fluid col-lg-12 col-md-12 col-sm-12 col-xs-12">
-         <MuiThemeProvider>
         <FxSection
         handleXFade={this.props.handleXFade}
                 xFade={this.props.xFade}
@@ -139,8 +135,7 @@ let turntableClass = classnames("turntable-container col-lg-4 col-md-4 col-sm-4 
                 value={this.props.filter}
                 play={this.props.play}
                 />
-                 </MuiThemeProvider>
-                 </div>
+            </div>
       </div>
     );
   }
@@ -151,6 +146,7 @@ function mapStateToProps(state) {
         //xFade: state.decksReducer.xFade,
         song: state.decksReducer.deck2.activeSong,
         play: state.decksReducer.deck2.play,
+        buffering: state.decksReducer.deck2.buffering,
         speed: state.decksReducer.deck2.speed,
         volume: state.decksReducer.deck2.volume,
         treble: state.decksReducer.deck2.treble,

@@ -1,3 +1,11 @@
+import SC from 'soundcloud';
+
+const CLIENT_ID = 'l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK';
+
+SC.initialize({
+            client_id: CLIENT_ID,
+        });
+
 export function selectSong(file, deckNum) {
     //const SONG_SELECTED = 'SONG_SELECTED'
     const SONG_SELECTED = 'SONG_SELECTED';
@@ -5,6 +13,48 @@ export function selectSong(file, deckNum) {
     return {
         type: SONG_SELECTED + deckNum,
         payload: file
+    }
+}
+
+const requestDataFromAPI = () => ({
+  type: 'REQUEST_DATA'
+})
+
+const recieveDataFromAPI = (data) => ({
+  type: 'RECEIVE_DATA',
+  payload: data
+})
+
+
+export const fetchDataFromApi = (q) => {
+  return dispatch => {
+    dispatch(requestDataFromAPI())
+    SC.get('/tracks', {
+    q: q,
+    limit: 20,
+  })
+    .then(response => {
+        console.log('response = ', response)
+        dispatch(recieveDataFromAPI(response))})
+    .catch(ex => console.log('parsing failed', ex))
+  }
+}
+
+export function handleBufferStart(deckNum) {
+    const START_BUFFER = 'START_BUFFER';
+    console.log('buffering');
+    return {
+        type: START_BUFFER + deckNum,
+        payload: true
+    }
+}
+
+export function handleBufferEnd(deckNum) {
+    const END_BUFFER = 'END_BUFFER';
+    console.log('ready');
+    return {
+        type: END_BUFFER + deckNum,
+        payload: false
     }
 }
 

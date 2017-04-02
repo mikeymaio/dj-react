@@ -42,7 +42,7 @@ const styles = {
     backgroundColor: 'black',
     fontSize: '0.9em',
     margin: 'auto',
-    marginBottom: 5,
+    margin: 3,
     // padding: 5,
   },
   volumeFader: {
@@ -50,8 +50,8 @@ const styles = {
     // position: 'absolute',
     // bottom: 20,
     backgroundColor: 'black',
-    border: '5px solid silver',
-    paddingBottom: 50,
+    border: '3px solid silver',
+    paddingBottom: 0,
     width: '70%',
     height: 135,
     margin: 'auto',
@@ -65,7 +65,7 @@ const styles = {
     height: 390,
     width: '30%',
     background: 'black',
-    marginTop: 20,
+    marginTop: 15,
 
     backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',

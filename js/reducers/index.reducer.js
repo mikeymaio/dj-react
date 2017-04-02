@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 const playlistState = {
     playlist:
     [
-    {
+        {
             url: '../dj-react/assets/audio/vinyl-crackle.wav',
             name: '',
         },
@@ -12,12 +12,17 @@ const playlistState = {
 }
 
 const deckState = {
+        searchResults: {
+            loading: false,
+            tracks: [],
+        },
         both: {
             xFade: 0.5,
         },
         deck1: {
             activeSong: playlistState.playlist[0],
             play: false,
+            buffering: false,
             progress: 0,
             seeking: false,
             volume: 0.8,
@@ -45,6 +50,7 @@ const deckState = {
         deck2: {
             activeSong: playlistState.playlist[0],
             play: false,
+            buffering: false,
             progress: 0,
             seeking: false,
             volume: 0.8,
@@ -97,11 +103,31 @@ const decksReducer = (state=deckState, action) => {
                 ...state,
                 both: {...state.both, xFade: action.payload}
             }
+        case 'REQUEST_DATA':
+            return {
+                ...state,
+                searchResults: {...state.searchResults, loading: true}
+            }
+        case 'RECEIVE_DATA':
+            return {
+                ...state,
+                searchResults: {loading: false, tracks: action.payload}
+            }
+        case 'START_BUFFER_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, buffering: action.payload}
+            }
+        case 'END_BUFFER_DECK1':
+            return {
+                ...state,
+                deck1: {...state.deck1, buffering: action.payload}
+            }
         case 'SONG_SELECTED_DECK1':
         console.log(action.payload)
             return {
                 ...state,
-                deck1: {...state.deck1, activeSong: action.payload}
+                deck1: {...state.deck1, buffering: true, activeSong: action.payload}
             }
         case 'START_STOP_SONG_DECK1':
             return {
@@ -204,21 +230,30 @@ const decksReducer = (state=deckState, action) => {
                 deck1: {...state.deck1, bass: action.payload}
             }
 //////////////////////////// DECK 2 //////////////////////////////////////
-
+        case 'START_BUFFER_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, buffering: action.payload}
+            }
+        case 'END_BUFFER_DECK2':
+            return {
+                ...state,
+                deck2: {...state.deck2, buffering: action.payload}
+            }
         case 'SONG_SELECTED_DECK2':
             return {
                 ...state,
-                deck2: {...state.deck2, activeSong: action.payload}
+                deck2: {...state.deck2, buffering: true, activeSong: action.payload}
             }
         case 'SEEK_DECK2':
             return {
                 ...state,
-                deck1: {...state.deck2, seeking: !state.deck2.seeking}
+                deck2: {...state.deck2, seeking: !state.deck2.seeking}
             }
         case 'UPDATE_PR0GRESS_DECK2':
             return {
                 ...state,
-                deck1: {...state.deck2, progress: action.payload}
+                deck2: {...state.deck2, progress: action.payload}
             }
         case 'START_STOP_SONG_DECK2':
             return {

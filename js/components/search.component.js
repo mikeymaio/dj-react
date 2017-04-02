@@ -1,186 +1,147 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import YTSearch from 'youtube-api-search';
+import React from 'react'
+// import Avatar from 'material-ui/Avatar'
+// import {List, ListItem} from 'material-ui/List'
+// import Subheader from 'material-ui/Subheader'
+import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+
 import _ from 'lodash';
 
-const API_KEY = 'AIzaSyAQvNFc6ulIgwEv592xp9Ws6SAsHyQHl-o';
+import {selectSong} from '../actions/index.action';
+import {fetchDataFromApi} from '../actions/index.action';
 
 import AutoComplete from 'material-ui/AutoComplete';
 import MenuItem from 'material-ui/MenuItem';
 import Snackbar from 'material-ui/Snackbar';
+import Loader from './loader.component';
 
-import { connect } from 'react-redux';
-import {selectSong} from '../actions/index.action';
-import {handleSongUpload} from '../actions/index.action';
-import {bindActionCreators} from 'redux';
+
+
+const CLIENT_ID = 'l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK';
 
 
 const styles = {
     playlist: {
     display: 'block',
-},
-    button: {
-        // marginTop: 20,
-        // display: "block"
     },
     loadBtnGroup: {
-        // float: 'right',
-        // marginLeft: '12px',
-        // marginBottom: '12px',
         width: '100%',
         display: 'inline-block'
     },
     load: {
-        // float: 'right',
         backgroundColor: '#1f1f1f',
         fontSize: 12,
-        // marginRight: '12px',
         width: '50%',
-       // marginLeft: "15%",
-        // marginLeft: 5,
-        // zIndex: 30
     },
     results: {
                 width: '100%',
                 maxHeight: 400,
-                /*height: 309px;*/
-                /*position: absolute;*/
-                // top: 20,
                 color: '#44def6',
                 backgroundColor: 'black',
                 overflow: 'auto',
                 margin: 'auto',
                 border: '5px solid #1f1f1f',
-                // paddingBottom: 20,
-                /*z-index: 500;*/
             }
-}
+    }
 
 
-// Create a new component. This component should produce html
-class Search extends Component {
+
+class Search extends React.Component {
     constructor(props) {
-        super(props);
+        super(props)
 
-        this.state = {
-            videos: [],
-            selectedVideo: null,
-            videoData: [],
+    this.state = {
             open: false,
-            searchText: '',
         };
 
-        //this.videoSearch('EDM');
-        this.handleUpdateInput = (searchText) => {
-            this.setState({
-            searchText: searchText,
-            });
-        };
-
-        this.handleNewRequest = () => {
-            this.setState({
-            searchText: '',
-            });
-        }
-
-        this.handleTouchTap = () => {
+                this.handleTouchTap = () => {
             this.setState({
             open: true,
             });
         };
     }
-
-
-    videoSearch(term) {
-        YTSearch({key: API_KEY, term: term}, (videos) => {
-
-                   const dataArray = []
-                    for (let i=0; i < videos.length; i++) {
-                        let newVid = {
-                        text: videos[i].snippet.title,
-                        value: (
-                        <MenuItem
-                            disabled={true}
-                            onTouchTap={(event) => {event.preventDefault(); return;}}
-                            primaryText={
-                                <li className="list-group-item">
-                                <div className="video-list media">
-                                    <div className="media-left">
-                                        <img className="media-object" src={videos[i].snippet.thumbnails.default.url}/>
-                                    </div>
-                                    <div className="media-body">
-                                        <p className="media-heading">{videos[i].snippet.title}</p>
-                                    </div>
-                                    <div style={styles.loadBtnGroup}>
-                                        <button style={styles.load} onTouchTap={() => {this.props.selectSong(
-                                            {title:videos[i].snippet.title,
-                                            url: `https://www.youtube.com/embed/${videos[i].id.videoId}`,
-                                            cover: videos[i].snippet.thumbnails.default.url
-                                            }, '_DECK1'),
-                                            this.handleTouchTap()}}
-                                            >
-                                            LOAD TO DECK 1
-                                        </button>
-                                        <button style={styles.load} onTouchTap={() => {
-                                            this.props.selectSong(
-                                            {title:videos[i].snippet.title,
-                                            url: `https://www.youtube.com/embed/${videos[i].id.videoId}`,
-                                            cover: videos[i].snippet.thumbnails.default.url
-                                            }, '_DECK2'),
-                                            this.handleTouchTap()}}
-                                            >
-                                            LOAD TO DECK 2
-                                        </button>
-                                    </div>
-                                </div>
-                                </li>
-                            }
-                            //secondaryText="&#9786;"
-                        />),
-                        url: `https://www.youtube.com/embed/${videos[i].id.videoId}`
-                                            }
-                                            dataArray.push(newVid);
-                                        }
-
-            this.setState({
-                videos: videos,
-                selectedVideo: videos[0],
-                videoData: dataArray,
-            });
-            console.log(videos);
-        });
+search() {
+        const input = document.getElementsByTagName('input')[0].value;
+        this.props.fetchData(input)
     }
 
+renderLoader() {
+    return [{text: "loader", value: (<MenuItem disabled={true} style={{textAlign:"center"}} primaryText={<Loader size={40} />} />)}];
+}
 
-    render() {
+  renderList() {
+      if (this.props.tracks === []) {
+            return [{
+          text: 'NoResults',
+            value: (
+                <MenuItem
+                    disabled={true}
+                    primaryText={
+                        <h5 style={{color: "#22bcd4", paddingTop: 15}}>No Results</h5>
+                        }
+                    />),
+                url: null
+                }]
+      } else {
+        return this.props.tracks.map((track, index) => {
+            return (
+            {
+          text: track.title,
+            value: (
+                <MenuItem
+                    disabled={true}
+                    primaryText={
+                        <li className="list-group-item">
+                        <div className="video-list media">
+                            <div className="media-left">
+                                <img className="media-object" src={track.artwork_url}/>
+                            </div>
+                            <div className="media-body">
+                                <a href={track.user.permalink_url} className="media-heading">{track.title}</a>
+                            </div>
+                            <div style={styles.loadBtnGroup}>
+                                <button style={styles.load} onTouchTap={() => {this.props.selectSong(
+                                    {title:track.title,
+                                    url: track.stream_url + '?client_id=' + CLIENT_ID,
+                                    cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
+                                    }, '_DECK1'),
+                                    this.handleTouchTap()
+                                    }}
+                                    >
+                                    LOAD TO DECK 1
+                                </button>
+                                <button style={styles.load} onTouchTap={() => {
+                                    this.props.selectSong(
+                                    {title:track.title,
+                                    url: track.stream_url + '?client_id=' + CLIENT_ID,
+                                    cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
+                                    }, '_DECK2'),
+                                    this.handleTouchTap()
+                                    }}
+                                    >
+                                    LOAD TO DECK 2
+                                </button>
+                            </div>
+                        </div>
+                        </li>
+                        }
+                    />),
+                url: track.stream_url
+                }
+            );
+        });
+      }
+  }
 
-        const videoSearch = _.debounce((term) => {this.videoSearch(term)}, 500);
+  render() {
 
+    const dataArray = this.props.loading ? this.renderLoader() : this.renderList();
 
-        return (
-        <div
-        //className="row"
-        >
-            {/*<div className="col-xs-12" style={{margin: "auto", display: "block"}}>*/}
-            {/*<AutoComplete
-                className="search"
-                style={{marginLeft: "30%", width: "40%"}}
-                textFieldStyle={{padding: '3%', width: '100%'}}
-                underlineStyle={{width: '94%'}}
-                listStyle={styles.results}
-                popoverProps={{useLayerForClickAway: false, open: true}}
-                hintText="Search YouTube To Get Started!"
-                searchText={this.state.searchText}
-                onUpdateInput={videoSearch}
-                onNewRequest={this.handleNewRequest}
-                dataSource={this.state.videoData}
-                dataSourceConfig={{text: 'text', value: 'value'}}
-                filter={AutoComplete.caseInsensitiveFilter}
-                fullWidth={true}
-                //filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
-                openOnFocus={true}
-            />*/}
-            <AutoComplete
+    const scSearch = _.debounce((e) => {this.search()}, 500);
+
+    return (
+        <div>
+       <AutoComplete
                 anchorOrigin={{vertical: 'bottom', horizontal: 'middle'}}
                 targetOrigin={{vertical: 'top', horizontal: 'middle'}}
                 className={this.props.className}
@@ -188,46 +149,37 @@ class Search extends Component {
                 textFieldStyle={this.props.textFieldStyle}
                 underlineStyle={this.props.underlineStyle}
                 listStyle={styles.results}
-                popoverProps={{useLayerForClickAway: false, style:{width: '55%', backgroundColor: 'black'}}}
-                menuStyle={{width: '100%',}}
+                popoverProps={{useLayerForClickAway: false, style:{width: '55%', backgroundColor: 'black', minWidth: 320}}}
+                menuStyle={{width: '100%'}}
                 hintText={this.props.hintText}
-                searchText={this.state.searchText}
-                onUpdateInput={videoSearch}
-                //onNewRequest={this.handleNewRequest}
-                dataSource={this.state.videoData}
+                onUpdateInput={scSearch}
+                onNewRequest={this.handleNewRequest}
+                dataSource={dataArray}
                 dataSourceConfig={{text: 'text', value: 'value'}}
                 filter={AutoComplete.caseInsensitiveFilter}
-                fullWidth={true}
-                //filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+                fullWidth={false}
                 openOnFocus={true}
             />
-            {/*</div>*/}
+            {/*{this.props.loading ? <Loader size={40} style={{float:"left"}}/> : false }*/}
             <Snackbar
                 open={this.state.open}
                 message="Success!"
                 autoHideDuration={2000}
-                contentStyle={{color: "#22bcd4"}}
+                contentStyle={{color: "#22bcd4", textAlign: "center"}}
                 style={{border: "2px solid #22bcd4"}}
             />
-        </div>
-        );
-    }
+            </div>
+    )
+  }
 }
 
-function mapStateToProps(state){
-    return {
-        playlist: state.playlistReducer.playlist,
-    };
-}
+const mapStateToProps = (state) => ({
+  tracks: state.decksReducer.searchResults.tracks,
+  loading: state.decksReducer.searchResults.loading
+})
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({selectSong: selectSong, handleSongUpload: handleSongUpload}, dispatch)
+    return bindActionCreators({selectSong: selectSong, fetchData: fetchDataFromApi}, dispatch)
 }
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
-
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(Search)
