@@ -180,7 +180,7 @@ class Turntable extends React.Component {
 
 
         const upload = {
-            url: url,
+            url: file.preview,
             name: file.name,
             title: file.name,
             cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
