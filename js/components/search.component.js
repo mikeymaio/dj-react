@@ -1,7 +1,4 @@
 import React from 'react'
-// import Avatar from 'material-ui/Avatar'
-// import {List, ListItem} from 'material-ui/List'
-// import Subheader from 'material-ui/Subheader'
 import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -160,7 +157,6 @@ renderLoader() {
                 fullWidth={false}
                 openOnFocus={true}
             />
-            {/*{this.props.loading ? <Loader size={40} style={{float:"left"}}/> : false }*/}
             <Snackbar
                 open={this.state.open}
                 message="Success!"

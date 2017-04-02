@@ -10,7 +10,7 @@ import * as actions from '../actions/index.action'
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Paper from 'material-ui/Paper';
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'simple-react-player';
 
 import Fader from './fader.component';
 
@@ -167,15 +167,6 @@ class Turntable extends React.Component {
     this.handleDrop = (acceptedFiles, rejectedFiles) => {
 
         const file = acceptedFiles[0];
-
-        // const pathArray = file.preview.split( '/' );
-
-        // console.log(pathArray);
-
-        // const url = `${pathArray[0]}//${pathArray[2]}/dj-react/${pathArray[3]}`
-
-        // console.log(url);
-
 
         const upload = {
             url: file.preview,
