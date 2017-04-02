@@ -146,9 +146,11 @@ class Turntable extends React.Component {
     this.onSeekMouseDown = e => {
         this.setState({ seeking: true })
     }
+
     this.onSeekChange = e => {
         this.setState({ played: parseFloat(e.target.value) })
     }
+
     this.onSeekMouseUp = e => {
         this.setState({ seeking: false })
         this.player.seekTo(parseFloat(e.target.value))
@@ -166,8 +168,19 @@ class Turntable extends React.Component {
 
         const file = acceptedFiles[0];
 
+        // const url = file.preview.replace(^('blob:http://localhost:8080/')\s+);
+
+        const pathArray = file.preview.split( '/' );
+
+        console.log(pathArray);
+
+        const url = `${pathArray[0]}//${pathArray[2]}/dj-react/${pathArray[3]}`
+
+        console.log(url);
+
+
         const upload = {
-            url: file.preview,
+            url: url,
             name: file.name,
             title: file.name,
             cover: "../dj-react/assets/images/djR-vinyl-label.jpg",
@@ -241,7 +254,6 @@ class Turntable extends React.Component {
                                                         onEnded={() => this.props.startStopSong(this.props.deckNum)}
                                                         onError={err => console.log('onError', err)}
                                                         onProgress={this.onProgress}
-                                                        soundcloudConfig={{clientId: 'l8b1LlbFBGgDJmPurEkqHuuUHDVckbWK',}}
                                                         //onDuration={duration => this.setState({ duration })}
                                                         />
                                                         {/*<div
