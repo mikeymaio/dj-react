@@ -102,7 +102,7 @@ renderLoader() {
                             <div style={styles.loadBtnGroup}>
                                 <button style={styles.load} onTouchTap={() => {this.props.selectSong(
                                     {title:track.title,
-                                    url: track.stream_url + '?client_id=' + CLIENT_ID,
+                                    url: track.uri + '/stream?client_id=' + CLIENT_ID,
                                     cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
                                     }, '_DECK1'),
                                     this.handleTouchTap()
@@ -113,7 +113,7 @@ renderLoader() {
                                 <button style={styles.load} onTouchTap={() => {
                                     this.props.selectSong(
                                     {title:track.title,
-                                    url: track.stream_url + '?client_id=' + CLIENT_ID,
+                                    url: track.uri + '/stream?client_id=' + CLIENT_ID,
                                     cover: track.artwork_url ? track.artwork_url : "../dj-react/assets/images/djR-vinyl-label.jpg"
                                     }, '_DECK2'),
                                     this.handleTouchTap()
