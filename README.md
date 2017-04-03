@@ -2,6 +2,9 @@
 A virtual dj rig for your browser!
 
 ## UX
+![Laptop Full Size Browser](https://cloud.githubusercontent.com/assets/18637588/24592495/a46b1fae-17cc-11e7-9324-23cc7ba2401f.png)
+
+(https://cloud.githubusercontent.com/assets/18637588/24592495/a46b1fae-17cc-11e7-9324-23cc7ba2401f.png)
 
 DJ-React is built using React and Redux. It is was created with tablets in mind (try it on the largest touch screen device you can get your hands on!), but is responsive on all devices.
 
