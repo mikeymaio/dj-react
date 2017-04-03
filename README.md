@@ -1,23 +1,20 @@
-# Thinkful React Starter
+# DJ-React
+A virtual dj rig for your browser!
 
-A template for developing React apps.
+## UX
 
-## Getting started
+DJ-React is built using React and Redux. It is was created with tablets in mind (try it on the largest touch screen device you can get your hands on!), but is responsive on all devices.
 
-### Setting up a project
+## Prototype
+You can find a working prototype here: https://hypeufo.github.io/dj-react/
 
-* Move into your projects directory: `cd ~/YOUR_PROJECTS_DIRECTORY`
-* Clone this repository: `git clone https://github.com/oampo/thinkful-react-starter YOUR_PROJECT_NAME`
-* Move into the project directory: `cd YOUR_PROJECT_NAME`
-* Install the dependencies: `npm install`
-* Create a new repo on GitHub: https://github.com/new
-    * Make sure the "Initialize this repository with a README" option is left **un**checked
-* Update the remote to point to your GitHub repository: `git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME`
 
-### Working on the project
+## Technical
+DJ-React uses react-dropzone to handle file uploads, as well as the SoundCloudApi. These tracks are used as sources to feed the mixer and fx sextion, which were built using the Web Audio API. When the app loads, the audio players are targeted and the fx sections calls "createMediaSourceElement" on them. These sources are then routed through the various FX before connecting to the audioContext destination (speakers/headphones). All component params are stored in Redux and passed to the appropriate components on change.
 
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Run the development task: `npm run dev`
-    * Starts a server running at http://localhost:8080
-    * Automatically rebuilds when any of your files change
-
+## To Do's
+  * Connect Volume Meter
+  * Add waveform display as background for seek bar
+  * Read bpm of tracks in realtime (playback rate changes should update bpm)
+  * Seek by spinning turntable deck
+  
