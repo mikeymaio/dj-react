@@ -134,7 +134,7 @@ renderLoader() {
 
     const dataArray = this.props.loading ? this.renderLoader() : this.renderList();
 
-    const scSearch = _.debounce((e) => {this.search()}, 500);
+    const scSearch = _.debounce((e) => {this.search()}, 200);
 
     return (
         <div>
