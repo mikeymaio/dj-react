@@ -18,4 +18,4 @@ DJ-React uses react-dropzone to handle file uploads, as well as the SoundCloudAp
   * Add waveform display as background for seek bar
   * Read bpm of tracks in realtime (playback rate changes should update bpm)
   * Seek by spinning turntable deck
-  
+  * Allow user to save mix and download file or upload to their soundcloud
