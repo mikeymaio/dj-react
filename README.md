@@ -2,6 +2,7 @@
 A virtual dj rig for your browser!
 
 ## UX
+![Laptop Full Size Browser](https://cloud.githubusercontent.com/assets/18637588/24592495/a46b1fae-17cc-11e7-9324-23cc7ba2401f.png)
 
 DJ-React is built using React and Redux. It is was created with tablets in mind (try it on the largest touch screen device you can get your hands on!), but is responsive on all devices.
 
@@ -17,4 +18,4 @@ DJ-React uses react-dropzone to handle file uploads, as well as the SoundCloudAp
   * Add waveform display as background for seek bar
   * Read bpm of tracks in realtime (playback rate changes should update bpm)
   * Seek by spinning turntable deck
-  
+  * Allow user to save mix and download file or upload to their soundcloud
