@@ -64,7 +64,7 @@ const styleTurntableContainer = {
     height: '90%',
     width: '70%',
     margin: 0,
-    marginTop: 5,
+    marginTop: 0,
     marginBottom: 25,
     textAlign: 'center',
     display: 'inline-block',
@@ -103,12 +103,12 @@ const styleStartStopBtn = {
 };
 
 const style = {
-    root: {
-     marginTop: 0,
+root: {
+    marginTop: 0,
     display: 'flex',
     justifyContent: 'space-around',
     height: 65,
-    marginBottom: 7,
+    marginBottom: 5,
     },
   deckSpeed: {
     marginBottom: 15,
@@ -118,7 +118,7 @@ const style = {
   },
   speedControl: {
     position: 'absolute',
-    bottom: 0,
+    bottom: -10,
     left: '80%'
   },
   player: {
@@ -281,7 +281,7 @@ class Turntable extends React.Component {
                         <div
                             className="speedFader col-lg-1 col-lg-offset-0 col-md-1 col-md-offset-0 col-sm-1 col-sm-offset-0 col-xs-1 col-xs-offset-0"
                             style={style.speedControl}>
-                                <label 
+                                <label
                                     htmlFor="deckSpeed"
                                     style={style.deckSpeed}
                                     className="deckSpeedLabel">

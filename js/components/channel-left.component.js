@@ -13,7 +13,7 @@ import FxSection from './fx-section.component';
 
 const styles = {
   tt_mixer: {
-    height: 415,
+    height: 402,
   },
   container: {
     margin: 0,

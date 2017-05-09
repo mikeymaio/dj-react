@@ -8,7 +8,9 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
-
+.navbar {
+    padding: 0rem 1rem !important;
+}
 
 h5 {
     text-align: center;
@@ -43,7 +45,7 @@ h5 {
 
 
 #table {
-    padding-top: 5px;
+    padding-top: 0px;
 }
 
 /*////////////  LOADER  ///////////////*/

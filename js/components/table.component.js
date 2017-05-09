@@ -27,7 +27,6 @@ const styles = {
     paddingBottom: 15,
     marginTop: 0,
     marginLeft: '10%',
-    marginTop: 0,
   },
   crossfader: {
     height: 47,

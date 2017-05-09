@@ -65,7 +65,7 @@ const styles = {
     height: 390,
     width: '30%',
     background: 'black',
-    marginTop: 15,
+    marginTop: 10,
 
     backgroundImage: 'linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
     backgroundImage:' -o-linear-gradient(bottom, rgb(82,79,82) 0%, rgb(134,134,134) 57%)',
