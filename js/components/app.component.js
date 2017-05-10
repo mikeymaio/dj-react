@@ -11,6 +11,7 @@ class App extends Component {
     console.log("Hello fellow dev! Why not fork the repo and send me a PR? There is much work to be done! https://github.com/HypeUFO/dj-react")
   }
   render() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
     const audioContext = new AudioContext();
     return (
       <div>
