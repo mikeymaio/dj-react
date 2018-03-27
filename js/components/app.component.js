@@ -8,7 +8,7 @@ import NewMeter from './new-meter.component';
 
 class App extends Component {
   componentDidMount() {
-    console.log("Hello fellow dev! Why not fork the repo and send me a PR? There is much work to be done! https://github.com/HypeUFO/dj-react")
+    console.log("Hello fellow dev! If you're interested in DJ React, why not clone the repo and send me a PR? There is much work to be done! https://github.com/HypeUFO/dj-react")
   }
   render() {
     const AudioContext = window.AudioContext || window.webkitAudioContext || false;
