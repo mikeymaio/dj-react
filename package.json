@@ -40,7 +40,7 @@
   "author": "Michael Maio <michael.maio22@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/HypeUFO/dj-react.git"
+    "url": "git://github.com/mikeymaio/dj-react.git"
   },
   "license": "UNLICENSED",
   "devDependencies": {
